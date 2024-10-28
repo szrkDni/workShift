@@ -27,7 +27,7 @@ public class SpringJavaFxApplication {
 
     public void addTestPerson(){
 
-        personRepository.save(Person.builder().name("Jóska Pista").age(40).build());
-        System.out.println("Joska Pista hozzaadva!");
+        personRepository.save(Person.builder().name("Veg Bela").age(40).build());
+        System.out.println("Veg Bela hozzaadva!");
     }
 }
