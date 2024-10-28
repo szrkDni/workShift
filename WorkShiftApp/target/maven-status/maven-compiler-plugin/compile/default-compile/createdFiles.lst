@@ -1,0 +1,7 @@
+com\example\springjavafx\javaFXApp\Controller\mainController.class
+com\example\springjavafx\springApp\model\PersonRepository.class
+com\example\springjavafx\springApp\model\Person$PersonBuilder.class
+com\example\springjavafx\springApp\SpringJavaFxApplication.class
+com\example\springjavafx\springApp\model\Person.class
+com\example\springjavafx\javaFXApp\javaFXMain.class
+com\example\springjavafx\springApp\SpringManager.class
