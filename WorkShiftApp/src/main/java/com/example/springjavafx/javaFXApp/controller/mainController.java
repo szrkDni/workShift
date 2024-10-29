@@ -21,7 +21,7 @@ public class mainController {
 
         System.out.println("Adatbázis tartalmának listázása!");
         SpringManager.getSpringApp().printAll();
-
+    //bele írtam valamit Nandi
     }
 
     public void onAddTestPersonButtonClick(ActionEvent actionEvent) {
