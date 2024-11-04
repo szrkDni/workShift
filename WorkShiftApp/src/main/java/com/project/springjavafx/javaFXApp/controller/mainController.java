@@ -1,6 +1,6 @@
-package com.example.springjavafx.javaFXApp.Controller;
+package com.project.springjavafx.javaFXApp.controller;
 
-import com.example.springjavafx.springApp.SpringManager;
+import com.project.springjavafx.springApp.SpringManager;
 import javafx.event.ActionEvent;
 
 public class mainController {

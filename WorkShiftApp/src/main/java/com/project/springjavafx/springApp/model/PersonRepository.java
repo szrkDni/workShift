@@ -1,4 +1,4 @@
-package com.example.springjavafx.springApp.model;
+package com.project.springjavafx.springApp.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

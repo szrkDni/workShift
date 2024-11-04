@@ -1,4 +1,4 @@
-package com.example.springjavafx.springApp.model;
+package com.project.springjavafx.springApp.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

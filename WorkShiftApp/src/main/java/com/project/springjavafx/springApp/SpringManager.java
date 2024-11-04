@@ -1,4 +1,4 @@
-package com.example.springjavafx.springApp;
+package com.project.springjavafx.springApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;

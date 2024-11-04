@@ -1,7 +1,7 @@
-package com.example.springjavafx.springApp;
+package com.project.springjavafx.springApp;
 
-import com.example.springjavafx.springApp.model.Person;
-import com.example.springjavafx.springApp.model.PersonRepository;
+import com.project.springjavafx.springApp.model.Person;
+import com.project.springjavafx.springApp.model.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +16,7 @@ public class SpringJavaFxApplication {
     @Autowired
     PersonRepository personRepository;
     public void printAll() {
-        personRepository.save(Person.builder().name("Teszt Elek").age(20).build());
+
         Iterable<Person> persons = personRepository.findAll();
 
         for (Person p : persons) {
