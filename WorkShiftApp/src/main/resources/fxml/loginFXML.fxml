@@ -18,7 +18,7 @@
                   <Font name="System Bold" size="65.0" />
                </font>
             </Label>
-            <Pane layoutX="320.0" layoutY="230.0" prefHeight="460.0" prefWidth="300.0" styleClass="inner-box" stylesheets="@login.css">
+            <Pane layoutX="320.0" layoutY="230.0" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css" onMouseClicked="#onShowLoginPageCardClick">
                <children>
                   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -36,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
-            <Pane layoutX="10.0" layoutY="230.0" prefHeight="460.0" prefWidth="300.0" styleClass="inner-box" stylesheets="@login.css">
+            <Pane layoutX="10.0" layoutY="230.0" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css" onMouseClicked="#onShowLoginPageCardClick">
                <children>
                   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>

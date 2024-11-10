@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.mainController">
+<?import javafx.scene.layout.Pane?>
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background-image" stylesheets="@login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.mainController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onStartDatabaseButtonClick" text="Start Database" />
-      <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#onStopDataBaseButtonClick" text="Stop Database" />
-      <Button layoutX="14.0" layoutY="124.0" mnemonicParsing="false" onAction="#onListDatabaseContentButtonClick" text="List Database content" />
-      <Button layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#onAddTestPersonButtonClick" text="AddTestPerson" />
+      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="wrapper2" stylesheets="@login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="100.0">
+
+      </Pane>
    </children>
 </AnchorPane>

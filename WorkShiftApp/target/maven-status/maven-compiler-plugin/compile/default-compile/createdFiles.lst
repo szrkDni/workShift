@@ -1,0 +1,14 @@
+com/project/springjavafx/springApp/model/Person$PersonBuilder.class
+com/project/springjavafx/javaFXApp/javaFXMain.class
+com/project/springjavafx/springApp/model/Project$ProjectBuilder.class
+com/project/springjavafx/javaFXApp/controller/mainController.class
+com/project/springjavafx/springApp/model/WorkShifts.class
+com/project/springjavafx/springApp/model/Project.class
+com/project/springjavafx/springApp/model/Employee$EmployeeBuilder.class
+com/project/springjavafx/springApp/model/Employee.class
+com/project/springjavafx/springApp/model/WorkShifts$WorkShiftsBuilder.class
+com/project/springjavafx/springApp/model/PersonRepository.class
+com/project/springjavafx/springApp/model/Person.class
+com/project/springjavafx/springApp/SpringJavaFxApplication.class
+com/project/springjavafx/springApp/SpringManager.class
+com/project/springjavafx/javaFXApp/controller/loginController.class

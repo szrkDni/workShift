@@ -4,13 +4,6 @@
     -fx-background-size: 100% 100%;
 }
 
-.wrapper{
-    -fx-background-color: rgb(51, 50, 50);
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 30, 0, 0, 4);
-    -fx-border-radius: 50;
-    -fx-backdrop-filter: blur(2.1px);
-}
 
 .wrapper2{
     -fx-background-color: rgba(51, 50, 50, 0.5);
@@ -21,7 +14,7 @@
     -fx-border-radius: 16;
 }
 
-.inner-box{
+.card{
     -fx-background-color: rgba(60, 56, 54);
     -fx-background-radius: 10;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 30, 0, 0, 4);
