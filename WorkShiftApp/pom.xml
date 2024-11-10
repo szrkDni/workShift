@@ -8,7 +8,7 @@
         <version>3.1.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>com.project</groupId>
     <artifactId>SpringJavaFX</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringJavaFX</name>
@@ -72,7 +72,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.example.springjavafx.javaFXApp.javaFXMain</mainClass>
+                    <mainClass>com.project.springjavafx.javaFXApp.javaFXMain</mainClass>
                 </configuration>
             </plugin>
         </plugins>
