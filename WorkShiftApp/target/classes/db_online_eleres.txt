@@ -1,0 +1,25 @@
+https://www.phpmyadmin.co/
+
+Kiszolgáló: sql7.freemysqlhosting.net
+Felhasználónév: sql7744747
+Jelszó: w1CPC7I5ur
+
+
+Egy generáláskor kapott email másolata:
+"
+
+Hi
+
+Your account number is: 1025791
+
+Your new database is now ready to use.
+
+To connect to your database use these details
+
+Server: sql7.freemysqlhosting.net
+Name: sql7744747
+Username: sql7744747
+Password: w1CPC7I5ur
+Port number: 3306
+
+"
