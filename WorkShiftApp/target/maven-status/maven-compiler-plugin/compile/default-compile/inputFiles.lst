@@ -6,6 +6,7 @@
 /home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/springApp/SpringManager.java
 /home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/javaFXApp/data/dto/AfterLoginDTO.java
 /home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/javaFXApp/exceptions/LoginformException.java
+/home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/javaFXApp/utility/Credentials.java
 /home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/javaFXApp/javaFXMain.java
 /home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/javaFXApp/data/models/LoginData.java
 /home/szarkad/IdeaProjects/workShift/WorkShiftApp/src/main/java/com/project/springjavafx/javaFXApp/controller/loginController.java

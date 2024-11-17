@@ -6,6 +6,7 @@ import com.project.springjavafx.javaFXApp.data.dto.AfterLoginDTO;
 import com.project.springjavafx.javaFXApp.data.models.Employee;
 import com.project.springjavafx.javaFXApp.data.models.LoginData;
 import com.project.springjavafx.javaFXApp.exceptions.LoginformException;
+import com.project.springjavafx.javaFXApp.utility.Credentials;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,10 +27,12 @@ import java.util.ArrayList;
 public class loginController {
 
     // TextField for the username input field in the login form
-    @FXML public TextField loginformusername;
+    @FXML
+    public TextField loginformusername;
 
     // PasswordField for the password input field in the login form
-    @FXML public PasswordField loginformpassword;
+    @FXML
+    public PasswordField loginformpassword;
 
 
     /**
@@ -65,33 +68,29 @@ public class loginController {
 
         boolean isLoginSuccess = false;
 
-        try{
-            isLoginSuccess = checkCredentials(logindatalist, username, password);
-        }
-        catch(LoginformException e){
+        try {
+            isLoginSuccess = Credentials.check(logindatalist, username, password);
+        } catch (LoginformException e) {
 
             System.out.println(e.getMessage());
 
         }
 
 
-        if (isLoginSuccess)
-        {
+        if (isLoginSuccess) {
             System.out.println("Login success!\nUser: " + AfterLoginDTO.employeeId + " Maganer: " + AfterLoginDTO.isManager);
-            try{
+            try {
 
                 Thread.sleep(2000);
 
                 SceneLoader.showScene(mouseEvent, "nextpageFXML");
 
-            }
-            catch(IOException | InterruptedException e){
+            } catch (IOException | InterruptedException e) {
 
                 System.out.println(e.getMessage());
 
             }
-        }
-        else{
+        } else {
             System.out.println("Login failed");
 
         }
@@ -105,34 +104,4 @@ public class loginController {
         System.out.println("Better luck next time"); // Placeholder for future functionality
     }
 
-
-
-
-    private boolean checkCredentials(ArrayList<LoginData> logindatalist, String username, String password) throws LoginformException {
-
-        // Loop through the list of users to validate the login credentials
-        for(LoginData loginData : logindatalist) {
-
-            // If credentials match
-            if (loginData.getUsername().equals(username) &&
-                    loginData.getPassword().equals(password)) {
-
-                // Fetch the employee data for the logged-in user
-                EmployeeDAO employeeDAO = new EmployeeDAO();
-                Employee loggedinemployee = employeeDAO.getEmployeeById(loginData.getEmployeeID());
-
-                // Store the logged-in employee's ID and role (manager or not) in a DTO
-                AfterLoginDTO.employeeId = loginData.getEmployeeID();
-                AfterLoginDTO.isManager = loggedinemployee.isManager();
-
-                // Navigate to the next page after successful login
-
-                return true; // Exit the method after successful login
-            }
-
-        }
-
-        // If no match is found
-        throw new LoginformException("User not found whit the given credenials");
-    }
 }

@@ -17,4 +17,5 @@ com/project/springjavafx/javaFXApp/data/db/DatabaseConnector.class
 com/project/springjavafx/javaFXApp/controller/nextController.class
 com/project/springjavafx/javaFXApp/controller/loginController$1.class
 com/project/springjavafx/javaFXApp/data/dao/EmployeeDAO.class
+com/project/springjavafx/javaFXApp/utility/Credentials.class
 com/project/springjavafx/javaFXApp/controller/loginController.class
