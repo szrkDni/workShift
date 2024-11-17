@@ -42,7 +42,7 @@
                </font>
             </PasswordField>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#219b9d" height="58.0" layoutX="164.0" layoutY="387.0" stroke="#219b9d" strokeType="INSIDE" styleClass="login-input-field-design-element" width="58.0" />
-            <Button layoutX="165.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#oncheckdatatologin" prefHeight="53.0" prefWidth="309.0" styleClass="login-button" stylesheets="@login.css" text="Login" textAlignment="CENTER" textFill="AQUA">
+            <Button layoutX="165.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#onCheckDataToLoginButtonClick" prefHeight="53.0" prefWidth="309.0" styleClass="login-button" stylesheets="@login.css" text="Login" textAlignment="CENTER" textFill="AQUA">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -60,7 +60,7 @@
                   <Image url="@../img/profile_avatar_outline.png" />
                </image>
             </ImageView>
-            <Label layoutX="353.0" layoutY="445.0" onMouseClicked="#onforgotpasswordaction" text="Forgot your password?" textAlignment="CENTER" textFill="#219b9d" underline="true">
+            <Label layoutX="353.0" layoutY="445.0" onMouseClicked="#onForgotPasswordActionLabelClick" text="Forgot your password?" textAlignment="CENTER" textFill="#219b9d" underline="true">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="12.0" />
                </font>

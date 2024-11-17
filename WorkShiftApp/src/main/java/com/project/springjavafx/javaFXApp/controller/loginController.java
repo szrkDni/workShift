@@ -1,25 +1,14 @@
 package com.project.springjavafx.javaFXApp.controller;
 
-import com.mysql.cj.log.Log;
-import com.project.springjavafx.javaFXApp.data.dao.EmployeeDAO;
 import com.project.springjavafx.javaFXApp.data.dto.AfterLoginDTO;
-import com.project.springjavafx.javaFXApp.data.models.Employee;
 import com.project.springjavafx.javaFXApp.data.models.LoginData;
 import com.project.springjavafx.javaFXApp.exceptions.LoginformException;
 import com.project.springjavafx.javaFXApp.utility.Credentials;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import org.springframework.boot.context.FileEncodingApplicationListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,7 +40,7 @@ public class loginController {
      * Handles the login logic by checking entered credentials against a hardcoded list.
      * If credentials match, proceeds to the next scene.
      */
-    public void oncheckdatatologin(MouseEvent mouseEvent) {
+    public void onCheckDataToLoginButtonClick(MouseEvent mouseEvent) {
         // Mock data for login verification (replace with real database in production)
         ArrayList<LoginData> logindatalist = new ArrayList<LoginData>() {
             {
@@ -100,7 +89,7 @@ public class loginController {
      * Handles the "Forgot Password" button click event.
      * Currently just logs a message to the console.
      */
-    public void onforgotpasswordaction(MouseEvent mouseEvent) {
+    public void onForgotPasswordActionLabelClick(MouseEvent mouseEvent) {
         System.out.println("Better luck next time"); // Placeholder for future functionality
     }
 
