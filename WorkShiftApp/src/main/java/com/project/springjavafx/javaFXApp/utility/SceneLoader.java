@@ -30,6 +30,7 @@ public class SceneLoader {
         // Get the current stage from the event and set the new scene
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle(fxmlName);
         stage.show(); // Show the new scene
     }
 }

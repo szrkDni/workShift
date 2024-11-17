@@ -6,6 +6,7 @@ import com.project.springjavafx.javaFXApp.exceptions.LoginformException;
 import com.project.springjavafx.javaFXApp.utility.Credentials;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -28,11 +29,12 @@ public class loginController {
      * Handles the event to show the login page.
      * Loads a new FXML scene called "loginformFXML".
      */
+    @FXML
     public void onShowLoginPageCardClick(MouseEvent mouseEvent) {
         try {
             SceneLoader.showScene(mouseEvent, "loginformFXML");
         } catch (IOException e) {
-            e.printStackTrace(); // Log error if the FXML file cannot be loaded
+            System.out.println(e.getMessage()); // Log error if the FXML file cannot be loaded
         }
     }
 
@@ -40,6 +42,7 @@ public class loginController {
      * Handles the login logic by checking entered credentials against a hardcoded list.
      * If credentials match, proceeds to the next scene.
      */
+    @FXML
     public void onCheckDataToLoginButtonClick(MouseEvent mouseEvent) {
         // Mock data for login verification (replace with real database in production)
         ArrayList<LoginData> logindatalist = new ArrayList<LoginData>() {
@@ -67,12 +70,13 @@ public class loginController {
 
 
         if (isLoginSuccess) {
-            System.out.println("Login success!\nUser: " + AfterLoginDTO.employeeId + " Maganer: " + AfterLoginDTO.isManager);
+            System.out.println("Login success!\nUser: " + AfterLoginDTO.employeeId + " Manager: " + AfterLoginDTO.isManager);
             try {
+
 
                 Thread.sleep(2000);
 
-                SceneLoader.showScene(mouseEvent, "nextpageFXML");
+                SceneLoader.showScene(mouseEvent, "dashboardFXML");
 
             } catch (IOException | InterruptedException e) {
 
@@ -89,6 +93,7 @@ public class loginController {
      * Handles the "Forgot Password" button click event.
      * Currently just logs a message to the console.
      */
+    @FXML
     public void onForgotPasswordActionLabelClick(MouseEvent mouseEvent) {
         System.out.println("Better luck next time"); // Placeholder for future functionality
     }

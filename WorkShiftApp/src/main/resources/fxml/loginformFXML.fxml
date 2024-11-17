@@ -68,11 +68,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="loginstatus" text="" textAlignment="CENTER" textFill="#219b9d">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="12.0" />
-               </font>
-            </Label>
          </children></Pane>
    </children>
 </AnchorPane>
