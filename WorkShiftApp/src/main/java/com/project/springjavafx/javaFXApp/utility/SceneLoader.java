@@ -22,7 +22,7 @@ public class SceneLoader {
      */
     public static void showScene(MouseEvent mouseEvent, String fxmlName) throws IOException {
         // Load the FXML file and create a new Parent object
-        Parent parent = FXMLLoader.load(getClass().getResource("/fxml/" + fxmlName + ".fxml"));
+        Parent parent = FXMLLoader.load(SceneLoader.class.getResource("/fxml/" + fxmlName + ".fxml"));
 
         // Create a new Scene using the loaded Parent
         Scene scene = new Scene(parent);

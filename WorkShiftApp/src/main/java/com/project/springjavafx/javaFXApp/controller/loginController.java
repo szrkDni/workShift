@@ -12,9 +12,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.springframework.boot.context.FileEncodingApplicationListener;
 
@@ -28,6 +30,7 @@ public class loginController {
 
     // PasswordField for the password input field in the login form
     @FXML public PasswordField loginformpassword;
+
 
     /**
      * Handles the event to show the login page.
@@ -74,16 +77,23 @@ public class loginController {
 
         if (isLoginSuccess)
         {
+            System.out.println("Login success!\nUser: " + AfterLoginDTO.employeeId + " Maganer: " + AfterLoginDTO.isManager);
             try{
+
+                Thread.sleep(2000);
 
                 SceneLoader.showScene(mouseEvent, "nextpageFXML");
 
             }
-            catch(IOException e){
+            catch(IOException | InterruptedException e){
 
                 System.out.println(e.getMessage());
 
             }
+        }
+        else{
+            System.out.println("Login failed");
+
         }
     }
 
@@ -101,17 +111,18 @@ public class loginController {
     private boolean checkCredentials(ArrayList<LoginData> logindatalist, String username, String password) throws LoginformException {
 
         // Loop through the list of users to validate the login credentials
-        for (int i = 0; i < logindatalist.size(); i++) {
+        for(LoginData loginData : logindatalist) {
+
             // If credentials match
-            if (logindatalist.get(i).getUsername().equals(username) &&
-                    logindatalist.get(i).getPassword().equals(password)) {
+            if (loginData.getUsername().equals(username) &&
+                    loginData.getPassword().equals(password)) {
 
                 // Fetch the employee data for the logged-in user
                 EmployeeDAO employeeDAO = new EmployeeDAO();
-                Employee loggedinemployee = employeeDAO.getEmployeeById(logindatalist.get(i).getEmployeeID());
+                Employee loggedinemployee = employeeDAO.getEmployeeById(loginData.getEmployeeID());
 
                 // Store the logged-in employee's ID and role (manager or not) in a DTO
-                AfterLoginDTO.employeeId = logindatalist.get(i).getEmployeeID();
+                AfterLoginDTO.employeeId = loginData.getEmployeeID();
                 AfterLoginDTO.isManager = loggedinemployee.isManager();
 
                 // Navigate to the next page after successful login
@@ -120,8 +131,8 @@ public class loginController {
             }
 
         }
-        // If no match is found, no action is taken (could add an error message here)
 
+        // If no match is found
         throw new LoginformException("User not found whit the given credenials");
     }
 }
