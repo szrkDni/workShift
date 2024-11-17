@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.nextController">
+   <children>
+      <TextField fx:id="loggedinas" layoutX="646.0" layoutY="217.0" />
+      <TextField fx:id="thisposition" layoutX="646.0" layoutY="285.0" />
+      <Label layoutX="690.0" layoutY="187.0" text="Logged in as" />
+   </children>
+</AnchorPane>
