@@ -8,6 +8,7 @@ com\project\springjavafx\javaFXApp\data\models\Employee.class
 com\project\springjavafx\javaFXApp\data\models\LoginData.class
 com\project\springjavafx\javaFXApp\data\dao\LeaveRequestDAO.class
 com\project\springjavafx\javaFXApp\data\models\WorkShift.class
+com\project\springjavafx\javaFXApp\utility\PasswordHandler.class
 com\project\springjavafx\javaFXApp\utility\Credentials.class
 com\project\springjavafx\javaFXApp\data\models\Project.class
 com\project\springjavafx\javaFXApp\controller\mainController.class
