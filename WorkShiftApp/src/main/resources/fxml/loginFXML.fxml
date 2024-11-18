@@ -11,14 +11,14 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background-image" stylesheets="@login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.loginController">
    <children>
-      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="wrapper2" stylesheets="@login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="wrapper2" stylesheets="@login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label layoutX="372.0" layoutY="63.0" nodeOrientation="LEFT_TO_RIGHT" text="LOGIN AS" textAlignment="CENTER" textFill="#ebebeb">
+            <Label layoutX="296.0" layoutY="59.0" nodeOrientation="LEFT_TO_RIGHT" text="LOGIN AS" textAlignment="CENTER" textFill="#ebebeb">
                <font>
                   <Font name="System Bold" size="65.0" />
                </font>
             </Label>
-            <Pane layoutX="320.0" layoutY="230.0" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css" onMouseClicked="#onShowLoginPageCardClick">
+            <Pane layoutX="530.0" layoutY="230.0" onMouseClicked="#onShowLoginPageCardClick" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css">
                <children>
                   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,13 +30,12 @@
                         <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="49.0" layoutY="130.0" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
-            <Pane layoutX="10.0" layoutY="230.0" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css" onMouseClicked="#onShowLoginPageCardClick">
+            <Pane layoutX="85.0" layoutY="226.0" onMouseClicked="#onShowLoginPageCardClick" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css">
                <children>
                   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>

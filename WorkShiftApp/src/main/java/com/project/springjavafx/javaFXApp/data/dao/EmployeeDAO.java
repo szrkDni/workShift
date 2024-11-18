@@ -34,4 +34,40 @@ public class EmployeeDAO {
         }
         return employees;
     }
+
+    public Employee getEmployeeById(int empID) {
+        Connection connection = DatabaseConnector.connect();
+        Employee employee = null;
+
+        try {
+            String query = "SELECT * FROM Employees WHERE id = " + empID;
+
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                employee = new Employee(
+                        rs.getInt("id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("position"),
+                        rs.getString("email"),
+                        rs.getDate("birth_date"),
+                        rs.getDate("hire_date"),
+                        rs.getInt("hourly_wage")
+                );
+
+                System.out.println(employee);
+            }
+
+            System.out.println("Employee found: " + employee.getId());
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't find employee");
+        }
+
+        return employee;
+    }
 }
