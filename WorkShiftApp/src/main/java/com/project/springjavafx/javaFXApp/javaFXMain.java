@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp;
 
+import com.project.springjavafx.javaFXApp.data.db.DatabaseConnector;
 import com.project.springjavafx.springApp.SpringJavaFxApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,8 @@ public class javaFXMain extends Application {
         Scene scene = new Scene(loader.load());
         stage.setTitle("Login");
         stage.setScene(scene);
+        DatabaseConnector.connect();
         stage.show();
-
     }
 
     public static void main(String[] args) {

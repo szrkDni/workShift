@@ -33,13 +33,13 @@
 
 .login-input-field{
     -fx-background-color: rgba(255, 255, 255, 0.2);
-    -fx-background-radius: 0 16 16 0;
+
     -fx-border-color: #219B9D;
     -fx-border-style: solid solid solid none;
-    -fx-border-radius: 0 16 16 0;
+
     -fx-border-width: 1;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 30, 0, 0, 4);
-    -fx-prompt-text-fill: rgb(255, 255, 255);
+    -fx-text-fill: #00ffff;
 }
 
 .login-input-field:focused  {
