@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class nextController implements Initializable {
+public class dashboardController implements Initializable {
     @FXML public TextField loggedinas;
     @FXML public TextField thisposition;
 
