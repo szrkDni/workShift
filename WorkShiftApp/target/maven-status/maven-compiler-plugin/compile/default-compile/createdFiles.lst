@@ -1,8 +1,8 @@
 com\project\springjavafx\javaFXApp\data\dao\WorkShiftDAO.class
+com\project\springjavafx\javaFXApp\controller\dashboardController.class
 com\project\springjavafx\javaFXApp\data\dto\AfterLoginDTO.class
 com\project\springjavafx\javaFXApp\controller\loginController$1.class
 com\project\springjavafx\javaFXApp\controller\loginController.class
-com\project\springjavafx\javaFXApp\controller\nextController.class
 com\project\springjavafx\springApp\SpringJavaFxApplication.class
 com\project\springjavafx\javaFXApp\data\models\Employee.class
 com\project\springjavafx\javaFXApp\data\models\LoginData.class

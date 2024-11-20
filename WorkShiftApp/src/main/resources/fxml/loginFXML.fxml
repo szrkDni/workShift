@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background-image" stylesheets="@login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.loginController">
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background-image" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.loginController">
    <children>
-      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="wrapper2" stylesheets="@login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="wrapper2" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -24,7 +24,7 @@
             </AnchorPane>
             <AnchorPane layoutX="290.0" layoutY="204.0">
                <children>
-                  <Pane layoutX="30.0" layoutY="26.0" onMouseClicked="#onShowLoginPageCardClick" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css">
+                  <Pane layoutX="30.0" layoutY="26.0" onMouseClicked="#onShowLoginPageCardClick" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@../css/login.css">
                      <children>
                         <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -45,7 +45,7 @@
             </AnchorPane>
             <AnchorPane layoutX="-20.0" layoutY="204.0">
                <children>
-                  <Pane layoutX="30.0" layoutY="26.0" onMouseClicked="#onShowLoginPageCardClick" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@login.css">
+                  <Pane layoutX="30.0" layoutY="26.0" onMouseClicked="#onShowLoginPageCardClick" prefHeight="460.0" prefWidth="300.0" styleClass="card" stylesheets="@../css/login.css">
                      <children>
                         <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
