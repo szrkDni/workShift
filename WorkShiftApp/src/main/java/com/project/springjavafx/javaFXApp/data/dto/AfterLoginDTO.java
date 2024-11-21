@@ -7,4 +7,10 @@ public class AfterLoginDTO {
 
     private AfterLoginDTO() {}
 
+    public static void clearData()
+    {
+        isManager = false;
+        employeeId = 0;
+    }
+
 }
