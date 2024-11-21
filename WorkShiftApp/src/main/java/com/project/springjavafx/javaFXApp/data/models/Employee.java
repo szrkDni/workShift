@@ -1,8 +1,5 @@
 package com.project.springjavafx.javaFXApp.data.models;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.sql.Date;
 
 
@@ -83,7 +80,7 @@ public class Employee {
 
 
 
-    // Constructor
+    // Constructors
     public Employee(int id, String firstName, String lastName, String position, String email, Date birthDate, Date hireDate, int hourlyWage) {
         this.id = id;
         this.firstName = firstName;
@@ -94,6 +91,7 @@ public class Employee {
         this.hireDate = hireDate;
         this.hourlyWage = hourlyWage;
     }
+
 
     // Getters and Setters
     // ... Add getter and setter methods here ...

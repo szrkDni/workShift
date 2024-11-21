@@ -1,0 +1,37 @@
+.black-text{
+    -fx-text-fill: black;
+}
+
+.button{
+    -fx-background-radius: 10;
+    -fx-border-color:  #333333;
+    -fx-border-radius: 10;
+}
+
+.profile-button{
+    -fx-background-color:  #6FBF73;
+}
+
+.attendance-button{
+    -fx-background-color: #FFA351;
+}
+
+.payment-button{
+    -fx-background-color:   #FFC857;
+}
+
+.timeoff-button{
+    -fx-background-color:   #4A90E2;
+}
+
+.manageropt-button{
+    -fx-background-color: #B0B9C8;
+}
+
+.logout-button{
+    -fx-background-color:   #D64545;
+}
+
+.page{
+    -fx-background-radius: 10;
+}

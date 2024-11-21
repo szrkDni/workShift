@@ -6,7 +6,6 @@ import com.project.springjavafx.javaFXApp.exceptions.LoginformException;
 import com.project.springjavafx.javaFXApp.utility.Credentials;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -14,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class loginController {
+public class LoginController {
 
     // TextField for the username input field in the login form
     @FXML
@@ -48,15 +47,15 @@ public class loginController {
         ArrayList<LoginData> logindatalist = new ArrayList<LoginData>() {
             {
                 add(new LoginData(1, "admin", "admin", 1));
-                add(new LoginData(2, "belatheking", "12345678", 2));
+                add(new LoginData(2, "bela", "1234", 2));
                 add(new LoginData(3, "szsza", "jelszo", 3));
                 add(new LoginData(4, "username", "password", 4));
             }
         };
 
         // Extract entered username and password
-        String username = loginformusername.getText();
-        String password = loginformpassword.getText();
+        String username = loginformusername.getText().trim();
+        String password = loginformpassword.getText().trim();
 
         boolean isLoginSuccess = false;
 

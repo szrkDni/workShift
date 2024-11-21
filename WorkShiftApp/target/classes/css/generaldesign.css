@@ -35,10 +35,3 @@
 .page{
     -fx-background-radius: 10;
 }
-
-.bg-by-option{
-    -fx-background-color: #CC8240;
-    -fx-border-color:  #333333;
-    -fx-border-radius: 10;
-    -fx-border-width: 2;
-}
