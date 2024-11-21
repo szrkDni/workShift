@@ -75,7 +75,7 @@ public class LoginController {
 
                 Thread.sleep(2000);
 
-                SceneLoader.showScene(mouseEvent, "dashboardFXML");
+                SceneLoader.showScene(mouseEvent, "attendanceFXML");
 
             } catch (IOException | InterruptedException e) {
 
