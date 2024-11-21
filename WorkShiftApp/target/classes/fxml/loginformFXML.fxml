@@ -12,11 +12,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background-image" stylesheets="@login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.loginController">
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background-image" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.LoginController">
    <children>
-      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" style="-ft-text-fill: white;" styleClass="wrapper2" stylesheets="@login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="100.0">
+      <Pane layoutX="50.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" style="-ft-text-fill: white;" styleClass="wrapper2" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="100.0">
          <children>
-            <TextField alignment="CENTER" editable="false" layoutX="140.0" layoutY="-35.0" prefHeight="85.0" prefWidth="360.0" styleClass="login-top-design-element" stylesheets="@login.css" text="Sign in">
+            <TextField alignment="CENTER" editable="false" layoutX="140.0" layoutY="-35.0" prefHeight="85.0" prefWidth="360.0" styleClass="login-top-design-element" stylesheets="@../css/login.css" text="Sign in">
                <font>
                   <Font name="Microsoft JhengHei UI Bold" size="40.0" />
                   
@@ -25,7 +25,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <TextField fx:id="loginformusername" layoutX="214.0" layoutY="300.0" prefHeight="58.0" prefWidth="259.0" promptText="Username" styleClass="login-input-field" stylesheets="@login.css">
+            <TextField fx:id="loginformusername" layoutX="214.0" layoutY="300.0" prefHeight="58.0" prefWidth="259.0" promptText="Username" styleClass="login-input-field" stylesheets="@../css/login.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -36,13 +36,13 @@
                   <Image url="@../img/profile_avatar.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="loginformpassword" layoutX="216.0" layoutY="387.0" prefHeight="58.0" prefWidth="259.0" promptText="Password" styleClass="login-input-field" stylesheets="@login.css">
+            <PasswordField fx:id="loginformpassword" layoutX="216.0" layoutY="387.0" prefHeight="58.0" prefWidth="259.0" promptText="Password" styleClass="login-input-field" stylesheets="@../css/login.css">
                <font>
                   <Font size="20.0" />
                </font>
             </PasswordField>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#219b9d" height="58.0" layoutX="164.0" layoutY="387.0" stroke="#219b9d" strokeType="INSIDE" styleClass="login-input-field-design-element" width="58.0" />
-            <Button layoutX="165.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#onCheckDataToLoginButtonClick" prefHeight="53.0" prefWidth="309.0" styleClass="login-button" stylesheets="@login.css" text="Login" textAlignment="CENTER" textFill="AQUA">
+            <Button layoutX="165.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#onCheckDataToLoginButtonClick" prefHeight="53.0" prefWidth="309.0" styleClass="login-button" stylesheets="@../css/login.css" text="Login" textAlignment="CENTER" textFill="AQUA">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
