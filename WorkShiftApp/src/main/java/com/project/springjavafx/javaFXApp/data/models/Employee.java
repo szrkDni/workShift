@@ -8,6 +8,7 @@ public class Employee {
     private int id;
     private String firstName;
     private String lastName;
+    private String pswd;
     private String position;
     private String email;
     private Date birthDate;
@@ -81,10 +82,11 @@ public class Employee {
 
 
     // Constructors
-    public Employee(int id, String firstName, String lastName, String position, String email, Date birthDate, Date hireDate, int hourlyWage) {
+    public Employee(int id, String firstName, String lastName,String pswd, String position, String email, Date birthDate, Date hireDate, int hourlyWage) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.pswd = pswd;
         this.position = position;
         this.email = email;
         this.birthDate = birthDate;
@@ -106,6 +108,7 @@ public class Employee {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", pswd='" + pswd + '\'' +
                 ", position='" + position + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +

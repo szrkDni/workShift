@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp.controller;
 
+import com.project.springjavafx.javaFXApp.data.dao.EmployeeDAO;
 import com.project.springjavafx.javaFXApp.data.dto.AfterLoginDTO;
 import com.project.springjavafx.javaFXApp.data.models.LoginData;
 import com.project.springjavafx.javaFXApp.exceptions.LoginformException;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginController {
@@ -42,16 +44,10 @@ public class LoginController {
      * If credentials match, proceeds to the next scene.
      */
     @FXML
-    public void onCheckDataToLoginButtonClick(MouseEvent mouseEvent) {
+    public void onCheckDataToLoginButtonClick(MouseEvent mouseEvent) throws SQLException {
         // Mock data for login verification (replace with real database in production)
-        ArrayList<LoginData> logindatalist = new ArrayList<LoginData>() {
-            {
-                add(new LoginData(1, "admin", "admin", 1));
-                add(new LoginData(2, "bela", "1234", 2));
-                add(new LoginData(3, "szsza", "jelszo", 3));
-                add(new LoginData(4, "username", "password", 4));
-            }
-        };
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        ArrayList<LoginData> logindatalist =  employeeDAO.getLoginDataList();
 
         // Extract entered username and password
         String username = loginformusername.getText().trim();

@@ -19,8 +19,7 @@ public class Credentials {
         for(LoginData loginData : logindatalist) {
 
             // If credentials match
-            if (loginData.getUsername().equals(username) &&
-                    loginData.getPassword().equals(password)) {
+            if (loginData.getUsername().equals(username) && loginData.getPassword().equals(password)) {
 
                 // Fetch the employee data for the logged-in user
                 EmployeeDAO employeeDAO = new EmployeeDAO();
