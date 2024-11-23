@@ -99,7 +99,9 @@ public class Employee {
     // ... Add getter and setter methods here ...
 
     public boolean isManager() {
-            return position.equalsIgnoreCase("Manager") || position.equalsIgnoreCase("Boss");
+            return position.equalsIgnoreCase("Manager")
+                    || position.equalsIgnoreCase("Boss")
+                    || position.equalsIgnoreCase("Admin");
     }
 
     @Override
