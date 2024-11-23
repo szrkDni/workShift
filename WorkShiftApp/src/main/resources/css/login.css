@@ -1,4 +1,5 @@
 
+
 .background-image{
     -fx-background-image: url('../img/pexels-joyston-judah-331625-933054.jpg');
     -fx-background-size: 100% 100%;
@@ -49,10 +50,8 @@
 
 .login-input-field-design-element{
     -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-stroke: #219b9d;
     -fx-background-radius: 0 16 16 0;
-    -fx-border-color: #219B9D;
-    -fx-border-radius: 0 16 16 0;
-    -fx-border-width: 1;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 30, 0, 0, 4);
 }
 

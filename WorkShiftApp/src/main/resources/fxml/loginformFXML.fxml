@@ -30,7 +30,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#219b9d" height="58.0" layoutX="164.0" layoutY="300.0" stroke="#219b9d" strokeType="INSIDE" styleClass="login-input-field-design-element" width="58.0" />
+            <Rectangle fx:id="designRectangle2" arcHeight="5.0" arcWidth="5.0" fill="#219b9d" height="58.0" layoutX="164.0" layoutY="300.0" stroke="#219b9d" strokeType="INSIDE" styleClass="login-input-field-design-element" width="58.0" />
             <ImageView fitHeight="83.0" fitWidth="42.0" layoutX="172.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/profile_avatar.png" />
@@ -41,7 +41,7 @@
                   <Font size="20.0" />
                </font>
             </PasswordField>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#219b9d" height="58.0" layoutX="164.0" layoutY="387.0" stroke="#219b9d" strokeType="INSIDE" styleClass="login-input-field-design-element" width="58.0" />
+            <Rectangle fx:id="designRectangle" arcHeight="5.0" arcWidth="5.0" fill="#219b9d" height="58.0" layoutX="164.0" layoutY="387.0" stroke="#219b9d" strokeType="INSIDE" styleClass="login-input-field-design-element" width="58.0" />
             <Button layoutX="165.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#onCheckDataToLoginButtonClick" prefHeight="53.0" prefWidth="309.0" styleClass="login-button" stylesheets="@../css/login.css" text="Login" textAlignment="CENTER" textFill="AQUA">
                <cursor>
                   <Cursor fx:constant="HAND" />

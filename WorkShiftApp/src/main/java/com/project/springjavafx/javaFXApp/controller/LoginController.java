@@ -6,10 +6,13 @@ import com.project.springjavafx.javaFXApp.data.models.LoginData;
 import com.project.springjavafx.javaFXApp.exceptions.LoginformException;
 import com.project.springjavafx.javaFXApp.utility.Credentials;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -25,6 +28,11 @@ public class LoginController {
     @FXML
     public PasswordField loginformpassword;
 
+    @FXML
+    public Rectangle designRectangle;
+
+    @FXML
+    public Rectangle designRectangle2;
 
     /**
      * Handles the event to show the login page.
@@ -66,20 +74,39 @@ public class LoginController {
 
         if (isLoginSuccess) {
             System.out.println("Login success!\nUser: " + AfterLoginDTO.employeeId + " Manager: " + AfterLoginDTO.isManager);
-            try {
 
 
-                Thread.sleep(2000);
+                /*loginformusername.setStyle("-fx-border-color: green");
+                loginformpassword.setStyle("-fx-border-color: green");*/
 
-                SceneLoader.showScene(mouseEvent, "attendanceFXML");
+                //set the rectangle green
+                designRectangle2.setStyle("-fx-fill: #247D01");
+                designRectangle.setStyle("-fx-fill: #247D01");
 
-            } catch (IOException | InterruptedException e) {
 
-                System.out.println(e.getMessage());
+                PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+                pause.setOnFinished(event -> {
 
-            }
+                    try {
+                        SceneLoader.showScene(mouseEvent, "attendanceFXML");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
+
+                });
+
+
+                pause.play();
+
         } else {
             System.out.println("Login failed");
+
+            /*loginformusername.setStyle("-fx-border-color: red");
+            loginformpassword.setStyle("-fx-border-color: red");*/
+
+            //set the rectangle red
+            designRectangle2.setStyle("-fx-fill: #C00809");
+            designRectangle.setStyle("-fx-fill: #C00809");
 
         }
     }
