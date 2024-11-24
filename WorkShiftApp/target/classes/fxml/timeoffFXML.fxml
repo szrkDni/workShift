@@ -7,6 +7,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -225,6 +227,38 @@
             <String fx:value="page" />
             <String fx:value="bg-by-option" />
          </styleClass>
+         <children>
+            <Button fx:id="timeoffbutton" layoutX="114.0" layoutY="310.0" mnemonicParsing="false" text="Request timeoff" />
+            <Label layoutX="112.0" layoutY="407.0" text="My time offs" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <TableView layoutX="110.0" layoutY="453.0" prefHeight="316.0" prefWidth="917.0">
+              <columns>
+                <TableColumn prefWidth="167.66665649414062" text="Start" />
+                <TableColumn minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" />
+                  <TableColumn prefWidth="115.0" text="Type" />
+                  <TableColumn prefWidth="169.3333740234375" text="Status" />
+                  <TableColumn prefWidth="307.0" text="Managed by" />
+              </columns>
+            </TableView>
+            <Label fx:id="remainingHolidays" layoutX="133.0" layoutY="77.0" text="Holidays:" textFill="WHITE" />
+            <Label fx:id="remainingSickLeaves" layoutX="135.0" layoutY="117.0" prefHeight="17.0" prefWidth="87.0" text="Sick Leaves:" textFill="WHITE" />
+            <Label fx:id="usedHolidays" layoutX="633.0" layoutY="78.0" text="Holidays:" textFill="WHITE" />
+            <Label layoutX="86.0" layoutY="42.0" text="Remaining" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="612.0" layoutY="42.0" text="Used" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="usedSickLeaves" layoutX="633.0" layoutY="117.0" prefHeight="17.0" prefWidth="87.0" text="Sick Leaves:" textFill="WHITE" />
+            <Label fx:id="usedSicknessPension" layoutX="634.0" layoutY="151.0" prefHeight="17.0" prefWidth="87.0" text="Sick Leaves:" textFill="WHITE" />
+         </children>
       </AnchorPane>
    </children>
    <stylesheets>

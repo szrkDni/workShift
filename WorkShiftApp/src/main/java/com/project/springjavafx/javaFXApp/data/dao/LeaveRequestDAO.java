@@ -33,4 +33,30 @@ public class LeaveRequestDAO {
         }
         return leaveRequests;
     }
+
+    public List<LeaveRequest> getLeaveRequestsbyEmployeeId(int employeeId) {
+        List<LeaveRequest> leaveRequests = new ArrayList<>();
+        Connection connection = DatabaseConnector.connect();
+        try {
+            String query = "SELECT * FROM Leave_Requests WHERE employee_id = " + employeeId;
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                LeaveRequest leaveReq = new LeaveRequest(
+                        rs.getInt("leave_id"),
+                        rs.getInt("employee_id"),
+                        rs.getString("leave_type"),
+                        rs.getDate("start_date"),
+                        rs.getDate("end_date"),
+                        rs.getString("status"),
+                        rs.getInt("approved_by")
+                );
+                leaveRequests.add(leaveReq);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return leaveRequests;
+    }
 }

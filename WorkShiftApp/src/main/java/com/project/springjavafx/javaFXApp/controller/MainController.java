@@ -17,7 +17,10 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     private final ButtoneventHandler buttoneventHandler = new ButtoneventHandler();
 
-    private Employee employee = new EmployeeDAO().getEmployeeById(AfterLoginDTO.employeeId);
+    protected EmployeeDAO employeeDAO = new EmployeeDAO();
+    protected Employee employee = employeeDAO.getEmployeeById(AfterLoginDTO.employeeId);
+
+
 
     @FXML
     AnchorPane controlAnchorPane;
