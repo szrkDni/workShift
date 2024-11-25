@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+    <AnchorPane xmlns="http://javafx.com/javafx"
+                xmlns:fx="http://javafx.com/fxml"
+                fx:controller="com.project.springjavafx.javaFXApp.controller.LeaveRequestController" layoutX="297.0" layoutY="108.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+        <styleClass>
+            <String fx:value="page" />
+            <String fx:value="bg-by-option" />
+        </styleClass>
+        <children>
+            <Label layoutX="110.0" layoutY="42.0" text="Request Time Off" textFill="WHITE">
+                <font>
+                    <Font size="27.0" />
+                </font>
+            </Label>
+
+            <!-- Start Date -->
+            <Label layoutX="110.0" layoutY="100.0" text="Start Date:" textFill="WHITE" />
+            <DatePicker fx:id="startDateField" layoutX="200.0" layoutY="95.0" />
+
+            <!-- End Date -->
+            <Label layoutX="110.0" layoutY="150.0" text="End Date:" textFill="WHITE" />
+            <DatePicker fx:id="endDateField" layoutX="200.0" layoutY="145.0" />
+
+            <!-- Leave Type -->
+            <Label layoutX="110.0" layoutY="200.0" text="Leave Type:" textFill="WHITE" />
+            <ComboBox fx:id="leaveTypeSelection" layoutX="200.0" layoutY="195.0" prefWidth="200.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Holiday" />
+                        <String fx:value="Sick Leave" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Submit Button -->
+            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" text="Submit Request" />
+        </children>
+    </AnchorPane>

@@ -228,7 +228,7 @@
             <String fx:value="bg-by-option" />
          </styleClass>
          <children>
-            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" mnemonicParsing="false" text="Request timeoff" />
+            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" onMouseClicked="#onShowLeaveRequestPageButtonClick" mnemonicParsing="false" text="Request timeoff" />
             <Label layoutX="110.0" layoutY="302.0" text="My time offs" textFill="WHITE">
                <font>
                   <Font size="27.0" />
