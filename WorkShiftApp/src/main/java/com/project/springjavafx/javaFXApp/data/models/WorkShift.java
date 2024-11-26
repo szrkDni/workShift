@@ -9,6 +9,38 @@ public class WorkShift {
     private double workHour;
     private String shiftType;
 
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public Date getWorkdayDate() {
+        return workdayDate;
+    }
+
+    public void setWorkdayDate(Date workdayDate) {
+        this.workdayDate = workdayDate;
+    }
+
+    public double getWorkHour() {
+        return workHour;
+    }
+
+    public void setWorkHour(double workHour) {
+        this.workHour = workHour;
+    }
+
+    public String getShiftType() {
+        return shiftType;
+    }
+
+    public void setShiftType(String shiftType) {
+        this.shiftType = shiftType;
+    }
+
     // Constructor
     public WorkShift(int id, int employeeId, Date workdayDate, double workHour, String shiftType) {
         this.id = id;
