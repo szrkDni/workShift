@@ -15,6 +15,7 @@ com\project\springjavafx\javaFXApp\controller\mainController.class
 com\project\springjavafx\springApp\SpringManager.class
 com\project\springjavafx\javaFXApp\data\db\DatabaseConnector.class
 com\project\springjavafx\javaFXApp\data\dao\ProjectDAO.class
+com\project\springjavafx\javaFXApp\utility\DayStatus.class
 com\project\springjavafx\javaFXApp\exceptions\LoginformException.class
 com\project\springjavafx\javaFXApp\javaFXMain.class
 com\project\springjavafx\javaFXApp\data\dao\EmployeeDAO.class
