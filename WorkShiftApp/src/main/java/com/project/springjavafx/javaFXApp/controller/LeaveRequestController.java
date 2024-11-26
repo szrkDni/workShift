@@ -1,5 +1,5 @@
 package com.project.springjavafx.javaFXApp.controller;
 
-public class LeaveRequestController {
+public class LeaveRequestController extends MainController {
 
 }
