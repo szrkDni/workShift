@@ -58,16 +58,16 @@ public class TimeoffController extends MainController implements Initializable {
     private TableColumn<LeaveRequest,String> statusOfRequestTableColumn;
 
     @FXML
-    private TableColumn<LeaveRequest,Integer> managedByTableColumn;
+    private TableColumn<LeaveRequest,String> managedByTableColumn;
 
     private LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
     protected List<LeaveRequest> leaveRequests1 = leaveRequestDAO.getLeaveRequestsbyEmployeeId(employee.getId());
 
-    List<LeaveRequest> leaveRequests = List.of(
-            new LeaveRequest(1,1,"Holiday", new Date(2024, 11, 1), new Date(2024, 11, 4), "Pending", 0),
-            new LeaveRequest(1,1,"Sick Leave", new Date(2024, 10, 5), new Date(2024, 10, 10), "Pending", 0),
-            new LeaveRequest(1,1,"Holiday", new Date(2024, 12, 20), new Date(2024, 12, 25), "Pending", 0),
-            new LeaveRequest(1,1,"Holiday", new Date(2024, 5, 12), new Date(2024, 5, 19), "Pending", 0)
+    public List<LeaveRequest> leaveRequests = List.of(
+            new LeaveRequest(1,1,"Holiday", new Date(124, 10, 1), new Date(124, 10, 4), "Pending", 2),
+            new LeaveRequest(2,1,"Sick Leave", new Date(124, 9, 5), new Date(124, 9, 10), "Pending", 1),
+            new LeaveRequest(3,1,"Holiday", new Date(124, 11, 20), new Date(124, 11, 25), "Pending", 0),
+            new LeaveRequest(4,1,"Holiday", new Date(124, 4, 12), new Date(124, 4, 19), "Pending", 6)
     );
 
     /**
@@ -83,7 +83,7 @@ public class TimeoffController extends MainController implements Initializable {
     private static final int numberOfSickLeave = 15;
 
 
-    public int numberOfUsedHolidays = leaveRequests.stream()
+    protected int numberOfUsedHolidays = leaveRequests.stream()
             .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Holiday"))
             .mapToInt((leaves) ->
             {
@@ -94,7 +94,7 @@ public class TimeoffController extends MainController implements Initializable {
             })
             .sum();
 
-    public int numberOfUsedSickLeaves = leaveRequests.stream()
+    protected int numberOfUsedSickLeaves = leaveRequests.stream()
             .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Sick Leave"))
             .mapToInt((leaves) ->
             {
@@ -105,7 +105,7 @@ public class TimeoffController extends MainController implements Initializable {
             })
             .sum();
 
-    public int numberOfSicknessPension = leaveRequests.stream()
+    protected int numberOfSicknessPension = leaveRequests.stream()
             .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Sickness Pension"))
             .mapToInt((leaves) ->
             {
@@ -116,8 +116,8 @@ public class TimeoffController extends MainController implements Initializable {
             })
             .sum();
 
-    public int numberOfRemainingHolidays = numberOfHolidays - numberOfUsedHolidays;
-    public int numberOFRemainingSickLeaves = numberOfSickLeave - numberOfUsedSickLeaves;
+    protected int numberOfRemainingHolidays = numberOfHolidays - numberOfUsedHolidays;
+    protected int numberOFRemainingSickLeaves = numberOfSickLeave - numberOfUsedSickLeaves;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -135,10 +135,22 @@ public class TimeoffController extends MainController implements Initializable {
 
 
             startdateTableColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+            System.out.println(leaveRequests.get(1).getStartDate().toString());
             enddateTableColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
             typeOfLeaveTableColumn.setCellValueFactory(new PropertyValueFactory<>("leaveType"));
             statusOfRequestTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-            managedByTableColumn.setCellValueFactory(new PropertyValueFactory<>("approvedBy"));
+            managedByTableColumn.setCellValueFactory(data -> {
+
+                String managerFullName;
+
+                try{
+                     managerFullName = employeeDAO.getEmployeeById(data.getValue().getApprovedBy()).getFullName();
+
+                } catch (Exception e) {
+                    managerFullName = "Not yet approved";
+                }
+                return new javafx.beans.property.SimpleStringProperty(managerFullName);
+            });
 
             ObservableList<LeaveRequest> tableList = FXCollections.observableList(leaveRequests);
 

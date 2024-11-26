@@ -251,7 +251,7 @@
             </ComboBox>
 
             <!-- Submit Button -->
-            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" text="Submit Request" />
+            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" text="Submit Request" onMouseClicked="#onFinaliseRequest"/>
         </children>
          <styleClass>
             <String fx:value="bg-by-option" />

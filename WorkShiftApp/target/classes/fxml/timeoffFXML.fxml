@@ -236,10 +236,10 @@
             </Label>
             <TableView layoutX="110.0" layoutY="352.0" prefHeight="417.0" prefWidth="917.0" fx:id="leaveRequestsTable">
               <columns>
-                <TableColumn prefWidth="167.66665649414062" text="Start" fx:id="startdateTableColumn"/>
-                <TableColumn minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" fx:id="enddateTableColumn"/>
-                  <TableColumn prefWidth="115.0" text="Type" fx:id="typeOfLeaveTableColumn"/>
                   <TableColumn prefWidth="169.3333740234375" text="Status" fx:id="statusOfRequestTableColumn"/>
+                  <TableColumn prefWidth="167.66665649414062" text="Start" fx:id="startdateTableColumn"/>
+                  <TableColumn minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" fx:id="enddateTableColumn"/>
+                  <TableColumn prefWidth="115.0" text="Type" fx:id="typeOfLeaveTableColumn"/>
                   <TableColumn prefWidth="307.0" text="Managed by" fx:id="managedByTableColumn"/>
               </columns>
             </TableView>
