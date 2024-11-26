@@ -32,7 +32,7 @@ public class LeaveRequestController extends MainController {
 
         LeaveRequest request = new LeaveRequest(5,1,leaveTypeSelection.getValue(),Date.valueOf(startDateField.getValue()), Date.valueOf(endDateField.getValue()),"Pending",0);
 
-
+        System.out.println("Request:\n" + request.getLeaveType() + " " + request.getStatus() + "\n" + request.getStartDate() + " " + request.getEndDate());
 
         try{
             SceneLoader.showScene(mouseEvent, "timeoffFXML");

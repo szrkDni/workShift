@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.AttendanceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.LeaveRequestController">
 <children>
     <VBox alignment="TOP_CENTER" layoutX="-8.666666666666666" layoutY="-7.0" prefHeight="900.0" prefWidth="285.0" style="-fx-background-color: #E0E0E0; -fx-spacing: 10; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1155.0" AnchorPane.topAnchor="10.0">
         <children>
