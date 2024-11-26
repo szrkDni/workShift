@@ -34,7 +34,6 @@ public class TimeoffController extends MainController implements Initializable {
     @FXML
     private Label usedSicknessPension;
 
-
     private LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
     protected List<LeaveRequest> leaveRequests = leaveRequestDAO.getLeaveRequestsbyEmployeeId(employee.getId());
 
@@ -50,8 +49,6 @@ public class TimeoffController extends MainController implements Initializable {
      */
     private static final int numberOfHolidays = 20;
     private static final int numberOfSickLeave = 15;
-
-
 
 
     public int numberOfUsedHolidays = leaveRequests.stream()
