@@ -233,11 +233,17 @@
 
             <!-- Start Date -->
             <Label layoutX="110.0" layoutY="100.0" text="Start Date:" textFill="WHITE" />
-            <DatePicker fx:id="startDateField" layoutX="200.0" layoutY="95.0" />
+            <DatePicker fx:id="startDateField" layoutX="200.0" layoutY="95.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></DatePicker>
 
             <!-- End Date -->
             <Label layoutX="110.0" layoutY="150.0" text="End Date:" textFill="WHITE" />
-            <DatePicker fx:id="endDateField" layoutX="200.0" layoutY="145.0" />
+            <DatePicker fx:id="endDateField" layoutX="200.0" layoutY="145.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></DatePicker>
 
             <!-- Leave Type -->
             <Label layoutX="110.0" layoutY="200.0" text="Leave Type:" textFill="WHITE" />
@@ -248,10 +254,16 @@
                         <String fx:value="Sick Leave" />
                     </FXCollections>
                 </items>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ComboBox>
 
             <!-- Submit Button -->
-            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" text="Submit Request" onMouseClicked="#onFinaliseRequest"/>
+            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#onFinaliseRequest" text="Submit Request">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
         </children>
          <styleClass>
             <String fx:value="bg-by-option" />

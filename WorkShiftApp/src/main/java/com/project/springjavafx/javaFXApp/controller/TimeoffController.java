@@ -81,7 +81,7 @@ public class TimeoffController extends MainController implements Initializable {
      */
     private static final int numberOfHolidays = 20;
     private static final int numberOfSickLeave = 15;
-
+    public static int numberOfRequests = 0;
 
     protected int numberOfUsedHolidays = leaveRequests.stream()
             .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Holiday"))
@@ -122,6 +122,8 @@ public class TimeoffController extends MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        numberOfRequests = leaveRequests.size();
+
         super.initialize(url, resourceBundle);
 
         if (employee != null && leaveRequestDAO.getLeaveRequestsbyEmployeeId(employee.getId()) != null) {
@@ -135,7 +137,6 @@ public class TimeoffController extends MainController implements Initializable {
 
 
             startdateTableColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-            System.out.println(leaveRequests.get(1).getStartDate().toString());
             enddateTableColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
             typeOfLeaveTableColumn.setCellValueFactory(new PropertyValueFactory<>("leaveType"));
             statusOfRequestTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));

@@ -29,16 +29,41 @@ public class LeaveRequestController extends MainController {
     @FXML
     public void onFinaliseRequest(MouseEvent mouseEvent)
     {
+        LeaveRequest request = null;
 
-        LeaveRequest request = new LeaveRequest(5,1,leaveTypeSelection.getValue(),Date.valueOf(startDateField.getValue()), Date.valueOf(endDateField.getValue()),"Pending",0);
+        try {
+            request = new LeaveRequest(
+                    TimeoffController.numberOfRequests,
+                    1,
+                    leaveTypeSelection.getValue(),
+                    Date.valueOf(startDateField.getValue()),
+                    Date.valueOf(endDateField.getValue()),
+                    "Pending",
+                    0
+            );
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println("Request:\n" + request.getLeaveType() + " " + request.getStatus() + "\n" + request.getStartDate() + " " + request.getEndDate());
+        try {
+            System.out.println("Request:\n" + request.getLeaveId() + " " + request.getLeaveType() + " " + request.getStatus() + "\n" + request.getStartDate() + " " + request.getEndDate());
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         try{
+            if (request == null)
+            {
+                throw new NullPointerException("request is null");
+            }
             SceneLoader.showScene(mouseEvent, "timeoffFXML");
 
         } catch (IOException e) {
             System.out.println(e.getCause());
+        }
+        catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

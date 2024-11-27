@@ -1,5 +1,7 @@
 package com.project.springjavafx.springApp;
 
+import com.project.springjavafx.javaFXApp.data.dao.LeaveRequestDAO;
+import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
 import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,13 +11,21 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.List;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
+@Rollback(true)
 class SpringJavaFxApplicationTests {
+
+    static LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
+    static List<LeaveRequest> leaveRequest = leaveRequestDAO.getLeaveRequestsbyEmployeeId(1);
+
     @BeforeAll
     static void before(){
         System.out.println("before");
+        System.out.println("List size: " + leaveRequest.size());
+
     }
 
     @AfterAll
