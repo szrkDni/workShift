@@ -19,7 +19,6 @@ public class LeaveRequest {
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
-        //this.approvedBy = approvedBy;
     }
 
     // Getters and Setters
@@ -74,13 +73,5 @@ public class LeaveRequest {
         this.status = status;
     }
 
-    /*
-    public int getApprovedBy() {
-        return approvedBy;
-    }
-
-    public void setApprovedBy(int approvedBy) {
-        this.approvedBy = approvedBy;
-    }*/
 }
 

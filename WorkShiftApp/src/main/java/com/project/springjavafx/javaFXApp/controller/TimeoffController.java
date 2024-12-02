@@ -20,6 +20,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.ResourceBundle;
 
 public class TimeoffController extends MainController implements Initializable {
@@ -81,7 +82,7 @@ public class TimeoffController extends MainController implements Initializable {
      */
     private static final int numberOfHolidays = 20;
     private static final int numberOfSickLeave = 15;
-    public static int numberOfRequests = 0;
+    public static OptionalInt numberOfRequests = OptionalInt.of(0);
 
     protected int numberOfUsedHolidays = leaveRequests.stream()
             .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Holiday"))
@@ -89,7 +90,7 @@ public class TimeoffController extends MainController implements Initializable {
             {
                 LocalDate startDate = leaves.getStartDate().toLocalDate();
                 LocalDate endDate = leaves.getEndDate().toLocalDate();
-                return (int) ChronoUnit.DAYS.between(startDate, endDate);
+                return (int) ChronoUnit.DAYS.between(startDate, endDate.plusDays(1));
 
             })
             .sum();
@@ -100,7 +101,7 @@ public class TimeoffController extends MainController implements Initializable {
             {
                 LocalDate startDate = leaves.getStartDate().toLocalDate();
                 LocalDate endDate = leaves.getEndDate().toLocalDate();
-                return (int) ChronoUnit.DAYS.between(startDate, endDate);
+                return (int) ChronoUnit.DAYS.between(startDate, endDate.plusDays(1));
 
             })
             .sum();
@@ -111,7 +112,7 @@ public class TimeoffController extends MainController implements Initializable {
             {
                 LocalDate startDate = leaves.getStartDate().toLocalDate();
                 LocalDate endDate = leaves.getEndDate().toLocalDate();
-                return (int) ChronoUnit.DAYS.between(startDate, endDate);
+                return (int) ChronoUnit.DAYS.between(startDate, endDate.plusDays(1));
 
             })
             .sum();
@@ -122,7 +123,7 @@ public class TimeoffController extends MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        numberOfRequests = leaveRequests.size();
+        numberOfRequests = leaveRequests.stream().mapToInt(LeaveRequest::getLeaveId).max();
 
         super.initialize(url, resourceBundle);
 
@@ -140,18 +141,7 @@ public class TimeoffController extends MainController implements Initializable {
             enddateTableColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
             typeOfLeaveTableColumn.setCellValueFactory(new PropertyValueFactory<>("leaveType"));
             statusOfRequestTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-            managedByTableColumn.setCellValueFactory(data -> {
 
-                String managerFullName;
-
-                try{
-                     managerFullName = employeeDAO.getEmployeeById(data.getValue().getApprovedBy()).getFullName();
-
-                } catch (Exception e) {
-                    managerFullName = "Not yet approved";
-                }
-                return new javafx.beans.property.SimpleStringProperty(managerFullName);
-            });
 
             ObservableList<LeaveRequest> tableList = FXCollections.observableList(leaveRequests);
 

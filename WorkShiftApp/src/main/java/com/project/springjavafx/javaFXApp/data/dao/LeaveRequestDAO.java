@@ -23,8 +23,7 @@ public class LeaveRequestDAO {
                         rs.getString("leave_type"),
                         rs.getDate("start_date"),
                         rs.getDate("end_date"),
-                        rs.getString("status"),
-                        rs.getInt("approved_by")
+                        rs.getString("status")
                 );
                 leaveRequests.add(leaveReq);
             }
@@ -49,8 +48,7 @@ public class LeaveRequestDAO {
                         rs.getString("leave_type"),
                         rs.getDate("start_date"),
                         rs.getDate("end_date"),
-                        rs.getString("status"),
-                        rs.getInt("approved_by")
+                        rs.getString("status")
                 );
                 leaveRequests.add(leaveReq);
             }
@@ -62,30 +60,31 @@ public class LeaveRequestDAO {
     }
 
     public boolean addLeaveRequest(LeaveRequest leaveReq) {
-        Connection connection = DatabaseConnector.connect();
 
         int row = 0;
 
         try{
+            Connection connection = DatabaseConnector.connect();
 
-            String query = "INSERT INTO Leave_Requests (leave_id, employee_id, leave_type, start_date, end_date, status, approved_by) VALUES (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Leave_Requests (leave_id, employee_id, leave_type, start_date, end_date, status)"  +
+                    " VALUES ('" + leaveReq.getLeaveId() + "'," +
+                     "'" + leaveReq.getEmployeeId() + "'," +
+                    "'" + leaveReq.getLeaveType() + "'," +
+                    "'" + leaveReq.getStartDate() + "'," +
+                    "'" + leaveReq.getEndDate() + "'," +
+                    "'" + leaveReq.getStatus() + "'"
+                    +")";
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setInt(1, leaveReq.getLeaveId());
-            stmt.setInt(2, leaveReq.getEmployeeId());
-            stmt.setString(3, leaveReq.getLeaveType());
-            stmt.setDate(4, leaveReq.getStartDate());
-            stmt.setDate(5, leaveReq.getEndDate());
-            stmt.setString(6, leaveReq.getStatus());
-            stmt.setInt(7, leaveReq.getApprovedBy());
 
-
+            System.out.println(query);
 
             row = stmt.executeUpdate();
 
 
+
         }catch (SQLException e)
         {
-            System.out.println(e.getMessage());
+            System.out.println("ERROR: " + e.getMessage());
         }
 
 

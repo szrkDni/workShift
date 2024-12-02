@@ -24,6 +24,7 @@ class SpringJavaFxApplicationTests {
     static List<LeaveRequest> leaveRequest = leaveRequestDAO.getLeaveRequestsbyEmployeeId(1);
 
     @BeforeAll
+    @Rollback
     static void before(){
         System.out.println("before");
         System.out.println("List size: " + leaveRequest.size());
@@ -31,14 +32,16 @@ class SpringJavaFxApplicationTests {
     }
 
     @AfterAll
+    @Rollback
     static void after(){
         System.out.println("After");
-        LeaveRequest request = new LeaveRequest(TimeoffController.numberOfRequests+1, 1,  "Sick Leave", new Date(124,5,1), new Date(124,5,5), "Pending");
+        LeaveRequest request = new LeaveRequest(leaveRequest.size() + 1, 1,  "Sick Leave", new Date(124,5,1), new Date(124,5,5), "Pending");
         boolean success = leaveRequestDAO.addLeaveRequest(request);
 
         List<LeaveRequest> updatedList = leaveRequestDAO.getLeaveRequestsbyEmployeeId(1);
 
         assert success;
+        assert leaveRequest.size() < updatedList.size();
 
         System.out.println("Updated list size: " + updatedList.size());
 

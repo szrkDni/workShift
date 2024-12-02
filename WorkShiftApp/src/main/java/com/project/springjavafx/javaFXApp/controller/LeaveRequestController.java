@@ -36,13 +36,12 @@ public class LeaveRequestController extends MainController {
 
         try {
             request = new LeaveRequest(
-                    TimeoffController.numberOfRequests,
+                    TimeoffController.numberOfRequests.getAsInt() + 1,
                     1,
                     leaveTypeSelection.getValue(),
                     Date.valueOf(startDateField.getValue()),
                     Date.valueOf(endDateField.getValue()),
-                    "Pending",
-                    0
+                    "Pending"
             );
 
             leaveRequestDAO.addLeaveRequest(request);
