@@ -9,7 +9,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneLoader {
+public class SceneLoader {/**
+     *
+     *  3 types of leaves ->
+     *      Holiday (Szabadság) (salary 100%)
+     *      Sick Leave (Betegszabadság) (salary 70%)
+     *      Sickness pension (Táppénz) (salary 60%)
+     *
+     *      if no more PTO and no more Sick Leave then its Sickness pension
+     */
+    private static final int numberOfHolidays = 20;
+    private static final int numberOfSickLeave = 15;
+
     private SceneLoader() {
     }
 

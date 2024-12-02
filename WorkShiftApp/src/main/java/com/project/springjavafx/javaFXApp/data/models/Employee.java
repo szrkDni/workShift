@@ -1,5 +1,7 @@
 package com.project.springjavafx.javaFXApp.data.models;
 
+import org.hibernate.sql.exec.spi.StandardEntityInstanceResolver;
+
 import java.sql.Date;
 
 
@@ -92,6 +94,11 @@ public class Employee {
         this.birthDate = birthDate;
         this.hireDate = hireDate;
         this.hourlyWage = hourlyWage;
+    }
+
+    public String getFullName()
+    {
+        return this.firstName + " " + this.lastName;
     }
 
 
