@@ -22,6 +22,11 @@ public class LeaveRequest {
         this.approvedBy = approvedBy;
     }
 
+    public String getLeaveType() {
+        return null;
+    }
+
+
     // Getters and Setters
     // ... Add getter and setter methods here ...
 
