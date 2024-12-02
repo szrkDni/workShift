@@ -61,15 +61,15 @@ public class TimeoffController extends MainController implements Initializable {
     private TableColumn<LeaveRequest,String> managedByTableColumn;
 
     private LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
-    protected List<LeaveRequest> leaveRequests1 = leaveRequestDAO.getLeaveRequestsbyEmployeeId(employee.getId());
-
+    protected List<LeaveRequest> leaveRequests = leaveRequestDAO.getLeaveRequestsbyEmployeeId(employee.getId());
+/*
     public List<LeaveRequest> leaveRequests = List.of(
             new LeaveRequest(1,1,"Holiday", new Date(124, 10, 1), new Date(124, 10, 4), "Pending", 2),
             new LeaveRequest(2,1,"Sick Leave", new Date(124, 9, 5), new Date(124, 9, 10), "Pending", 1),
             new LeaveRequest(3,1,"Holiday", new Date(124, 11, 20), new Date(124, 11, 25), "Pending", 0),
             new LeaveRequest(4,1,"Holiday", new Date(124, 4, 12), new Date(124, 4, 19), "Pending", 6)
     );
-
+*/
     /**
      *
      *  3 types of leaves ->

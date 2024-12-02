@@ -148,6 +148,33 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="projectlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Project" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                     <styleClass>
+                        <String fx:value="project-button" />
+                        <String fx:value="black-text" />
+                     </styleClass>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="51.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/project.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
                   <Insets bottom="230.0" />

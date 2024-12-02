@@ -33,7 +33,7 @@ class SpringJavaFxApplicationTests {
     @AfterAll
     static void after(){
         System.out.println("After");
-        LeaveRequest request = new LeaveRequest(TimeoffController.numberOfRequests+1, 1,  "Sick Leave", new Date(124,11,1), new Date(124,11,5), "Pending", 1);
+        LeaveRequest request = new LeaveRequest(TimeoffController.numberOfRequests+1, 1,  "Sick Leave", new Date(124,5,1), new Date(124,5,5), "Pending");
         boolean success = leaveRequestDAO.addLeaveRequest(request);
 
         List<LeaveRequest> updatedList = leaveRequestDAO.getLeaveRequestsbyEmployeeId(1);

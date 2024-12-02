@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp.controller;
 
+import com.project.springjavafx.javaFXApp.data.dao.LeaveRequestDAO;
 import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class LeaveRequestController extends MainController {
     @FXML
     public Button submitTimeOffRequest;
 
+    LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
+
 
     @FXML
     public void onFinaliseRequest(MouseEvent mouseEvent)
@@ -41,6 +44,8 @@ public class LeaveRequestController extends MainController {
                     "Pending",
                     0
             );
+
+            leaveRequestDAO.addLeaveRequest(request);
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
