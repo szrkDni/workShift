@@ -177,7 +177,7 @@
             </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
-                  <Insets bottom="230.0" />
+                  <Insets />
                </VBox.margin>
                <children>
                   <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -209,9 +209,6 @@
                </children>
             </AnchorPane>
             <AnchorPane>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <children>
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <opaqueInsets>
@@ -231,7 +228,7 @@
                         <String fx:value="black-text" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="35.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/logout.png" />
                      </image>
@@ -255,20 +252,22 @@
             <String fx:value="bg-by-option" />
          </styleClass>
          <children>
-            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" onMouseClicked="#onShowLeaveRequestPageButtonClick" mnemonicParsing="false" text="Request timeoff"/>
-            <Button fx:id="admintimeoffbutton" layoutX="200.0" layoutY="250.0" onMouseClicked="#onShowManageRequestsPageButtonClick" mnemonicParsing="false" text="Manage requests"/>
+            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#onShowLeaveRequestPageButtonClick" text="Request timeoff">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Label layoutX="110.0" layoutY="302.0" text="My time offs" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView layoutX="110.0" layoutY="352.0" prefHeight="417.0" prefWidth="917.0" fx:id="leaveRequestsTable">
+            <TableView fx:id="leaveRequestsTable" layoutX="110.0" layoutY="352.0" prefHeight="417.0" prefWidth="917.0">
               <columns>
-                  <TableColumn prefWidth="169.3333740234375" text="Status" fx:id="statusOfRequestTableColumn"/>
-                  <TableColumn prefWidth="167.66665649414062" text="Start" fx:id="startdateTableColumn"/>
-                  <TableColumn minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" fx:id="enddateTableColumn"/>
-                  <TableColumn prefWidth="115.0" text="Type" fx:id="typeOfLeaveTableColumn"/>
-                  <TableColumn prefWidth="307.0" text="Managed" fx:id="manageTableColumn"/>
+                  <TableColumn fx:id="statusOfRequestTableColumn" prefWidth="169.3333740234375" text="Status" />
+                  <TableColumn fx:id="startdateTableColumn" prefWidth="167.66665649414062" text="Start" />
+                  <TableColumn fx:id="enddateTableColumn" minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" />
+                  <TableColumn fx:id="typeOfLeaveTableColumn" prefWidth="115.0" text="Type" />
+                  <TableColumn fx:id="manageTableColumn" prefWidth="307.0" text="Managed" />
               </columns>
             </TableView>
             <Label fx:id="remainingHolidays" layoutX="133.0" layoutY="77.0" text="Holidays:" textFill="WHITE" />
@@ -288,6 +287,7 @@
             <Label fx:id="usedSicknessPension" layoutX="634.0" layoutY="151.0" prefHeight="17.0" prefWidth="279.0" text="Sickness pensiones:" textFill="WHITE" />
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="-53.0" layoutY="916.0" />
    </children>
    <stylesheets>
       <URL value="@../css/timeoff.css" />

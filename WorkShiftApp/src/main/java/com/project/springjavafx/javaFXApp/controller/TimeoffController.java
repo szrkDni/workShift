@@ -66,6 +66,7 @@ public class TimeoffController extends MainController implements Initializable {
     private LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
     protected List<LeaveRequest> allLeaveRequests = leaveRequestDAO.getAllLeaveRequests();
     protected List<LeaveRequest> leaveRequests = leaveRequestDAO.getLeaveRequestsbyEmployeeId(employee.getId());
+    private LeaveRequest thisRequest;
 /*
     public List<LeaveRequest> leaveRequests = List.of(
             new LeaveRequest(1,1,"Holiday", new Date(124, 10, 1), new Date(124, 10, 4), "Pending", 2),
@@ -153,18 +154,25 @@ public class TimeoffController extends MainController implements Initializable {
                     private Button rejectButton = new Button("Reject");
 
                     {
-                        approveButton.setOnAction(event -> {
-                            LeaveRequest request = (LeaveRequest) getTableView().getItems().get(getIndex());
-                            //leaveRequestDAO.approveLeaveRequestById()
-                            rejectButton.setVisible(false);
-                            approveButton.setVisible(false);
-                        });
-                        rejectButton.setOnAction(event -> {
-                            LeaveRequest request = (LeaveRequest) getTableView().getItems().get(getIndex());
-                            //leaveRequestDao.rejectLeaveRequestById()
-                            rejectButton.setVisible(false);
-                            approveButton.setVisible(false);
-                        });
+
+                        if (request1.getStatus().equalsIgnoreCase("pending")) {
+
+                            approveButton.setOnAction(event -> {
+                                LeaveRequest request = getTableView().getItems().get(getIndex());
+                                thisRequest = request;
+
+                                boolean success = leaveRequestDAO.approveLeaveRequestById(request.getLeaveId());
+                                rejectButton.setVisible(false);
+                                approveButton.setVisible(false);
+                            });
+                            rejectButton.setOnAction(event -> {
+                                LeaveRequest request = getTableView().getItems().get(getIndex());
+                                boolean success = leaveRequestDAO.rejectLeaveRequestById(request.getLeaveId());
+                                rejectButton.setVisible(false);
+                                approveButton.setVisible(false);
+                            });
+
+                        }
                     }
 
                     protected void updateItem(Void item, boolean empty) {

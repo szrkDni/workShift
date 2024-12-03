@@ -125,6 +125,35 @@ public class LeaveRequestDAO {
     {
         String query = "UPDATE Leave_Requests SET status = 'Approved' WHERE leave_id = " + leaveId;
 
-        
+        int row = 0;
+        try{
+           Connection connection = DatabaseConnector.connect();
+
+            PreparedStatement stmt = connection.prepareStatement(query);
+
+            row = stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return row > 0;
+    }
+
+    public boolean rejectLeaveRequestById(int leaveId)
+    {
+        String query = "UPDATE Leave_Requests SET status = 'Rejected' WHERE leave_id = " + leaveId;
+
+        int row = 0;
+        try{
+            Connection connection = DatabaseConnector.connect();
+
+            PreparedStatement stmt = connection.prepareStatement(query);
+
+            row = stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return row > 0;
     }
 }
