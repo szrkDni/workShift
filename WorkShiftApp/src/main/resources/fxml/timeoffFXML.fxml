@@ -255,7 +255,8 @@
             <String fx:value="bg-by-option" />
          </styleClass>
          <children>
-            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" onMouseClicked="#onShowLeaveRequestPageButtonClick" mnemonicParsing="false" text="Request timeoff" />
+            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" onMouseClicked="#onShowLeaveRequestPageButtonClick" mnemonicParsing="false" text="Request timeoff"/>
+            <Button fx:id="admintimeoffbutton" layoutX="200.0" layoutY="250.0" onMouseClicked="#onShowManageRequestsPageButtonClick" mnemonicParsing="false" text="Manage requests"/>
             <Label layoutX="110.0" layoutY="302.0" text="My time offs" textFill="WHITE">
                <font>
                   <Font size="27.0" />
@@ -267,7 +268,7 @@
                   <TableColumn prefWidth="167.66665649414062" text="Start" fx:id="startdateTableColumn"/>
                   <TableColumn minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" fx:id="enddateTableColumn"/>
                   <TableColumn prefWidth="115.0" text="Type" fx:id="typeOfLeaveTableColumn"/>
-                  <TableColumn prefWidth="307.0" text="Managed by" fx:id="managedByTableColumn"/>
+                  <TableColumn prefWidth="307.0" text="Managed" fx:id="manageTableColumn"/>
               </columns>
             </TableView>
             <Label fx:id="remainingHolidays" layoutX="133.0" layoutY="77.0" text="Holidays:" textFill="WHITE" />

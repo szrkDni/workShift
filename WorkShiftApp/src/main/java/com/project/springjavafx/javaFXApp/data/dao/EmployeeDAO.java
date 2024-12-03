@@ -61,7 +61,6 @@ public class EmployeeDAO {
                         rs.getInt("hourly_wage")
                 );
 
-                System.out.println(employee);
             }
 
             System.out.println("Employee found: " + employee.getId());

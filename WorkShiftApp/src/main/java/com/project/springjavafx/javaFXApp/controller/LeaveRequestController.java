@@ -37,7 +37,7 @@ public class LeaveRequestController extends MainController {
         try {
             request = new LeaveRequest(
                     TimeoffController.numberOfRequests.getAsInt() + 1,
-                    1,
+                    employee.getId(),
                     leaveTypeSelection.getValue(),
                     Date.valueOf(startDateField.getValue()),
                     Date.valueOf(endDateField.getValue()),
