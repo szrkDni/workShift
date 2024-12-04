@@ -155,8 +155,6 @@ public class TimeoffController extends MainController implements Initializable {
 
                     {
 
-                        if (request1.getStatus().equalsIgnoreCase("pending")) {
-
                             approveButton.setOnAction(event -> {
                                 LeaveRequest request = getTableView().getItems().get(getIndex());
                                 thisRequest = request;
@@ -172,7 +170,6 @@ public class TimeoffController extends MainController implements Initializable {
                                 approveButton.setVisible(false);
                             });
 
-                        }
                     }
 
                     protected void updateItem(Void item, boolean empty) {
