@@ -13,6 +13,7 @@ public class AfterLoginDTO {
         isManager = false;
         employeeId = 0;
 
+
     }
 
 }

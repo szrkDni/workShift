@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.LeaveRequestController">
+<children>
+    <VBox alignment="TOP_CENTER" layoutX="-8.666666666666666" layoutY="-7.0" prefHeight="900.0" prefWidth="285.0" style="-fx-background-color: #E0E0E0; -fx-spacing: 10; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1155.0" AnchorPane.topAnchor="10.0">
+        <children>
+            <ImageView fitHeight="150.0" fitWidth="263.0" pickOnBounds="true" preserveRatio="true" styleClass="picture">
+                <image>
+                    <Image url="@../img/avatar-icon-png-18.png" />
+                </image>
+                <VBox.margin>
+                    <Insets top="40.0" />
+                </VBox.margin>
+            </ImageView>
+            <Label fx:id="nameLabel" text="Max Verstappen">
+                <font>
+                    <Font name="Franklin Gothic Heavy" size="24.0" />
+                </font>
+            </Label>
+            <Label fx:id="positionLabel" text="Formula One Driver">
+                <font>
+                    <Font name="Franklin Gothic Demi Cond" size="20.0" />
+                </font>
+                <VBox.margin>
+                    <Insets bottom="50.0" top="-5.0" />
+                </VBox.margin>
+            </Label>
+            <AnchorPane>
+                <children>
+                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onprofileButtonClick" prefHeight="45.0" prefWidth="240.0" text="Profile" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <styleClass>
+                            <String fx:value="profile-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                    </Button>
+                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/account.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+            <AnchorPane>
+                <children>
+                    <Button alignment="BASELINE_LEFT" layoutX="55.0" mnemonicParsing="false" onMouseClicked="#onattendanceButtonClick" prefHeight="45.0" prefWidth="240.0" text="Attendance" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <styleClass>
+                            <String fx:value="attendance-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                    </Button>
+                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/calendar.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+            <AnchorPane>
+                <children>
+                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onpaymentButtonClick" prefHeight="45.0" prefWidth="240.0" text="Payment" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <styleClass>
+                            <String fx:value="payment-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                    </Button>
+                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/coins.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+            <AnchorPane>
+                <children>
+                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#ontimeoffButtonClick" prefHeight="45.0" prefWidth="240.0" text="Time off" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <styleClass>
+                            <String fx:value="timeoff-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                    </Button>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="50.0" layoutY="7.5" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/time-out.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="controlAnchorPane">
+                <VBox.margin>
+                    <Insets bottom="230.0" />
+                </VBox.margin>
+                <children>
+                    <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <styleClass>
+                            <String fx:value="manageropt-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                        <rotationAxis>
+                            <Point3D />
+                        </rotationAxis>
+                    </Button>
+                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/administrator.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+            <AnchorPane>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+                <children>
+                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <styleClass>
+                            <String fx:value="logout-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                    </Button>
+                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/logout.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+        </children>
+    </VBox>
+    <AnchorPane layoutX="293.0" layoutY="10.0" prefHeight="83.0" prefWidth="1137.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="807.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <children>
+            <Label fx:id="welcomeLabel" layoutX="13.0" layoutY="16.0" prefHeight="51.0" prefWidth="1100.0" text="WELCOME BACK MR.!" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="16.0">
+                <font>
+                    <Font name="System Bold" size="36.0" />
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
+    <AnchorPane layoutX="297.0" layoutY="108.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+        <children>
+            <Label layoutX="110.0" layoutY="42.0" text="Request Time Off" textFill="WHITE">
+                <font>
+                    <Font size="27.0" />
+                </font>
+            </Label>
+
+            <!-- Start Date -->
+            <Label layoutX="110.0" layoutY="100.0" text="Start Date:" textFill="WHITE" />
+            <DatePicker fx:id="startDateField" layoutX="200.0" layoutY="95.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></DatePicker>
+
+            <!-- End Date -->
+            <Label layoutX="110.0" layoutY="150.0" text="End Date:" textFill="WHITE" />
+            <DatePicker fx:id="endDateField" layoutX="200.0" layoutY="145.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></DatePicker>
+
+            <!-- Leave Type -->
+            <Label layoutX="110.0" layoutY="200.0" text="Leave Type:" textFill="WHITE" />
+            <ComboBox fx:id="leaveTypeSelection" layoutX="200.0" layoutY="195.0" prefWidth="200.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Holiday" />
+                        <String fx:value="Sick Leave" />
+                    </FXCollections>
+                </items>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+
+            <!-- Submit Button -->
+            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#onFinaliseRequest" text="Submit Request">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+        </children>
+         <styleClass>
+            <String fx:value="bg-by-option" />
+            <String fx:value="page" />
+         </styleClass>
+    </AnchorPane>
+</children>
+   <stylesheets>
+      <URL value="@../css/generaldesign.css" />
+      <URL value="@../css/timeoff.css" />
+   </stylesheets>
+</AnchorPane>
