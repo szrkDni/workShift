@@ -47,9 +47,9 @@ public class LeaveRequest {
         this.employeeId = employeeId;
     }
 
-    public String getLeaveType() {
+    /*public String getLeaveType() {
         return leaveType;
-    }
+    }*/
 
     public void setLeaveType(String leaveType) {
         this.leaveType = leaveType;

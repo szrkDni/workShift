@@ -67,6 +67,18 @@ public class ButtoneventHandler {
         }
     }
 
+    public void project(MouseEvent mouseEvent) {
+
+        try{
+
+            SceneLoader.showScene(mouseEvent,"projectFXML");
+
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        }
+    }
+
     public void control(MouseEvent mouseEvent) {
 
         try{

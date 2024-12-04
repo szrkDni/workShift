@@ -148,6 +148,33 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="projectlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onprojectButtonClick" prefHeight="45.0" prefWidth="240.0" text="Project" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                     <styleClass>
+                        <String fx:value="project-button" />
+                        <String fx:value="black-text" />
+                     </styleClass>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="51.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/project.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
                   <Insets bottom="230.0" />
@@ -228,19 +255,19 @@
             <String fx:value="bg-by-option" />
          </styleClass>
          <children>
-            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" onMouseClicked="#onShowLeaveRequestPageButtonClick" mnemonicParsing="false" text="Request timeoff" />
+            <Button fx:id="timeoffbutton" layoutX="115.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#onShowLeaveRequestPageButtonClick" text="Request timeoff" />
             <Label layoutX="110.0" layoutY="302.0" text="My time offs" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView layoutX="110.0" layoutY="352.0" prefHeight="417.0" prefWidth="917.0" fx:id="leaveRequestsTable">
+            <TableView fx:id="leaveRequestsTable" layoutX="110.0" layoutY="352.0" prefHeight="417.0" prefWidth="917.0">
               <columns>
-                  <TableColumn prefWidth="169.3333740234375" text="Status" fx:id="statusOfRequestTableColumn"/>
-                  <TableColumn prefWidth="167.66665649414062" text="Start" fx:id="startdateTableColumn"/>
-                  <TableColumn minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" fx:id="enddateTableColumn"/>
-                  <TableColumn prefWidth="115.0" text="Type" fx:id="typeOfLeaveTableColumn"/>
-                  <TableColumn prefWidth="307.0" text="Managed by" fx:id="managedByTableColumn"/>
+                  <TableColumn fx:id="statusOfRequestTableColumn" prefWidth="169.3333740234375" text="Status" />
+                  <TableColumn fx:id="startdateTableColumn" prefWidth="167.66665649414062" text="Start" />
+                  <TableColumn fx:id="enddateTableColumn" minWidth="3.000030517578125" prefWidth="156.33334350585938" text="End" />
+                  <TableColumn fx:id="typeOfLeaveTableColumn" prefWidth="115.0" text="Type" />
+                  <TableColumn fx:id="managedByTableColumn" prefWidth="307.0" text="Managed by" />
               </columns>
             </TableView>
             <Label fx:id="remainingHolidays" layoutX="133.0" layoutY="77.0" text="Holidays:" textFill="WHITE" />
