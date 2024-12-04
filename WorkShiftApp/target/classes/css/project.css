@@ -1,0 +1,8 @@
+
+.bg-by-option{
+    -fx-background-color: #5d5050;
+    -fx-border-color:  #333333;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+}
+
