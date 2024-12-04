@@ -1,4 +1,5 @@
 com\project\springjavafx\javaFXApp\controller\ProfileController.class
+com\project\springjavafx\javaFXApp\data\models\LeaveRequestRowAsAdmin.class
 com\project\springjavafx\javaFXApp\controller\TimeoffController.class
 com\project\springjavafx\javaFXApp\controller\TimeoffController$1.class
 com\project\springjavafx\javaFXApp\controller\secondary\ManageLRController.class

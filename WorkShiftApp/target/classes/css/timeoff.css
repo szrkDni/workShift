@@ -5,4 +5,59 @@
     -fx-border-radius: 10;
     -fx-border-width: 2;
 }
+/*
+.table-row-cell {
+    -fx-background-color: transparent;
 
+}
+
+.table-row-cell:filled {
+    -fx-background-color: white;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: lightgray;
+    -fx-border-width: 1px;
+}
+
+.table-view .column-header {
+    -fx-background-color: lightblue;
+    -fx-border-color: gray;
+    -fx-border-width: 0 0 2px 0;
+    -fx-text-fill: darkblue;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: lightyellow;
+}
+
+.scroll{
+    -fx-background: #3B73B4;
+}
+
+
+.mainBackground{
+    -fx-background-color: lightblue;
+    -fx-background-radius: 20;
+    -fx-border-color: whitesmoke;
+    -fx-border-width: 3;
+    -fx-border-radius: 20;
+}
+
+.text{
+    -fx-text-fill: black;
+    -fx-alignment: center;
+}
+
+.holiday{
+    -fx-background-color: green;
+}*/

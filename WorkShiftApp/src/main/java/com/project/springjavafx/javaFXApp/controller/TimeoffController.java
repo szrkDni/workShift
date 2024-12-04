@@ -1,9 +1,9 @@
 package com.project.springjavafx.javaFXApp.controller;
 
 import com.project.springjavafx.javaFXApp.data.dao.LeaveRequestDAO;
-import com.project.springjavafx.javaFXApp.data.dto.AfterLoginDTO;
 import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +51,7 @@ public class TimeoffController extends MainController implements Initializable {
     private TableView<LeaveRequest> leaveRequestsTable;
 
     @FXML
-    private TableColumn<LeaveRequest,Date> startdateTableColumn;
+    private TableColumn<Object, Date> startdateTableColumn;
 
     @FXML
     private TableColumn<LeaveRequest,Date> enddateTableColumn;
@@ -59,6 +61,9 @@ public class TimeoffController extends MainController implements Initializable {
 
     @FXML
     private TableColumn<LeaveRequest,String> statusOfRequestTableColumn;
+
+    @FXML
+    private TableColumn<LeaveRequest, String> requestedByTablecolumn;
 
     @FXML
     private TableColumn<LeaveRequest,Void> manageTableColumn;
@@ -145,8 +150,23 @@ public class TimeoffController extends MainController implements Initializable {
             enddateTableColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
             typeOfLeaveTableColumn.setCellValueFactory(new PropertyValueFactory<>("leaveType"));
             statusOfRequestTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+            requestedByTablecolumn.setVisible(false);
 
-            if (AfterLoginDTO.isManager) {
+            if (employee.isManager()) {
+
+                requestedByTablecolumn.setVisible(true);
+
+                leaveRequests = leaveRequestDAO.getAllLeaveRequests().stream().filter(req -> req.getStatus().equalsIgnoreCase("Pending")).toList();
+
+                statusOfRequestTableColumn.setVisible(false);
+
+                requestedByTablecolumn.setCellValueFactory(cell -> {
+                    LeaveRequest currentRequest = cell.getValue();
+                    String employeeName = employeeDAO.getEmployeeById(currentRequest.getEmployeeId()).getFullName();
+
+                    return new SimpleStringProperty(employeeName);
+                });
+
 
 
                 manageTableColumn.setCellFactory(col -> new TableCell<>() {
@@ -154,15 +174,13 @@ public class TimeoffController extends MainController implements Initializable {
                     private Button rejectButton = new Button("Reject");
 
                     {
-
                             approveButton.setOnAction(event -> {
                                 LeaveRequest request = getTableView().getItems().get(getIndex());
-                                thisRequest = request;
-
                                 boolean success = leaveRequestDAO.approveLeaveRequestById(request.getLeaveId());
                                 rejectButton.setVisible(false);
                                 approveButton.setVisible(false);
                             });
+
                             rejectButton.setOnAction(event -> {
                                 LeaveRequest request = getTableView().getItems().get(getIndex());
                                 boolean success = leaveRequestDAO.rejectLeaveRequestById(request.getLeaveId());
@@ -170,14 +188,47 @@ public class TimeoffController extends MainController implements Initializable {
                                 approveButton.setVisible(false);
                             });
 
+
                     }
 
+
+
                     protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+
+
+
                         if (empty) {
                             setGraphic(null);
                         } else {
-                            HBox buttons = new HBox(5, approveButton, rejectButton);
-                            setGraphic(buttons);
+                            try{
+
+                                LeaveRequest request = getTableView().getItems().get(getIndex());
+
+
+
+                                if(request.getStatus().equalsIgnoreCase("Pending")) {
+
+                                    HBox buttons = new HBox(5, approveButton, rejectButton);
+                                    setGraphic(buttons);
+
+                                }else if (request.getStatus().equalsIgnoreCase("Approved")) {
+
+                                    HBox buttons = new HBox(3);
+                                    Rectangle designApproved = new Rectangle();
+                                    designApproved.setFill(new Color(0.0,1.0,0.0,1));
+                                    setGraphic(designApproved);
+
+                                }else if(request.getStatus().equalsIgnoreCase("Rejected")) {
+                                    HBox buttons = new HBox(3);
+                                    Rectangle designApproved = new Rectangle();
+                                    designApproved.setFill(new Color(1.0,0.0,0.0,1));
+                                    setGraphic(designApproved);
+                                }
+                            }catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+
                         }
                     }
                 });
@@ -188,6 +239,7 @@ public class TimeoffController extends MainController implements Initializable {
 
 
             ObservableList<LeaveRequest> tableList = FXCollections.observableList(leaveRequests);
+
 
             leaveRequestsTable.setItems(tableList);
         }
