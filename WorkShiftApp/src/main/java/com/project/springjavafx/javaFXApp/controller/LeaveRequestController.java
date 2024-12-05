@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp.controller;
 
+import com.project.springjavafx.javaFXApp.data.dao.LeaveRequestDAO;
 import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class LeaveRequestController extends MainController {
     @FXML
     public Button submitTimeOffRequest;
 
+    LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
+
 
     @FXML
     public void onFinaliseRequest(MouseEvent mouseEvent)
@@ -33,14 +36,15 @@ public class LeaveRequestController extends MainController {
 
         try {
             request = new LeaveRequest(
-                    TimeoffController.numberOfRequests,
-                    1,
+                    TimeoffController.numberOfRequests.getAsInt() + 1,
+                    employee.getId(),
                     leaveTypeSelection.getValue(),
                     Date.valueOf(startDateField.getValue()),
                     Date.valueOf(endDateField.getValue()),
-                    "Pending",
-                    0
+                    "Pending"
             );
+
+            leaveRequestDAO.addLeaveRequest(request);
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }

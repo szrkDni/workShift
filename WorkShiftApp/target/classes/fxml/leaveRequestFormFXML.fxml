@@ -225,29 +225,29 @@
     </AnchorPane>
     <AnchorPane layoutX="297.0" layoutY="108.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <children>
-            <Label layoutX="110.0" layoutY="42.0" text="Request Time Off" textFill="WHITE">
+            <Label layoutX="129.0" layoutY="290.0" text="Request" textFill="WHITE">
                 <font>
-                    <Font size="27.0" />
+                    <Font name="Segoe UI Black" size="26.0" />
                 </font>
             </Label>
 
             <!-- Start Date -->
-            <Label layoutX="110.0" layoutY="100.0" text="Start Date:" textFill="WHITE" />
-            <DatePicker fx:id="startDateField" layoutX="200.0" layoutY="95.0">
+            <Label layoutX="129.0" layoutY="348.0" text="Start Date:" textFill="WHITE" />
+            <DatePicker fx:id="startDateField" layoutX="219.0" layoutY="343.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></DatePicker>
 
             <!-- End Date -->
-            <Label layoutX="110.0" layoutY="150.0" text="End Date:" textFill="WHITE" />
-            <DatePicker fx:id="endDateField" layoutX="200.0" layoutY="145.0">
+            <Label layoutX="129.0" layoutY="398.0" text="End Date:" textFill="WHITE" />
+            <DatePicker fx:id="endDateField" layoutX="219.0" layoutY="393.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></DatePicker>
 
             <!-- Leave Type -->
-            <Label layoutX="110.0" layoutY="200.0" text="Leave Type:" textFill="WHITE" />
-            <ComboBox fx:id="leaveTypeSelection" layoutX="200.0" layoutY="195.0" prefWidth="200.0">
+            <Label layoutX="129.0" layoutY="448.0" text="Leave Type:" textFill="WHITE" />
+            <ComboBox fx:id="leaveTypeSelection" layoutX="219.0" layoutY="443.0" prefWidth="200.0">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Holiday" />
@@ -260,10 +260,53 @@
             </ComboBox>
 
             <!-- Submit Button -->
-            <Button fx:id="submitTimeOffRequest" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#onFinaliseRequest" text="Submit Request">
+            <Button fx:id="submitTimeOffRequest" layoutX="219.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#onFinaliseRequest" text="Submit Request">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="252.0" prefWidth="1114.0" style="-fx-background-color: #4b8ec4; -fx-background-radius: 5; -fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 1;" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="568.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+               <children>
+                  <Label fx:id="welcomeLabel11" layoutX="86.0" layoutY="70.0" prefHeight="43.0" prefWidth="263.0" text="Holidays:" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="80.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="welcomeLabel111" layoutX="81.0" layoutY="145.0" prefHeight="43.0" prefWidth="263.0" text="Sick Leaves:" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="140.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="26.0" layoutY="16.0" prefHeight="207.0" prefWidth="412.0" style="-fx-background-color: #4b8ec4; -fx-background-radius: 5; -fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 1;" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="568.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="645.0" AnchorPane.topAnchor="12.0">
+               <children>
+                  <Label fx:id="welcomeLabel111" layoutX="86.0" layoutY="70.0" prefHeight="43.0" prefWidth="263.0" text="Holidays:" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="80.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="welcomeLabel1111" layoutX="81.0" layoutY="145.0" prefHeight="43.0" prefWidth="263.0" text="Sick Leaves:" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="140.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="welcomeLabel1121" alignment="CENTER_RIGHT" layoutX="763.0" layoutY="74.0" prefHeight="43.0" prefWidth="263.0" text="inf" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="80.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="welcomeLabel11111" alignment="CENTER_RIGHT" layoutX="764.0" layoutY="141.0" prefHeight="43.0" prefWidth="263.0" text="inf" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="140.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="welcomeLabel12" layoutX="69.0" layoutY="26.0" prefHeight="43.0" prefWidth="263.0" text="Remaining" textFill="WHITE" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="22.0">
+                     <font>
+                        <Font name="Segoe UI Black" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
         </children>
          <styleClass>
             <String fx:value="bg-by-option" />
