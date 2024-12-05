@@ -4,19 +4,27 @@ import com.project.springjavafx.javaFXApp.data.db.DatabaseConnector;
 import com.project.springjavafx.javaFXApp.data.models.Employee;
 import com.project.springjavafx.javaFXApp.data.models.LoginData;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//import static com.project.springjavafx.javaFXApp.data.db.DatabaseConnector.connection;
+
 public class EmployeeDAO {
+
+    // Method to get a database connection
+    public Connection getConnection() {
+        return DatabaseConnector.connect();  // Assuming DatabaseConnector is properly defined elsewhere
+    }
+
+    // Method to get all employees
     public List<Employee> getAllEmployees() {
         List<Employee> employees = new ArrayList<>();
-        Connection connection = DatabaseConnector.connect();
-        try {
-            String query = "SELECT * FROM Employees";
-            PreparedStatement stmt = connection.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
+        String query = "SELECT * FROM Employees";
+
+        try (Connection connection = DatabaseConnector.connect();
+             PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Employee emp = new Employee(
@@ -37,7 +45,6 @@ public class EmployeeDAO {
         }
         return employees;
     }
-
     public Employee getEmployeeById(int empID) {
         Connection connection = DatabaseConnector.connect();
         Employee employee = null;
@@ -74,8 +81,6 @@ public class EmployeeDAO {
 
         return employee;
     }
-
-
     public String getEmployeePasswordById(int employeeId) {
         String query = "SELECT pswd FROM Employees WHERE id = ?";
         String password = null;
@@ -97,6 +102,7 @@ public class EmployeeDAO {
 
         return password;
     }
+
 
     public ArrayList<LoginData> getLoginDataList() throws SQLException {
         Connection connection = DatabaseConnector.connect();
@@ -121,5 +127,77 @@ public class EmployeeDAO {
         return loginDataList;
     }
 
+    // Method to add an employee
+    public boolean addEmployee(Employee employee) {
+        String query = "INSERT INTO Employees (id, first_name, last_name, pswd, position, email, birth_date, hire_date, hourly_wage) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+        try (Connection connection = DatabaseConnector.connect();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setInt(1, employee.getId());
+            stmt.setString(2, employee.getFirstName());
+            stmt.setString(3, employee.getLastName());
+            stmt.setString(4, employee.getPassword());
+            stmt.setString(5, employee.getPosition());
+            stmt.setString(6, employee.getEmail());
+            stmt.setDate(7, employee.getBirthDate());
+            stmt.setDate(8, employee.getHireDate());
+            stmt.setInt(9, employee.getHourlyWage());
+
+            int rowsInserted = stmt.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error while inserting employee: " + e.getMessage());
+            e.printStackTrace(); // This will help you debug the issue
+            return false;
+        }
+    }
+
+
+    // Method to update an employee
+    public boolean updateEmployee(Employee employee) {
+        String query = "UPDATE Employees SET first_name = ?, last_name = ?, pswd = ?, position = ?, email = ?, " +
+                "birth_date = ?, hire_date = ?, hourly_wage = ? WHERE id = ?";
+
+        try (Connection connection = DatabaseConnector.connect();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setString(1, employee.getFirstName());
+            stmt.setString(2, employee.getLastName());
+            stmt.setString(3, employee.getPassword());
+            stmt.setString(4, employee.getPosition());
+            stmt.setString(5, employee.getEmail());
+            stmt.setDate(6, employee.getBirthDate());
+            stmt.setDate(7, employee.getHireDate());
+            stmt.setInt(8, employee.getHourlyWage());
+            stmt.setInt(9, employee.getId());
+
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0; // Return true if the update was successful
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+    // Method to delete an employee by ID
+    public boolean deleteEmployee(int employeeId) {
+        String query = "DELETE FROM Employees WHERE id = ?";
+
+        try (Connection connection = DatabaseConnector.connect();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setInt(1, employeeId);
+
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
