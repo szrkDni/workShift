@@ -37,6 +37,14 @@ public class Employee {
         return lastName;
     }
 
+    public String getPassword() {
+        return pswd;
+    }
+
+    public void setPassword(String firstName) {
+        this.pswd = pswd;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
