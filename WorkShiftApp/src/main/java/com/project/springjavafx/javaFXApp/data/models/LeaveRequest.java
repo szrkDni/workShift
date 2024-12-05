@@ -22,9 +22,7 @@ public class LeaveRequest {
         this.approvedBy = approvedBy;
     }
 
-    public String getLeaveType() {
-        return null;
-    }
+
 
 
     // Getters and Setters
