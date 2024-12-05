@@ -18,8 +18,6 @@ public class SceneLoader {/**
      *
      *      if no more PTO and no more Sick Leave then its Sickness pension
      */
-    private static final int numberOfHolidays = 20;
-    private static final int numberOfSickLeave = 15;
 
     private SceneLoader() {
     }
