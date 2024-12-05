@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.AttendanceController">
@@ -175,7 +176,7 @@
             </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
-                  <Insets bottom="230.0" />
+                  <Insets />
                </VBox.margin>
                <children>
                   <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -207,9 +208,6 @@
                </children>
             </AnchorPane>
             <AnchorPane>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <children>
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <opaqueInsets>
@@ -229,7 +227,7 @@
                         <String fx:value="black-text" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="35.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/logout.png" />
                      </image>
@@ -252,6 +250,28 @@
             <String fx:value="page" />
             <String fx:value="bg-by-option" />
          </styleClass>
+         <children>
+            <AnchorPane layoutX="18.0" layoutY="18.0" prefHeight="119.0" prefWidth="303.0" AnchorPane.bottomAnchor="655.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="819.0" AnchorPane.topAnchor="16.0">
+               <children>
+                  <Label layoutX="32.0" layoutY="30.0" text="Normal hours:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="87.0" text="Extra hours:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="RED" layoutX="212.0" layoutY="41.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.topAnchor="30.0" />
+                  <Circle fill="LIME" layoutX="212.0" layoutY="72.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.topAnchor="62.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="claendarAnchorpane" layoutX="85.0" layoutY="138.0" prefHeight="586.0" prefWidth="971.0">
+               <children>
+                  <VBox fx:id="mainLayout" layoutX="436.0" layoutY="193.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children></AnchorPane>
+         </children>
       </AnchorPane>
    </children>
    <stylesheets>
