@@ -9,6 +9,10 @@ public class WorkShift {
     private double workHour;
     private String shiftType;
 
+    public int getId() {
+        return id;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }

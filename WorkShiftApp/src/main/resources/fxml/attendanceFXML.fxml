@@ -267,10 +267,12 @@
                   <Circle fill="LIME" layoutX="212.0" layoutY="72.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.topAnchor="62.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="claendarAnchorpane" layoutX="85.0" layoutY="138.0" prefHeight="586.0" prefWidth="971.0">
+            <AnchorPane fx:id="claendarAnchorpane" layoutX="93.0" layoutY="138.0" prefHeight="421.0" prefWidth="423.0" style="-fx-background-radius: 20; -fx-border-color: grey; -fx-border-width: 2; -fx-border-radius: 20;" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="624.0">
                <children>
-                  <VBox fx:id="mainLayout" layoutX="436.0" layoutY="193.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="mainLayout" layoutX="4.0" layoutY="142.0" prefHeight="426.0" prefWidth="419.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
+            <Button fx:id="attendNormalButton" layoutX="415.0" layoutY="63.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="attendExtraButton" layoutX="728.0" layoutY="63.0" mnemonicParsing="false" text="Button" />
          </children>
       </AnchorPane>
    </children>
