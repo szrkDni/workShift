@@ -68,7 +68,7 @@ public class AttendanceController extends MainController implements Initializabl
 
             currentYearMonth = YearMonth.now();
 
-            AtomicReference<GridPane> calendarGrid = new AtomicReference<>(createCalendar(currentYearMonth, workShiftsOfEmployee));
+            AtomicReference<GridPane> calendarGrid = new AtomicReference<>(createCalendar(currentYearMonth, workShiftsOfEmployee, leaveRequestsOfEmployee));
 
             super.initialize(url, resourceBundle);
 
@@ -130,7 +130,7 @@ public class AttendanceController extends MainController implements Initializabl
 
 
             previousMonthButton.setOnMouseClicked(event -> {
-                calendarGrid.set(createCalendar(currentYearMonth.minusMonths(1), workShiftsOfEmployee));
+                calendarGrid.set(createCalendar(currentYearMonth.minusMonths(1), workShiftsOfEmployee, leaveRequestsOfEmployee));
                 mainLayout.getChildren().add(calendarGrid.get());
                 mainLayout.getChildren().add(hbox);
 
@@ -138,7 +138,7 @@ public class AttendanceController extends MainController implements Initializabl
 
 
             nextMonthButton.setOnMouseClicked(event -> {
-                calendarGrid.set(createCalendar(currentYearMonth.plusMonths(1), workShiftsOfEmployee));
+                calendarGrid.set(createCalendar(currentYearMonth.plusMonths(1), workShiftsOfEmployee, leaveRequestsOfEmployee));
                 mainLayout.getChildren().add(calendarGrid.get());
                 mainLayout.getChildren().add(hbox);
             });
@@ -158,13 +158,13 @@ public class AttendanceController extends MainController implements Initializabl
         }
     }
 
-    public GridPane createCalendar(YearMonth yearMonth, List<WorkShift> workShifts) {
+    public GridPane createCalendar(YearMonth yearMonth, List<WorkShift> workShifts, List<LeaveRequest> leaveRequests) {
 
         GridPane calendar = new GridPane();
 
         try {
             workShifts = workShifts.stream().filter(workShift -> yearMonth.getMonth().getValue() == (workShift.getWorkdayDate().getMonth() + 1)).toList();
-            leaveRequestsOfEmployee = leaveRequestsOfEmployee.stream().filter(request -> yearMonth.getMonth().getValue() == (request.getStartDate().getMonth() +1)).toList();
+            leaveRequests = leaveRequests.stream().filter(request -> yearMonth.getMonth().getValue() == (request.getStartDate().getMonth() +1)).toList();
 
             currentYearMonth = yearMonth;
             mainLayout.getChildren().clear();
@@ -216,59 +216,6 @@ public class AttendanceController extends MainController implements Initializabl
                         continue;
                     }
 
-
-                    isAttendedNormal = false;
-                    isAttendedExtra = false;
-                    isOnHoliday = false;
-                    isOnSickLeave = false;
-                    isOnSicknessPension = false;
-
-                    int finalDayCounter = dayCounter;
-
-                    List<WorkShift> currentDayShifts = workShifts.stream().filter(workShift ->
-                            workShift.getWorkdayDate().toLocalDate().getDayOfMonth() == finalDayCounter).toList();
-
-
-                    List<LeaveRequest> currentDayTimeOffs = leaveRequestsOfEmployee.stream().filter(leaveRequest ->
-                            leaveRequest.getStartDate().toLocalDate().isAfter(LocalDate.of(currentYearMonth.getYear(),currentYearMonth.getMonth(),finalDayCounter)) &&
-                                    leaveRequest.getEndDate().toLocalDate().isAfter(LocalDate.of(currentYearMonth.getYear(),currentYearMonth.getMonth(),finalDayCounter)) ||
-                            leaveRequest.getStartDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter))) ||
-                            leaveRequest.getEndDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter)))).toList();
-
-                    if (!currentDayShifts.isEmpty()) {
-                        for (WorkShift workShift : currentDayShifts) {
-                            if (workShift.getShiftType().equalsIgnoreCase("normal")) {
-                                isAttendedNormal = true;
-                            } else if (workShift.getShiftType().equalsIgnoreCase("extra")) {
-                                isAttendedExtra = true;
-                            }
-                        }
-                    }
-
-                    if(!currentDayTimeOffs.isEmpty()) {
-                        if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("holiday")) {
-                            isOnHoliday = true;
-                        }
-                        else if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("Sick Leave")) {
-                            isOnSickLeave = true;
-                        }
-                        else if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("Sickness Pension"))
-                        {
-                            isOnSicknessPension = true;
-                        }
-                    }
-
-                    if (finalDayCounter == LocalDate.now().getDayOfMonth()) {
-                        if (isAttendedNormal) {
-                            isAttendedNormalToday = true;
-                        }
-
-                        if (isAttendedExtra) {
-                            isAttendedExtraToday = true;
-                        }
-                    }
-
-
                     VBox vbox = new VBox(new Text(String.valueOf(dayCounter)));
                     //vbox.setAlignment(Pos.CENTER);
 
@@ -303,6 +250,62 @@ public class AttendanceController extends MainController implements Initializabl
                     sickLeaveLabel.setTextFill(Color.WHITE);
                     sickLeaveLabel.setStyle("-fx-background-color: grey;");
                     sickLeaveLabel.getStyleClass().add("shiftLabels");
+
+                    isAttendedNormal = false;
+                    isAttendedExtra = false;
+
+                    int finalDayCounter = dayCounter;
+
+                    List<WorkShift> currentDayShifts = workShifts.stream().filter(workShift ->
+                            workShift.getWorkdayDate().toLocalDate().getDayOfMonth() == finalDayCounter).toList();
+
+
+                    List<LeaveRequest> currentDayTimeOffs = leaveRequests.stream().filter(leaveRequest ->
+                            leaveRequest.getStartDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter))) ||
+                            leaveRequest.getEndDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter))) ||
+                            LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter).isAfter(ChronoLocalDate.from(leaveRequest.getStartDate().toLocalDate())) &&
+                            LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter).isBefore(ChronoLocalDate.from(leaveRequest.getEndDate().toLocalDate())
+                    )).toList();
+
+
+
+
+                    isOnHoliday = false;
+                    isOnSickLeave = false;
+                    isOnSicknessPension = false;
+
+                    if (!currentDayShifts.isEmpty()) {
+                        for (WorkShift workShift : currentDayShifts) {
+                            if (workShift.getShiftType().equalsIgnoreCase("normal")) {
+                                isAttendedNormal = true;
+                            } else if (workShift.getShiftType().equalsIgnoreCase("extra")) {
+                                isAttendedExtra = true;
+                            }
+                        }
+                    }
+
+                    if(!currentDayTimeOffs.isEmpty()) {
+                            if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("holiday")) {
+                                isOnHoliday = true;
+                            }
+                            else if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("Sick Leave")) {
+                                isOnSickLeave = true;
+                            }
+                            else if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("Sickness Pension")) {
+                                isOnSicknessPension = true;
+                            }
+
+                    }
+
+                    if (finalDayCounter == LocalDate.now().getDayOfMonth()) {
+                        if (isAttendedNormal) {
+                            isAttendedNormalToday = true;
+                        }
+
+                        if (isAttendedExtra) {
+                            isAttendedExtraToday = true;
+                        }
+                    }
 
 
                     if (isAttendedNormal)
