@@ -208,14 +208,7 @@
                         <Image url="@../img/administrator.png" />
                      </image>
                   </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <children>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                  <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -233,12 +226,17 @@
                         <String fx:value="black-text" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/logout.png" />
                      </image>
                   </ImageView>
                </children>
+            </AnchorPane>
+            <AnchorPane>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </AnchorPane>
          </children>
       </VBox>
