@@ -22,9 +22,10 @@ public class EmployeeDAO {
         List<Employee> employees = new ArrayList<>();
         String query = "SELECT * FROM Employees";
 
-        try (Connection connection = DatabaseConnector.connect();
+        try {
+             Connection connection = DatabaseConnector.connect();
              PreparedStatement stmt = connection.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Employee emp = new Employee(

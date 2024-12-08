@@ -24,4 +24,6 @@ com\project\springjavafx\javaFXApp\controller\PaymentController.class
 com\project\springjavafx\springApp\SpringManager.class
 com\project\springjavafx\javaFXApp\data\dao\ProjectDAO.class
 com\project\springjavafx\javaFXApp\exceptions\LoginformException.class
+com\project\springjavafx\javaFXApp\controller\TimeoffController$1.class
+com\project\springjavafx\javaFXApp\controller\secondary\ManageLRController.class
 com\project\springjavafx\javaFXApp\data\models\LeaveRequest.class

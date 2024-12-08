@@ -35,33 +35,41 @@ public class DatabaseConnector {
 
 
 
+
 public class DatabaseConnector {
+    private static Connection connection;
 
     public static Connection connect() {
         try {
-            Properties props = new Properties();
+            if (connection == null || connection.isClosed()) {
 
-            // Load properties file
-            try (InputStream input = DatabaseConnector.class.getClassLoader().getResourceAsStream("config.properties")) {
-                if (input == null) {
-                    System.out.println("Sorry, unable to find config.properties");
-                    return null;
+                Properties props = new Properties();
+
+                // Használjuk a getResourceAsStream metódust a classpath eléréséhez
+                try (InputStream input = DatabaseConnector.class.getClassLoader().getResourceAsStream("config.properties")) {
+                    if (input == null) {
+                        System.out.println("Sorry, unable to find config.properties");
+                        return null;
+                    }
+
+                    // Betöltjük a properties fájlt
+                    props.load(input);
                 }
-                props.load(input);
+
+                // Kapcsolódási adatok beolvasása a properties fájlból
+                String url = props.getProperty("db.url");
+                String user = props.getProperty("db.user");
+                String password = props.getProperty("db.password");
+
+                // Létrehozzuk a kapcsolatot
+                connection = DriverManager.getConnection(url, user, password);
+                System.out.println("Connected to the database.");
             }
-
-            // Read connection details from properties
-            String url = props.getProperty("db.url");
-            String user = props.getProperty("db.user");
-            String password = props.getProperty("db.password");
-
-            // Create and return a new connection each time
-            return DriverManager.getConnection(url, user, password);
-
         } catch (SQLException | IOException e) {
             System.out.println("Database connection failed: " + e.getMessage());
-            return null;
         }
+
+        return connection;
     }
 }
 

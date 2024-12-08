@@ -1,7 +1,6 @@
 package com.project.springjavafx.javaFXApp.controller;
 
 import com.project.springjavafx.javaFXApp.data.dao.EmployeeDAO;
-import com.project.springjavafx.javaFXApp.data.db.DatabaseConnector;
 import com.project.springjavafx.javaFXApp.data.models.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,13 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,7 +34,7 @@ public class ControlController  extends MainController implements Initializable 
     private TextField control_Email;
 
     @FXML
-    private TextField control_EmployeeId;
+    private TextField control_EmployeeId1;
 
     @FXML
     private TextField control_FirstName;
@@ -99,9 +94,17 @@ public class ControlController  extends MainController implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadEmployeeData();  // Load the employee data initially
-        setButtonActions();
-        addEmployeePositionList();
+
+        try{
+            loadEmployeeData();
+            setButtonActions();
+            addEmployeePositionList();// Load the employee data initially
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+            //e.printStackTrace();
+        }
+
     }
 
     // Load employee data from the database and populate the table
@@ -199,7 +202,7 @@ public class ControlController  extends MainController implements Initializable 
             }
 
             Employee newEmployee = new Employee(
-                    Integer.parseInt(control_EmployeeId.getText()),
+                    Integer.parseInt(control_EmployeeId1.getText()),
                     control_FirstName.getText(),
                     control_LastName.getText(),
                     control_Password.getText(),
@@ -264,7 +267,7 @@ public class ControlController  extends MainController implements Initializable 
         }
 
         // Populate form fields with employee details
-        control_EmployeeId.setText(String.valueOf(selectedEmployee.getId()));
+        control_EmployeeId1.setText(String.valueOf(selectedEmployee.getId()));
         control_FirstName.setText(selectedEmployee.getFirstName());
         control_LastName.setText(selectedEmployee.getLastName());
         control_Password.setText(selectedEmployee.getPassword());
@@ -300,7 +303,7 @@ public class ControlController  extends MainController implements Initializable 
 
     // Clears the input fields after an operation
     private void clearFields() {
-        control_EmployeeId.clear();
+        control_EmployeeId1.clear();
         control_FirstName.clear();
         control_LastName.clear();
         control_Password.clear();
@@ -313,7 +316,7 @@ public class ControlController  extends MainController implements Initializable 
 
     // Validates if all fields are filled out
     private boolean validateEmployeeFields() {
-        return control_EmployeeId.getText().isEmpty() ||
+        return control_EmployeeId1.getText().isEmpty() ||
                 control_FirstName.getText().isEmpty() ||
                 control_LastName.getText().isEmpty() ||
                 control_Position.getValue() == null ||
