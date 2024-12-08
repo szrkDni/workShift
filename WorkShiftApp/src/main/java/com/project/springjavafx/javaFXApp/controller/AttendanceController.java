@@ -4,17 +4,18 @@ import com.project.springjavafx.javaFXApp.data.dao.LeaveRequestDAO;
 import com.project.springjavafx.javaFXApp.data.dao.WorkShiftDAO;
 import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
 import com.project.springjavafx.javaFXApp.data.models.WorkShift;
+import com.project.springjavafx.javaFXApp.utility.DayStatus;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
@@ -24,6 +25,7 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -36,31 +38,71 @@ public class AttendanceController extends MainController implements Initializabl
     AnchorPane claendarAnchorpane;
 
     @FXML
-    Button attendNormalButton;
+    Pane attendNormalButton;
 
     @FXML
-    Button attendExtraButton;
+    Pane attendExtraButton;
 
+    @FXML
+    Label numberOfNormalHours;
+
+    @FXML
+    Label numberOfExtraHours;
+
+    @FXML
+    Label numberOfBreaks;
+
+    @FXML
+    Label totalHoursToday;
+
+    ///////////////
+    @FXML
+    Label totalWorkedHoursThisMonthLabel;
+
+    @FXML
+    Label normalThisMonth;
+
+    @FXML
+    Label extraThisMonth;
+
+    @FXML
+    Label totalWorkDaysThisMonth;
+
+    @FXML
+    Label workDaysThisMonth;
+
+    @FXML
+    Label takenHolidays;
+    
+    @FXML
+    Label takenSickness;
+
+    @FXML
+    VBox stackedBarVbox;
+
+    @FXML
+    PieChart pieChartOfHours;
+    
     private YearMonth currentYearMonth;
 
     private boolean isAttendedNormalToday = false;
     private boolean isAttendedExtraToday = false;
-    private boolean isOnHoliday = false;
-    private boolean isOnSickLeave = false;
-    private boolean isOnSicknessPension = false;
 
     private OptionalInt maxIdOfAttendance = OptionalInt.empty();
 
 
+    private final WorkShiftDAO workShiftDAO = new WorkShiftDAO();
 
-    private WorkShiftDAO workShiftDAO = new WorkShiftDAO();
+    private final List<WorkShift> workShiftsOfEmployee = workShiftDAO.getAllWorkShifts().stream().filter(workShift -> workShift.getEmployeeId() == employee.getId()).toList();
 
-    private List<WorkShift> workShiftsOfEmployee = workShiftDAO.getAllWorkShifts().stream().filter(workShift -> workShift.getEmployeeId() == employee.getId()).toList();
-
-    private List<LeaveRequest> leaveRequestsOfEmployee = new LeaveRequestDAO().getLeaveRequestsbyEmployeeId(employee.getId()).stream().filter(leaveRequest -> !leaveRequest.getStatus().equalsIgnoreCase("pending")).toList();
+    private final List<LeaveRequest> leaveRequestsOfEmployee = new LeaveRequestDAO().getLeaveRequestsbyEmployeeId(employee.getId()).stream().filter(leaveRequest -> leaveRequest.getStatus().equalsIgnoreCase("approved")).toList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        DayStatus.extraHoursToday = 0;
+        DayStatus.normalHoursToday = 0;
+        DayStatus.breakHoursToday = 0;
 
         maxIdOfAttendance = workShiftDAO.getAllWorkShifts().stream().mapToInt(WorkShift::getId).max();
 
@@ -75,7 +117,7 @@ public class AttendanceController extends MainController implements Initializabl
             attendNormalButton.setOnMouseClicked(event -> {
                 WorkShift normalWorkshift = new WorkShift(maxIdOfAttendance.getAsInt() + 1, employee.getId(), Date.valueOf(LocalDate.now()), 8.0, "Normal");
                 boolean success = workShiftDAO.addShift(normalWorkshift);
-                //attendNormalButton.setDisable(true);
+                attendNormalButton.setDisable(true);
 
                 try{
                     SceneLoader.showScene(event,"attendanceFXML");
@@ -83,13 +125,13 @@ public class AttendanceController extends MainController implements Initializabl
                 }catch (Exception e){
                     System.out.println(e.getMessage());
                 }
+
             });
 
             attendExtraButton.setOnMouseClicked(event -> {
                 WorkShift normalWorkshift = new WorkShift(maxIdOfAttendance.getAsInt() + 1, employee.getId(), Date.valueOf(LocalDate.now()), 4.0, "Extra");
                 boolean success = workShiftDAO.addShift(normalWorkshift);
-                //attendExtraButton.setDisable(true);
-                setLayout(calendarGrid);
+                attendExtraButton.setDisable(true);
 
                 try{
                     SceneLoader.showScene(event,"attendanceFXML");
@@ -97,8 +139,14 @@ public class AttendanceController extends MainController implements Initializabl
                 }catch (Exception e){
                     System.out.println(e.getMessage());
                 }
+
+
             });
 
+            if (!isAttendedNormalToday)
+            {
+                attendExtraButton.setDisable(true);
+            }
 
             mainLayout.setSpacing(10);
 
@@ -108,6 +156,11 @@ public class AttendanceController extends MainController implements Initializabl
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+        numberOfNormalHours.setText("Normal: " + DayStatus.normalHoursToday);
+        numberOfExtraHours.setText("Extra: " + DayStatus.extraHoursToday);
+        numberOfBreaks.setText("Break: " + DayStatus.breakHoursToday);
+        totalHoursToday.setText("Total: " + (DayStatus.breakHoursToday + DayStatus.normalHoursToday + DayStatus.extraHoursToday));
 
     }
 
@@ -169,8 +222,9 @@ public class AttendanceController extends MainController implements Initializabl
             currentYearMonth = yearMonth;
             mainLayout.getChildren().clear();
 
-
-            mainLayout.getChildren().add(new Label(currentYearMonth.getMonth().toString()));
+            Label month = new Label(currentYearMonth.getMonth().toString());
+            month.getStyleClass().add("monthNameText");
+            mainLayout.getChildren().add(month);
 
 
             calendar.setAlignment(Pos.CENTER);
@@ -179,7 +233,9 @@ public class AttendanceController extends MainController implements Initializabl
             String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
             for (int i = 0; i < days.length; i++) {
                 Text dayName = new Text(days[i]);
+                dayName.getStyleClass().add("dayNameText");
                 calendar.add(dayName, i, 0);
+                GridPane.setHalignment(dayName, HPos.CENTER);
             }
 
             // Get the first day of the month
@@ -202,54 +258,46 @@ public class AttendanceController extends MainController implements Initializabl
 
                     if (row == 1 && col < dayOfWeek - 1) {
                         // Empty spaces before the first day
-                        Pane disabledDayPane = dayPane;
-                        disabledDayPane.setStyle("-fx-background-color: grey");
-                        calendar.add(disabledDayPane, col, row);
+                        dayPane.setStyle("-fx-background-color: #d0d0cf");
+                        calendar.add(dayPane, col, row);
                         continue;
                     }
                     if (dayCounter > yearMonth.lengthOfMonth()) {
 
-                        Pane disabledDayPane = dayPane;
-                        disabledDayPane.setStyle("-fx-background-color: grey");
-                        calendar.add(disabledDayPane, col, row);
+                        dayPane.setStyle("-fx-background-color: #d0d0cf");
+                        calendar.add(dayPane, col, row);
 
                         continue;
                     }
 
-                    VBox vbox = new VBox(new Text(String.valueOf(dayCounter)));
-                    //vbox.setAlignment(Pos.CENTER);
-
-                    Label normalHours = new Label("Normal");
-                    normalHours.setAlignment(Pos.CENTER);
-                    normalHours.setTextFill(Color.WHITE);
-                    normalHours.setStyle("-fx-background-color: red;");
-                    normalHours.getStyleClass().add("shiftLabels");
+                    Text text = new Text(String.valueOf(dayCounter));
+                    text.setTextAlignment(TextAlignment.CENTER);
+                    text.getStyleClass().add("dayNameText");
+                    VBox vbox = new VBox(text);
+                    vbox.setSpacing(2);
+                    vbox.setPadding(new Insets(0,0,0,4));
 
 
-                    Label extraHours = new Label("Extra");
-                    extraHours.setAlignment(Pos.CENTER);
-                    extraHours.setTextFill(Color.WHITE);
-                    extraHours.setStyle("-fx-background-color: green;");
-                    extraHours.getStyleClass().add("shiftLabels");
+                    Label normalHours = getCustomLabel("red");
+                    Tooltip normalTooltip = new Tooltip("Normal 8 hours shift (+ 1 hour break)");
+                    Tooltip.install(normalHours,normalTooltip);
+
+                    Label extraHours = getCustomLabel( "green");
+                    Tooltip extraTooltip = new Tooltip("Overtime, 4 hours, paid 200%");
+                    Tooltip.install(extraHours,extraTooltip);
+
+                    Label holidayLabel = getCustomLabel( "#ffcc00");
+                    Tooltip holdayToolTip = new Tooltip("Holiday, paid 100%");
+                    Tooltip.install(holidayLabel,holdayToolTip);
 
 
-                    Label holidayLabel = new Label("Holiday");
-                    holidayLabel.setAlignment(Pos.CENTER);
-                    holidayLabel.setTextFill(Color.WHITE);
-                    holidayLabel.setStyle("-fx-background-color: orange;");
-                    holidayLabel.getStyleClass().add("shiftLabels");
+                    Label sicknessPensionLabel = getCustomLabel( "#ccbccb");
+                    Tooltip sicknessPensionToolTip = new Tooltip("Sickness Pension, paid 60%");
+                    Tooltip.install(sicknessPensionLabel,sicknessPensionToolTip);
 
-                    Label sicknessPensionLabel = new Label("Sickness Pension");
-                    sicknessPensionLabel.setAlignment(Pos.CENTER);
-                    sicknessPensionLabel.setTextFill(Color.WHITE);
-                    sicknessPensionLabel.setStyle("-fx-background-color: grey;");
-                    sicknessPensionLabel.getStyleClass().add("shiftLabels");
-
-                    Label sickLeaveLabel = new Label("Sick Leave");
-                    sickLeaveLabel.setAlignment(Pos.CENTER);
-                    sickLeaveLabel.setTextFill(Color.WHITE);
-                    sickLeaveLabel.setStyle("-fx-background-color: grey;");
-                    sickLeaveLabel.getStyleClass().add("shiftLabels");
+                    Label sickLeaveLabel = getCustomLabel( "#003f5c");
+                    Tooltip sickLeaveTooltip = new Tooltip("Sick Leave, paid 70%");
+                    Tooltip.install(sickLeaveLabel,sickLeaveTooltip);
 
                     isAttendedNormal = false;
                     isAttendedExtra = false;
@@ -268,20 +316,33 @@ public class AttendanceController extends MainController implements Initializabl
                     )).toList();
 
 
-
-
-                    isOnHoliday = false;
-                    isOnSickLeave = false;
-                    isOnSicknessPension = false;
+                    boolean isOnHoliday = false;
+                    boolean isOnSickLeave = false;
+                    boolean isOnSicknessPension = false;
 
                     if (!currentDayShifts.isEmpty()) {
                         for (WorkShift workShift : currentDayShifts) {
                             if (workShift.getShiftType().equalsIgnoreCase("normal")) {
                                 isAttendedNormal = true;
+                                if (workShift.getWorkdayDate().compareTo(Date.valueOf(LocalDate.now())) == 0)
+                                {
+                                    DayStatus.breakHoursToday++;
+                                    DayStatus.normalHoursToday+=8;
+                                }
                             } else if (workShift.getShiftType().equalsIgnoreCase("extra")) {
                                 isAttendedExtra = true;
+
+                                if (workShift.getWorkdayDate().compareTo(Date.valueOf(LocalDate.now())) == 0)
+                                {
+                                    DayStatus.extraHoursToday+=4;
+                                }
+
                             }
+
+
                         }
+
+
                     }
 
                     if(!currentDayTimeOffs.isEmpty()) {
@@ -352,6 +413,67 @@ public class AttendanceController extends MainController implements Initializabl
 
             return new GridPane();
         }
+
+        initialiseMonthlyData(workShiftsOfEmployee, leaveRequestsOfEmployee, yearMonth);
+
         return calendar;
+    }
+
+    private Label getCustomLabel(String color)
+    {
+        Label label = new Label("---------------");
+        label.setAlignment(Pos.CENTER);
+        label.setStyle(String.format("-fx-text-fill: %s; -fx-background-color: %s;",color,color));
+        label.getStyleClass().add("shiftLabels");
+        label.setLayoutX(5);
+
+
+        return label;
+    }
+
+    private void initialiseMonthlyData(List<WorkShift> workShifts, List<LeaveRequest> leaveRequests, YearMonth yearMonth)
+    {
+        workShifts = workShifts.stream().filter(workShift -> yearMonth.getMonth().getValue() == (workShift.getWorkdayDate().getMonth() + 1)).toList();
+        leaveRequests = leaveRequests.stream().filter(request -> yearMonth.getMonth().getValue() == (request.getStartDate().getMonth() +1)).toList();
+
+        //in days
+        int numberOfDaysWorkedThisMonth = workShifts.stream().filter(workShift -> workShift.getWorkHour() == 8).toList().size();
+
+        int numberOfTakenHolidaysThisMonth = 0;
+        int numberOfSickDaysThisMonth = 0;
+
+        for (LeaveRequest request : leaveRequests)
+        {
+            int length = request.getEndDate().getDay() - request.getStartDate().getDay();
+
+            if (request.getLeaveType().equalsIgnoreCase("Holiday"))
+            {
+                numberOfTakenHolidaysThisMonth += ChronoUnit.DAYS.between(request.getStartDate().toLocalDate(), request.getEndDate().toLocalDate().plusDays(1));
+            }
+            else{
+                numberOfSickDaysThisMonth += ChronoUnit.DAYS.between(request.getStartDate().toLocalDate(), request.getEndDate().toLocalDate().plusDays(1));
+            }
+        }
+
+
+        int totalWorkReleatedDaysThisMonth = numberOfDaysWorkedThisMonth + numberOfTakenHolidaysThisMonth + numberOfSickDaysThisMonth;
+
+        totalWorkDaysThisMonth.setText("Days: " + totalWorkReleatedDaysThisMonth);
+        workDaysThisMonth.setText("Working days: " + numberOfDaysWorkedThisMonth);
+        takenHolidays.setText("Holidays: " + numberOfTakenHolidaysThisMonth);
+        takenSickness.setText("Sickness: " + numberOfSickDaysThisMonth);
+
+        //in hours
+        int numberOfNormalWorkedHoursThisMonth = numberOfDaysWorkedThisMonth * 8;
+        int numberOfOvertimeHoursThisMonth = (workShifts.size() - numberOfDaysWorkedThisMonth) * 4;
+        int totalWorkedHoursThisMonth = numberOfNormalWorkedHoursThisMonth + numberOfOvertimeHoursThisMonth;
+
+
+        totalWorkedHoursThisMonthLabel.setText("Worked Hours: " + totalWorkedHoursThisMonth);
+        normalThisMonth.setText("Normal: " + numberOfNormalWorkedHoursThisMonth);
+        extraThisMonth.setText("Extra: " + numberOfOvertimeHoursThisMonth);
+
+
+
     }
 }

@@ -5,13 +5,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.AttendanceController">
@@ -245,34 +248,186 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="297.0" layoutY="108.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+      <AnchorPane layoutX="289.0" layoutY="97.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
          <styleClass>
             <String fx:value="page" />
             <String fx:value="bg-by-option" />
          </styleClass>
          <children>
-            <AnchorPane layoutX="18.0" layoutY="18.0" prefHeight="119.0" prefWidth="303.0" AnchorPane.bottomAnchor="655.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="819.0" AnchorPane.topAnchor="16.0">
+            <AnchorPane layoutX="19.0" layoutY="28.0" prefHeight="202.0" prefWidth="229.0" style="-fx-border-color: #da9730; -fx-border-radius: 10; -fx-border-width: 3;" AnchorPane.bottomAnchor="560.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="26.0">
                <children>
-                  <Label layoutX="32.0" layoutY="30.0" text="Normal hours:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+                  <Label layoutX="32.0" layoutY="30.0" text="Normal shift:" textFill="#fdf0a1" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
                      <font>
-                        <Font name="Berlin Sans FB" size="20.0" />
+                        <Font name="Eras Demi ITC" size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="32.0" layoutY="87.0" text="Extra hours:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="60.0">
+                  <Label layoutX="-2.0" layoutY="62.0" text="Extra shift:" textFill="#fdf0a1" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="60.0">
                      <font>
-                        <Font name="Berlin Sans FB" size="20.0" />
+                        <Font name="Eras Demi ITC" size="25.0" />
                      </font>
                   </Label>
-                  <Circle fill="RED" layoutX="212.0" layoutY="41.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.topAnchor="30.0" />
-                  <Circle fill="LIME" layoutX="212.0" layoutY="72.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.topAnchor="62.0" />
+                  <Circle fill="RED" layoutX="212.0" layoutY="41.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="28.0" />
+                  <Circle fill="#019701" layoutX="212.0" layoutY="72.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="68.0" />
+                  <Label layoutX="33.0" layoutY="93.0" text="Holiday:" textFill="#fdf0a1" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="33.0" layoutY="135.0" text="Sinckness:" textFill="#fdf0a1" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="140.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="25.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="#ffcc00" layoutX="213.0" layoutY="102.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="108.0" />
+                  <Circle fill="#003f5c" layoutX="212.0" layoutY="134.0" radius="10.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="148.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="claendarAnchorpane" layoutX="26.0" layoutY="260.0" prefHeight="421.0" prefWidth="634.0" style="-fx-background-radius: 20; -fx-border-color: grey; -fx-border-width: 2; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="486.0" AnchorPane.topAnchor="260.0">
+            <Pane fx:id="attendNormalButton" layoutX="342.0" layoutY="72.0" AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="70.0">
                <children>
-                  <VBox fx:id="mainLayout" layoutX="4.0" layoutY="142.0" prefHeight="426.0" prefWidth="419.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: red; -fx-background-radius: 10; -fx-border-width: 0;">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/check.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Pane fx:id="attendExtraButton" layoutX="414.0" layoutY="72.0" AnchorPane.rightAnchor="690.0" AnchorPane.topAnchor="70.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #019701; -fx-border-width: 0;">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/check.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <AnchorPane fx:id="claendarAnchorpane" layoutX="26.0" layoutY="260.0" prefHeight="421.0" prefWidth="634.0" style="-fx-background-radius: 20; -fx-border-color: #da9730; -fx-border-width: 3; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="240.0">
+               <children>
+                  <VBox fx:id="mainLayout" layoutX="4.0" layoutY="142.0" prefHeight="426.0" prefWidth="419.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
                </children></AnchorPane>
-            <Button fx:id="attendNormalButton" layoutX="415.0" layoutY="63.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="attendExtraButton" layoutX="728.0" layoutY="63.0" mnemonicParsing="false" text="Button" />
+            <AnchorPane fx:id="claendarAnchorpane1" layoutX="260.0" layoutY="118.0" prefHeight="111.0" prefWidth="395.0" style="-fx-background-radius: 20; -fx-border-color: #da9730; -fx-border-width: 3; -fx-border-radius: 20;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="258.0" AnchorPane.topAnchor="116.0">
+               <children>
+                  <Label layoutX="26.0" layoutY="22.0" prefHeight="24.0" prefWidth="139.0" text="Today (hours)" textFill="#fdf0a1" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numberOfNormalHours" layoutX="31.0" layoutY="66.0" prefHeight="24.0" prefWidth="115.0" text="Normal:" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numberOfExtraHours" layoutX="125.0" layoutY="66.0" prefHeight="24.0" prefWidth="104.0" text="Extra:" textFill="WHITE" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numberOfBreaks" layoutX="276.0" layoutY="66.0" prefHeight="24.0" prefWidth="104.0" text="Break:" textFill="WHITE" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalHoursToday" layoutX="265.0" layoutY="30.0" prefHeight="24.0" prefWidth="104.0" text="Total:" textFill="WHITE" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="claendarAnchorpane11" layoutX="664.0" layoutY="114.0" prefHeight="660.0" prefWidth="459.0" style="-fx-background-radius: 20; -fx-border-color: #da9730; -fx-border-width: 3; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="662.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="116.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="11.0" prefHeight="24.0" prefWidth="139.0" text="This Month" textFill="#fdf0a1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalWorkedHoursThisMonthLabel" layoutX="24.0" layoutY="97.0" prefHeight="24.0" prefWidth="219.0" text="Worked Hours:" textFill="WHITE" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="normalThisMonth" layoutX="69.0" layoutY="151.0" prefHeight="24.0" prefWidth="150.0" text="Normal:" textFill="WHITE" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="extraThisMonth" layoutX="48.0" layoutY="199.0" prefHeight="24.0" prefWidth="150.0" text="Extra:" textFill="WHITE" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="pieChartOfHours" layoutX="238.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.rightAnchor="15.0" />
+                  <Circle fill="WHITE" layoutX="53.0" layoutY="163.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.leftAnchor="45.0" />
+                  <Circle fill="WHITE" layoutX="49.0" layoutY="211.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.leftAnchor="45.0" />
+                  <Label fx:id="totalWorkDaysThisMonth" layoutX="43.0" layoutY="384.0" prefHeight="24.0" prefWidth="219.0" text="Days:" textFill="WHITE" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="workDaysThisMonth" layoutX="69.0" layoutY="441.0" prefHeight="24.0" prefWidth="194.0" text="Working days:" textFill="WHITE" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="69.0" layoutY="453.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.leftAnchor="45.0" />
+                  <Label fx:id="takenHolidays" layoutX="91.0" layoutY="488.0" prefHeight="24.0" prefWidth="150.0" text="Holidays:" textFill="WHITE" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="75.0" layoutY="500.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.leftAnchor="45.0" />
+                  <Label fx:id="takenSickness" layoutX="88.0" layoutY="537.0" prefHeight="24.0" prefWidth="150.0" text="Sickness:" textFill="WHITE" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="72.0" layoutY="549.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.leftAnchor="45.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="5.0" layoutX="23.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="411.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  <VBox fx:id="stackedBarVbox" layoutX="288.0" layoutY="379.0" prefHeight="197.0" prefWidth="100.0" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="51.0" />
+                  <Label layoutX="56.0" layoutY="584.0" prefHeight="24.0" prefWidth="150.0" text="Other: 0" textFill="WHITE" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="46.0" layoutY="596.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.leftAnchor="45.0" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="312.0" layoutY="36.0" prefHeight="31.0" prefWidth="173.0" text="Attend shift(s)" textFill="WHITE" AnchorPane.leftAnchor="312.0" AnchorPane.topAnchor="36.0">
+               <font>
+                  <Font name="Eras Demi ITC" size="25.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="539.0" layoutY="28.0" prefHeight="24.0" prefWidth="571.0" text="Normal means the regular 8 hours shift plus 1 hour break" textAlignment="CENTER" textFill="#fdf0a1">
+               <font>
+                  <Font name="Eras Demi ITC" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="539.0" layoutY="52.0" prefHeight="24.0" prefWidth="571.0" text="Extra means 4 extra hours at then end of your regular shift" textAlignment="CENTER" textFill="#fdf0a1">
+               <font>
+                  <Font name="Eras Demi ITC" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="539.0" layoutY="79.0" prefHeight="37.0" prefWidth="571.0" text="To attend extra first, you have to attend and your regular shift!" textFill="#d70000">
+               <font>
+                  <Font name="Eras Demi ITC" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="83.0" layoutX="533.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-border-radius: 10;" width="4.0" />
          </children>
       </AnchorPane>
    </children>
