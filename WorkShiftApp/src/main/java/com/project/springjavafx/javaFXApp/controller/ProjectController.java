@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
@@ -49,6 +50,9 @@ public class ProjectController extends MainController  {
     private TextField projectSearchField;
 
     @FXML
+    private AnchorPane projectControls;
+
+    @FXML
     private Button projectSearchButton;
 
     @FXML
@@ -67,6 +71,10 @@ public class ProjectController extends MainController  {
         loadProjects(null);
 
         projectsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> onRowSelected());
+        super.initialize(url, resourceBundle);
+        if (!employee.isManager()){
+            projectControls.setVisible(false);
+        }
     }
 
     @FXML
