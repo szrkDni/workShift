@@ -6,12 +6,14 @@ import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
 import com.project.springjavafx.javaFXApp.data.models.WorkShift;
 import com.project.springjavafx.javaFXApp.utility.DayStatus;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.chart.PieChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -19,6 +21,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+import java.awt.font.NumericShaper;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -78,7 +81,7 @@ public class AttendanceController extends MainController implements Initializabl
     Label takenSickness;
 
     @FXML
-    VBox stackedBarVbox;
+    StackedBarChart stackedBarOfDays;
 
     @FXML
     PieChart pieChartOfHours;
@@ -433,6 +436,8 @@ public class AttendanceController extends MainController implements Initializabl
 
     private void initialiseMonthlyData(List<WorkShift> workShifts, List<LeaveRequest> leaveRequests, YearMonth yearMonth)
     {
+
+
         workShifts = workShifts.stream().filter(workShift -> yearMonth.getMonth().getValue() == (workShift.getWorkdayDate().getMonth() + 1)).toList();
         leaveRequests = leaveRequests.stream().filter(request -> yearMonth.getMonth().getValue() == (request.getStartDate().getMonth() +1)).toList();
 
@@ -474,6 +479,18 @@ public class AttendanceController extends MainController implements Initializabl
         extraThisMonth.setText("Extra: " + numberOfOvertimeHoursThisMonth);
 
 
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableList(List.of(
+                new PieChart.Data("Normal", numberOfNormalWorkedHoursThisMonth),
+                new PieChart.Data("Extra", numberOfOvertimeHoursThisMonth))
+        );
+
+        //piechart
+        pieChartOfHours.setData(pieChartData);
+
+        pieChartOfHours.setLabelLineLength(5);
+        pieChartOfHours.getStyleClass().add("pieChart");
+
+        //stackedbar
 
     }
 }
