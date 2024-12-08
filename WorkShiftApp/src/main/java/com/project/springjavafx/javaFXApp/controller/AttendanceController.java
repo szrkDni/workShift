@@ -492,5 +492,8 @@ public class AttendanceController extends MainController implements Initializabl
 
         //stackedbar
 
+        CategoryAxis xAxis = new CategoryAxis();
+
+        xAxis.setCategories(FXCollections.observableList(List.of()));
     }
 }
