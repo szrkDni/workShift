@@ -80,5 +80,11 @@ public class MainController implements Initializable {
         buttoneventHandler.control(mouseEvent);
     }
 
+    public void onprojectButtonClick(MouseEvent mouseEvent)
+    {
+        System.out.println("Project button clicked");
+        buttoneventHandler.project(mouseEvent);
+    }
+
 
 }

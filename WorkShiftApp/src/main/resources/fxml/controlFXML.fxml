@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.ControlController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.ControlController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="-8.666666666666666" layoutY="-7.0" prefHeight="900.0" prefWidth="285.0" style="-fx-background-color: #E0E0E0; -fx-spacing: 10; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1155.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -150,6 +150,33 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="projectlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Project" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                     <styleClass>
+                        <String fx:value="project-button" />
+                        <String fx:value="black-text" />
+                     </styleClass>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="51.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/project.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
                   <Insets bottom="230.0" />
@@ -236,7 +263,7 @@
                   <String fx:value="bg-by-option" />
                </styleClass>
                <children>
-                  <TableView fx:id="control_tableView" layoutX="41.0" layoutY="89.0" onMouseClicked="#selectEmployee" prefHeight="318.0" prefWidth="1054.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/control.css">
+                  <TableView fx:id="control_tableView" layoutX="41.0" layoutY="89.0" prefHeight="318.0" prefWidth="1054.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/control.css">
                      <columns>
                         <TableColumn fx:id="control_employeeId" prefWidth="96.0" style="-fx-border-radius: 10; -fx-border-color: transparent;" text="Employee ID" />
                         <TableColumn fx:id="control_firstName" prefWidth="125.60000610351562" text="First Name" />
@@ -244,8 +271,8 @@
                         <TableColumn fx:id="control_position" prefWidth="103.2000732421875" text="Position" />
                         <TableColumn fx:id="control_email" prefWidth="238.39990234375" text="Email" />
                         <TableColumn fx:id="control_birthDate" prefWidth="138.4000244140625" text="Birth Date" />
-                        <TableColumn fx:id="control_hireDate" prefWidth="141.5999755859375" text="Hire Date" />
-                        <TableColumn fx:id="control_hourlywage" prefWidth="108.0001220703125" text="Hourly Wage" />
+                        <TableColumn fx:id="control_dateMember" prefWidth="141.5999755859375" text="Date Member" />
+                        <TableColumn fx:id="control_salary" prefWidth="108.0001220703125" text="Salary" />
                      </columns>
                   </TableView>
                   <TextField fx:id="control_search" layoutX="41.0" layoutY="28.0" prefHeight="40.0" prefWidth="263.0" promptText="Search" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;">
@@ -260,7 +287,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="control_EmployeeId1" layoutX="171.0" layoutY="482.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
+            <TextField fx:id="control_EmployeeId" layoutX="171.0" layoutY="482.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -310,22 +337,22 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="435.0" layoutY="606.0" prefHeight="27.0" prefWidth="90.0" text="Hire Date:">
+            <Label layoutX="403.0" layoutY="606.0" prefHeight="27.0" prefWidth="121.0" text="Date Member:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="control_HireDate" layoutX="519.0" layoutY="600.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;">
+            <TextField fx:id="control_DateMember" layoutX="519.0" layoutY="600.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="410.0" layoutY="666.0" prefHeight="27.0" prefWidth="110.0" text="Hourly Wage:">
+            <Label layoutX="466.0" layoutY="666.0" prefHeight="27.0" prefWidth="54.0" text="Salary:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="control_HourlyWage" layoutX="519.0" layoutY="660.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
+            <TextField fx:id="control_Salary" layoutX="519.0" layoutY="660.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -351,16 +378,6 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="769.0" layoutY="488.0" prefHeight="27.0" prefWidth="82.0" text="Password:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="control_Password" layoutX="848.0" layoutY="482.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
          </children>
       </AnchorPane>
    </children>
