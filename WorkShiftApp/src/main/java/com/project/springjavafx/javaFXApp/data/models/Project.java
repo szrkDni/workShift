@@ -1,6 +1,7 @@
 package com.project.springjavafx.javaFXApp.data.models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Project {
     private int id;
@@ -20,6 +21,22 @@ public class Project {
         this.endDate = endDate;
     }
 
-    // Getters and Setters
-    // ... Add getter and setter methods here ...
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getProjectName() { return projectName; }
+    public void setProjectName(String projectName) { this.projectName = projectName; }
+
+    public int getProjectManager() { return projectManager; }
+
+    public void setProjectManager(String projectManager) { this.projectManager = Integer.parseInt(projectManager); }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Date getStartDate() { return startDate; }
+    public void setStartDate(LocalDate startDate) { this.startDate = Date.valueOf(startDate); }
+
+    public Date getEndDate() { return endDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = Date.valueOf(endDate); }
 }

@@ -17,7 +17,6 @@ public class PasswordHandler {
         }
 
     }
-
     public static boolean verify(String password, String hash) {
 
         return encrypt(password).equals(hash);

@@ -31,17 +31,19 @@ public class SceneLoader {/**
      * @param fxmlName   The name of the FXML file to load (without extension).
      * @throws IOException If the FXML file cannot be found or loaded.
      */
+
     public static void showScene(MouseEvent mouseEvent, String fxmlName) throws IOException {
         // Load the FXML file and create a new Parent object
         Parent parent = FXMLLoader.load(SceneLoader.class.getResource("/fxml/" + fxmlName + ".fxml"));
 
         // Create a new Scene using the loaded Parent
         Scene scene = new Scene(parent);
-
         // Get the current stage from the event and set the new scene
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle(fxmlName);
+
         stage.show(); // Show the new scene
     }
+
 }

@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp.utility;
 
+import com.project.springjavafx.javaFXApp.controller.ProjectController;
 import com.project.springjavafx.javaFXApp.data.dto.AfterLoginDTO;
 import javafx.scene.input.MouseEvent;
 
@@ -70,9 +71,7 @@ public class ButtoneventHandler {
     public void project(MouseEvent mouseEvent) {
 
         try{
-
             SceneLoader.showScene(mouseEvent,"projectFXML");
-
         }catch(IOException e){
             System.out.println(e.getMessage());
             System.out.println(e.getCause());

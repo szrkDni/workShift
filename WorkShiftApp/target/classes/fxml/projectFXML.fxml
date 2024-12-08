@@ -257,21 +257,26 @@
          <children>
             <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="458.0" prefWidth="1125.0">
                <children>
-                  <TableView fx:id="project_tableview" layoutY="82.0" prefHeight="361.0" prefWidth="1110.0" style="-fx-background-color: transpare; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/project.css">
+                  <TableView fx:id="projectsTable" layoutY="82.0" prefHeight="361.0" prefWidth="1110.0" style="-fx-background-color: black; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/project.css">
                     <columns>
-                      <TableColumn prefWidth="50.0" text="ID" />
-                      <TableColumn prefWidth="225.0" text="Project Name" />
-                        <TableColumn minWidth="0.0" prefWidth="225.0" text="Project Managger" />
-                        <TableColumn prefWidth="410.0" text="Discription" />
-                        <TableColumn prefWidth="100.0" text="Start Date" />
-                        <TableColumn prefWidth="100.0" text="End Date" />
+                      <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+                      <TableColumn fx:id="projectNameColumn" prefWidth="225.0" text="Project Name" />
+                        <TableColumn fx:id="projectManagerColumn" minWidth="0.0" prefWidth="225.0" text="Project Managger" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="410.0" text="Discription" />
+                        <TableColumn fx:id="startDateColumn" prefWidth="100.0" text="Start Date" />
+                        <TableColumn fx:id="endDateColumn" prefWidth="100.0" text="End Date" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="project_search" layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="282.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" text="Search">
+                  <TextField fx:id="projectSearchField" layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="282.0" promptText="Search" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
+                  <Button fx:id="projectSearchButton" layoutX="319.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClicked" prefHeight="35.0" prefWidth="69.0" text="Search">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <TextField fx:id="project_id" layoutX="194.0" layoutY="491.0">
