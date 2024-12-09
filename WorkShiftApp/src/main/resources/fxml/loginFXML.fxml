@@ -69,7 +69,7 @@
             </HBox>
             <AnchorPane layoutY="50.0" prefHeight="94.0" prefWidth="1040.0">
                <children>
-                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="LOG IN AS" textAlignment="CENTER" textFill="#ebebeb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="LOGIN AS" textAlignment="CENTER" textFill="#ebebeb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="Perpetua" size="65.0" />
                      </font>

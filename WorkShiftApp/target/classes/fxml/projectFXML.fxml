@@ -101,33 +101,6 @@
                 </AnchorPane>
                 <AnchorPane>
                     <children>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onpaymentButtonClick" prefHeight="45.0" prefWidth="240.0" text="Payment" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <padding>
-                                <Insets left="70.0" />
-                            </padding>
-                            <font>
-                                <Font name="System Bold Italic" size="20.0" />
-                            </font>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                            <styleClass>
-                                <String fx:value="payment-button" />
-                                <String fx:value="black-text" />
-                            </styleClass>
-                        </Button>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/coins.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </AnchorPane>
-                <AnchorPane>
-                    <children>
                         <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#ontimeoffButtonClick" prefHeight="45.0" prefWidth="240.0" text="Time off" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                             <opaqueInsets>
                                 <Insets />
@@ -153,7 +126,7 @@
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane>
                     <children>
                         <Button fx:id="projectlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onprojectButtonClick" prefHeight="45.0" prefWidth="240.0" text="Project" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                             <cursor>
@@ -182,7 +155,7 @@
                 </AnchorPane>
                 <AnchorPane fx:id="controlAnchorPane">
                     <VBox.margin>
-                        <Insets bottom="230.0" />
+                        <Insets />
                     </VBox.margin>
                     <children>
                         <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -211,7 +184,11 @@
                                 <Image url="@../img/administrator.png" />
                             </image>
                         </ImageView>
-                        <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE">
+                    </children>
+                </AnchorPane>
+                <AnchorPane>
+                    <children>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="LogOut" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
@@ -229,12 +206,15 @@
                                 <String fx:value="black-text" />
                             </styleClass>
                         </Button>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../img/logout.png" />
                             </image>
                         </ImageView>
                     </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
                 </AnchorPane>
                 <AnchorPane>
                     <VBox.margin>

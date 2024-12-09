@@ -21,7 +21,6 @@ com\project\springjavafx\javaFXApp\controller\ProjectController.class
 com\project\springjavafx\javaFXApp\data\models\LoginData.class
 com\project\springjavafx\javaFXApp\utility\Credentials.class
 com\project\springjavafx\javaFXApp\controller\ControlController.class
-com\project\springjavafx\javaFXApp\controller\PaymentController.class
 com\project\springjavafx\springApp\SpringManager.class
 com\project\springjavafx\javaFXApp\data\dao\ProjectDAO.class
 com\project\springjavafx\javaFXApp\data\models\ProjectWorker.class

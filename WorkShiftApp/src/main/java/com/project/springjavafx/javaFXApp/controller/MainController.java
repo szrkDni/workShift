@@ -59,12 +59,7 @@ public class MainController implements Initializable {
         buttoneventHandler.attendance(mouseEvent);
     }
 
-    @FXML
-    public void onpaymentButtonClick(MouseEvent mouseEvent)
-    {
-        System.out.println("Payment button clicked");
-        buttoneventHandler.payment(mouseEvent);
-    }
+
 
     @FXML
     public void ontimeoffButtonClick(MouseEvent mouseEvent)
