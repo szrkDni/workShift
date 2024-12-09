@@ -42,3 +42,9 @@
     -fx-text-fill: white;
 
 }
+
+.stackedBarOfDays{
+    -fx-font-size: 15;
+    -fx-font-family: "Eras Demi ITC";
+    -fx-text-fill: white;
+}

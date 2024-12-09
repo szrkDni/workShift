@@ -422,12 +422,12 @@
                   <Font name="Eras Demi ITC" size="25.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="539.0" layoutY="28.0" prefHeight="24.0" prefWidth="571.0" text="Normal means the regular 8 hours shift plus 1 hour break" textAlignment="CENTER" textFill="#fdf0a1">
+            <Label alignment="CENTER" layoutX="539.0" layoutY="28.0" prefHeight="24.0" prefWidth="571.0" text="Normal shift starts at 8 AM and ends at 17 PM" textAlignment="CENTER" textFill="#fdf0a1">
                <font>
                   <Font name="Eras Demi ITC" size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="539.0" layoutY="52.0" prefHeight="24.0" prefWidth="571.0" text="Extra means 4 extra hours at then end of your regular shift" textAlignment="CENTER" textFill="#fdf0a1">
+            <Label alignment="CENTER" layoutX="539.0" layoutY="52.0" prefHeight="24.0" prefWidth="571.0" text="Extra means 4 extra hours at the end of your regular shift" textAlignment="CENTER" textFill="#fdf0a1">
                <font>
                   <Font name="Eras Demi ITC" size="20.0" />
                </font>

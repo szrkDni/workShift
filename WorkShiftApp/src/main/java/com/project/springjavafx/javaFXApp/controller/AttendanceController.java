@@ -13,11 +13,13 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
@@ -81,7 +83,7 @@ public class AttendanceController extends MainController implements Initializabl
     Label takenSickness;
 
     @FXML
-    StackedBarChart stackedBarOfDays;
+    StackedBarChart<String, Number> stackedBarOfDays;
 
     @FXML
     PieChart pieChartOfHours;
@@ -170,6 +172,7 @@ public class AttendanceController extends MainController implements Initializabl
 
     public void setLayout(AtomicReference<GridPane> calendarGrid)
     {
+
         try {
             mainLayout.setAlignment(Pos.CENTER);
             mainLayout.getChildren().add(calendarGrid.get());
@@ -312,10 +315,10 @@ public class AttendanceController extends MainController implements Initializabl
 
 
                     List<LeaveRequest> currentDayTimeOffs = leaveRequests.stream().filter(leaveRequest ->
-                            leaveRequest.getStartDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter))) ||
-                            leaveRequest.getEndDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter))) ||
-                            LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter).isAfter(ChronoLocalDate.from(leaveRequest.getStartDate().toLocalDate())) &&
-                            LocalDate.of(Year.now().getValue(), YearMonth.now().getMonth(),finalDayCounter).isBefore(ChronoLocalDate.from(leaveRequest.getEndDate().toLocalDate())
+                            leaveRequest.getStartDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(currentYearMonth.getYear(), currentYearMonth.getMonth(),finalDayCounter))) ||
+                            leaveRequest.getEndDate().toLocalDate().isEqual(ChronoLocalDate.from(LocalDate.of(currentYearMonth.getYear(), currentYearMonth.getMonth(),finalDayCounter))) ||
+                            LocalDate.of(currentYearMonth.getYear(), currentYearMonth.getMonth(),finalDayCounter).isAfter(ChronoLocalDate.from(leaveRequest.getStartDate().toLocalDate())) &&
+                            LocalDate.of(currentYearMonth.getYear(), currentYearMonth.getMonth(),finalDayCounter).isBefore(ChronoLocalDate.from(leaveRequest.getEndDate().toLocalDate())
                     )).toList();
 
 
@@ -349,6 +352,7 @@ public class AttendanceController extends MainController implements Initializabl
                     }
 
                     if(!currentDayTimeOffs.isEmpty()) {
+                        System.out.println(currentDayTimeOffs.get(0).getStartDate());
                             if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("holiday")) {
                                 isOnHoliday = true;
                             }
@@ -396,6 +400,9 @@ public class AttendanceController extends MainController implements Initializabl
                     {
                         vbox.getChildren().add(sicknessPensionLabel);
                     }
+
+                    System.out.println(currentYearMonth.getMonth().toString());
+                    System.out.println(dayCounter + " Work: " + isAttendedNormal + " Holiday: " + isOnHoliday + "Sick: " + isOnSickLeave);
 
                     dayPane.getChildren().add(vbox);
 
@@ -492,8 +499,38 @@ public class AttendanceController extends MainController implements Initializabl
 
         //stackedbar
 
-        CategoryAxis xAxis = new CategoryAxis();
+        try {
 
-        xAxis.setCategories(FXCollections.observableList(List.of()));
+
+            CategoryAxis xAxis = new CategoryAxis();
+
+            xAxis.setCategories(FXCollections.<String>observableList(List.of("Work", "Holiday", "Sickness")));
+
+            NumberAxis yAxis = new NumberAxis(1, 31, 5);
+            yAxis.setLabel("Days statistics this month");
+
+
+            stackedBarOfDays.getData().clear();
+            stackedBarOfDays.getXAxis().setTickLabelFont(Font.font("Eras Demi ITC"));
+            stackedBarOfDays.getYAxis().setTickLabelFont(Font.font("Eras Demi ITC"));
+
+
+            XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+            XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+            XYChart.Series<String, Number> series3 = new XYChart.Series<>();
+            series1.getData().add(new XYChart.Data<>("Work", numberOfDaysWorkedThisMonth));
+            series2.getData().add(new XYChart.Data<>("Holiday", numberOfTakenHolidaysThisMonth));
+            series3.getData().add(new XYChart.Data<>("Sickness", numberOfSickDaysThisMonth));
+
+
+            stackedBarOfDays.getData().addAll(series1, series2, series3);
+            stackedBarOfDays.setLegendVisible(false);
+            stackedBarOfDays.setTitle(LocalDate.now().getMonth().toString());
+            stackedBarOfDays.getStyleClass().add("stackedBarOfDays");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
