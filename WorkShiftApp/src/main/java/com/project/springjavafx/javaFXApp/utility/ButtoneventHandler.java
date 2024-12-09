@@ -74,7 +74,7 @@ public class ButtoneventHandler {
             SceneLoader.showScene(mouseEvent,"controlFXML");
 
         }catch(IOException e){
-            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
         }
     }
 
