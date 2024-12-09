@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp.controller;
 
+import com.project.springjavafx.javaFXApp.data.dao.ProjectDAO;
 import com.project.springjavafx.javaFXApp.data.db.DatabaseConnector;
 import com.project.springjavafx.javaFXApp.data.models.Project;
 import com.project.springjavafx.javaFXApp.data.models.ProjectWorker;
@@ -21,7 +22,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+
+
 public class ProjectController extends MainController  {
+
+
 
     @FXML
     public TextField project_id;
@@ -142,59 +147,21 @@ public class ProjectController extends MainController  {
             }
         });
 
-
         workerNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getWorkerName()));
 
         loadTreeTableData();
     }
 
     private void loadTreeTableData() {
-        // Gyökérelem létrehozása
+
         TreeItem<ProjectWorker> root = new TreeItem<>(new ProjectWorker(null, "Projects", null, null));
         root.setExpanded(true);
 
-        try (Connection connection = DatabaseConnector.connect();
-             Statement statement = connection.createStatement()) {
+        Map<Integer, TreeItem<ProjectWorker>> projectMap = projektDAO.getProjectWorkers();
+        root.getChildren().addAll(projectMap.values());
 
-            // Adatbázis lekérdezés
-            String query = "SELECT p.id AS projectId, p.project_name, e.id AS worker_Id, CONCAT(e.first_name, \" \", e.last_name) AS workerName " +
-                    "FROM Projects p " +
-                    "LEFT JOIN Project_Workers pw ON p.id = pw.project_id " +
-                    "LEFT JOIN Employees e ON pw.employee_id = e.id";
-            ResultSet rs = statement.executeQuery(query);
-
-            // Projekt gyökérelemek nyilvántartása, hogy ne hozzunk létre többször újakat
-            Map<Integer, TreeItem<ProjectWorker>> projectMap = new HashMap<>();
-
-            while (rs.next()) {
-                Integer projectId = rs.getInt("projectId");
-                String projectName = rs.getString("project_name");
-                Integer workerId = rs.getInt("worker_Id");
-                String workerName = rs.getString("workerName");
-
-                // Ellenőrizzük, hogy a projekt már szerepel-e
-                TreeItem<ProjectWorker> projectItem = projectMap.get(projectId);
-                if (projectItem == null) {
-                    // Ha a projekt még nem szerepel, létrehozzuk
-                    projectItem = new TreeItem<>(new ProjectWorker(projectId, projectName, null, null));
-                    projectMap.put(projectId, projectItem); // Tároljuk a projektet a map-ben
-                    root.getChildren().add(projectItem); // Hozzáadjuk a gyökérhez
-                }
-
-                // Ha van hozzá munkás, hozzáadjuk a projekt alá
-                if (workerId != null) {
-                    TreeItem<ProjectWorker> workerItem = new TreeItem<>(new ProjectWorker(null, null, workerId, workerName));
-                    projectItem.getChildren().add(workerItem);
-                }
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error loading TreeTable data: " + e.getMessage());
-        }
-
-        // Beállítjuk a TreeTableView gyökerét
         projectTreeTableView.setRoot(root);
-        projectTreeTableView.setShowRoot(false); // Gyökér ne jelenjen meg
+        projectTreeTableView.setShowRoot(false);
     }
 
     private void loadComboBoxData() {
@@ -272,25 +239,6 @@ public class ProjectController extends MainController  {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FXML
     private void onRowSelected() {
         Project selectedProject = projectsTable.getSelectionModel().getSelectedItem();
@@ -344,7 +292,7 @@ public class ProjectController extends MainController  {
     }
 
     private void loadProjects(String searchQuery) {
-        ObservableList<Project> projects = getProjects(searchQuery);
+        ObservableList<Project> projects = projektDAO.getProjects(searchQuery);
         projectsTable.setItems(projects);
     }
 
@@ -410,26 +358,21 @@ public class ProjectController extends MainController  {
     }
 
     public void addProject() {
+        boolean success = projektDAO.addProject(
+                project_name.getText(),
+                Integer.parseInt(project_manager.getText()),
+                project_description.getText(),
+                project_start_date.getValue() != null ? java.sql.Date.valueOf(project_start_date.getValue()) : null,
+                project_end_date.getValue() != null ? java.sql.Date.valueOf(project_end_date.getValue()) : null
+        );
 
-        String query = "INSERT INTO Projects (project_name, project_manager,  description, start_date, end_date) VALUES (?, ?, ?, ?, ?)";
-        try (Connection connection = DatabaseConnector.connect();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setString(1, project_name.getText());
-            statement.setInt(2, Integer.parseInt(project_manager.getText()));
-            statement.setString(3, project_description.getText());
-            statement.setDate(4, project_start_date != null ? java.sql.Date.valueOf(project_start_date.getValue()) : null);
-            statement.setDate(5, project_end_date != null ? java.sql.Date.valueOf(project_end_date.getValue()) : null);
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("Project added successfully.");
-            } else {
-                System.out.println("Error adding project.");
-            }
+        if (success) {
+            System.out.println("Project added successfully.");
             loadProjects(null);
-        } catch (SQLException e) {
-            System.out.println("Error while adding project: " + e.getMessage());
+        } else {
+            System.out.println("Error adding project.");
         }
     }
+
+    private final ProjectDAO projektDAO = new ProjectDAO();
 }

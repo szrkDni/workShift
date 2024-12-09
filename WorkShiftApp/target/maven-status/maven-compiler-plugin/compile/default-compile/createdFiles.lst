@@ -1,5 +1,6 @@
 com\project\springjavafx\springApp\SpringJavaFxApplication.class
 com\project\springjavafx\javaFXApp\controller\MainController.class
+com\project\springjavafx\javaFXApp\controller\ProjectController$2.class
 com\project\springjavafx\javaFXApp\data\dao\LeaveRequestDAO.class
 com\project\springjavafx\javaFXApp\data\models\WorkShift.class
 com\project\springjavafx\javaFXApp\utility\PasswordHandler.class
@@ -23,7 +24,9 @@ com\project\springjavafx\javaFXApp\controller\ControlController.class
 com\project\springjavafx\javaFXApp\controller\PaymentController.class
 com\project\springjavafx\springApp\SpringManager.class
 com\project\springjavafx\javaFXApp\data\dao\ProjectDAO.class
+com\project\springjavafx\javaFXApp\data\models\ProjectWorker.class
 com\project\springjavafx\javaFXApp\exceptions\LoginformException.class
+com\project\springjavafx\javaFXApp\controller\ProjectController$1.class
 com\project\springjavafx\javaFXApp\controller\TimeoffController$1.class
 com\project\springjavafx\javaFXApp\controller\secondary\ManageLRController.class
 com\project\springjavafx\javaFXApp\data\models\LeaveRequest.class
