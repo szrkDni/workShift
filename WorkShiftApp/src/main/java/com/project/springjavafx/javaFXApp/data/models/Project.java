@@ -39,4 +39,6 @@ public class Project {
 
     public Date getEndDate() { return endDate; }
     public void setEndDate(LocalDate endDate) { this.endDate = Date.valueOf(endDate); }
+
+
 }
