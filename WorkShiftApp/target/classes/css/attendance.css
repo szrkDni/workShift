@@ -6,3 +6,45 @@
     -fx-border-width: 2;
 }
 
+
+.dayPane{
+    -fx-background-color: wheat;
+    -fx-pref-width: 100;
+    -fx-pref-height: 70;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-border-color: #FFA351;
+    -fx-border-width: 1;
+    -fx-spacing: 10;
+    -fx-padding: 0 0 0 50;
+}
+
+.shiftLabels{
+    -fx-border-radius: 10;
+    -fx-padding: 2;
+    -fx-background-radius: 20;
+}
+
+.dayNameText{
+    -fx-font-size: 15;
+    -fx-font-family: "Eras Demi ITC";
+}
+
+.monthNameText{
+    -fx-font-size: 25;
+    -fx-font-family: "Eras Demi ITC";
+    -fx-text-fill:  #fdf0a1;
+}
+
+.pieChart{
+    -fx-font-size: 15;
+    -fx-font-family: "Eras Demi ITC";
+    -fx-text-fill: white;
+
+}
+
+.stackedBarOfDays{
+    -fx-font-size: 15;
+    -fx-font-family: "Eras Demi ITC";
+    -fx-text-fill: white;
+}

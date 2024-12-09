@@ -12,6 +12,10 @@ public class DayStatus {
     public int NumOfSickLeaveHours;
     public int NumOfSicknessPensionHours;
 
+    public static int normalHoursToday;
+    public static int extraHoursToday;
+    public static int breakHoursToday;
+
     public DayStatus(List<WorkShift> workshift, List<LeaveRequest> leaverequest) {
         NumOfOffHours = leaverequest.stream().filter((x)-> x.getLeaveType().equalsIgnoreCase("Holiday")).toList().size()*8;
         NumOfSickLeaveHours = leaverequest.stream().filter((x)-> x.getLeaveType().equalsIgnoreCase("Sick Leave")).toList().size()*8;

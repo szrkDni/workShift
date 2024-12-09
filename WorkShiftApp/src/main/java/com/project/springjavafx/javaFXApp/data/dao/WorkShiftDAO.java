@@ -31,5 +31,36 @@ public class WorkShiftDAO {
         }
         return workShifts;
     }
+
+
+    public boolean addShift(WorkShift workShift) {
+
+        int row = 0;
+
+        try {
+            Connection connection = DatabaseConnector.connect();
+
+            String query = "INSERT INTO Work_shifts (id, employee_id, workday_date, work_hour, shift_type)"  +
+                    " VALUES ('" + workShift.getId() + "'," +
+                    "'" + workShift.getEmployeeId() + "'," +
+                    "'" + workShift.getWorkdayDate() + "'," +
+                    "'" + workShift.getWorkHour() + "'," +
+                    "'" + workShift.getShiftType() + "'"
+                    +")";
+
+
+            PreparedStatement stmt = connection.prepareStatement(query);
+
+
+            row = stmt.executeUpdate();
+
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+
+        return row > 0;
+    }
 }
 
