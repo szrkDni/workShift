@@ -45,17 +45,6 @@ public class ButtoneventHandler {
         }
     }
 
-    public void payment(MouseEvent mouseEvent) {
-
-        try{
-
-            SceneLoader.showScene(mouseEvent,"paymentFXML");
-
-        }catch(IOException e){
-            System.out.println(e.getMessage());
-        }
-    }
-
     public void timeoff(MouseEvent mouseEvent) {
 
         try{

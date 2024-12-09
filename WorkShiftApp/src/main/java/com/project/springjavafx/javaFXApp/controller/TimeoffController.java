@@ -94,7 +94,7 @@ public class TimeoffController extends MainController implements Initializable {
     public static OptionalInt numberOfRequests = OptionalInt.of(0);
 
     protected int numberOfUsedHolidays = leaveRequests.stream()
-            .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Holiday"))
+            .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Holiday")  && leaves.getStatus().equalsIgnoreCase("Approved"))
             .mapToInt((leaves) ->
             {
                 LocalDate startDate = leaves.getStartDate().toLocalDate();
@@ -105,7 +105,7 @@ public class TimeoffController extends MainController implements Initializable {
             .sum();
 
     protected int numberOfUsedSickLeaves = leaveRequests.stream()
-            .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Sick Leave"))
+            .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Sick Leave") && leaves.getStatus().equalsIgnoreCase("Approved"))
             .mapToInt((leaves) ->
             {
                 LocalDate startDate = leaves.getStartDate().toLocalDate();
@@ -116,7 +116,7 @@ public class TimeoffController extends MainController implements Initializable {
             .sum();
 
     protected int numberOfSicknessPension = leaveRequests.stream()
-            .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Sickness Pension"))
+            .filter((leaves) -> leaves.getLeaveType().equalsIgnoreCase("Sickness Pension")  && leaves.getStatus().equalsIgnoreCase("Approved"))
             .mapToInt((leaves) ->
             {
                 LocalDate startDate = leaves.getStartDate().toLocalDate();
@@ -129,10 +129,16 @@ public class TimeoffController extends MainController implements Initializable {
     protected int numberOfRemainingHolidays = numberOfHolidays - numberOfUsedHolidays;
     protected int numberOFRemainingSickLeaves = numberOfSickLeave - numberOfUsedSickLeaves;
 
+    public static int staticremainingHolidays = 0;
+    public static int staticremainingSickness = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         numberOfRequests = allLeaveRequests.stream().mapToInt(LeaveRequest::getLeaveId).max();
+
+        staticremainingHolidays = numberOfRemainingHolidays;
+        staticremainingSickness = numberOFRemainingSickLeaves;
 
         super.initialize(url, resourceBundle);
 

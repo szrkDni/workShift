@@ -41,3 +41,8 @@ project-button{
 .page{
     -fx-background-radius: 10;
 }
+
+.circle{
+    -fx-fill: url('../img/beach.jpg');
+    -fx-background-image: url('../img/beach.jpg');
+}
