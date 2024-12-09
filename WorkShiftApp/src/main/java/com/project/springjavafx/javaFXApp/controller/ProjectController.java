@@ -314,11 +314,13 @@ public class ProjectController extends MainController  {
     }
 
     public void deleteProject() {
-        String query = "DELETE FROM Projects WHERE id = ?";
+        String query = "DELETE FROM Project_Workers WHERE project_id = ?;" +
+                "DELETE FROM Projects WHERE id = ?;";
         try (Connection connection = DatabaseConnector.connect();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, Integer.parseInt(project_id.getText()) );
+            statement.setInt(2, Integer.parseInt(project_id.getText()) );
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -327,6 +329,7 @@ public class ProjectController extends MainController  {
                 System.out.println("No project found with the specified ID.");
             }
             loadProjects(null);
+            loadTreeTableData();
         } catch (SQLException e) {
             System.out.println("Error while deleting project: " + e.getMessage());
         }
@@ -352,6 +355,7 @@ public class ProjectController extends MainController  {
                 System.out.println("No project found with the specified ID.");
             }
             loadProjects(null);
+            loadTreeTableData();
         } catch (SQLException e) {
             System.out.println("Error while updating project: " + e.getMessage());
         }
@@ -369,6 +373,7 @@ public class ProjectController extends MainController  {
         if (success) {
             System.out.println("Project added successfully.");
             loadProjects(null);
+            loadTreeTableData();
         } else {
             System.out.println("Error adding project.");
         }
