@@ -187,16 +187,26 @@ public class EmployeeDAO {
 
     // Method to delete an employee by ID
     public boolean deleteEmployee(int employeeId) {
-        String query = "DELETE FROM Employees WHERE id = ?";
+        String query =
+                "DELETE FROM Work_shifts WHERE employee_id = ?; " +
+                "DELETE FROM Leave_Requests WHERE employee_id = ?;" +
+                "DELETE FROM Project_Workers WHERE employee_id = ?;" +
+                "DELETE FROM Projects WHERE project_manager = ?;" +
+                "DELETE FROM Employees WHERE id = ?; ";
 
         try (Connection connection = DatabaseConnector.connect();
              PreparedStatement stmt = connection.prepareStatement(query)) {
 
             stmt.setInt(1, employeeId);
+            stmt.setInt(2, employeeId);
+            stmt.setInt(3, employeeId);
+            stmt.setInt(4, employeeId);
+            stmt.setInt(5, employeeId);
 
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
             return false;
         }
     }
