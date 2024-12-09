@@ -41,7 +41,7 @@ public class Employee {
         return pswd;
     }
 
-    public void setPassword(String firstName) {
+    public void setPassword(String pswd) {
         this.pswd = pswd;
     }
 

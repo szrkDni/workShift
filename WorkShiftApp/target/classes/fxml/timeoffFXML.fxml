@@ -262,14 +262,14 @@
                </font>
             </Label>
             <TableView fx:id="leaveRequestsTable" fixedCellSize="50.0" layoutX="118.0" layoutY="376.0" prefHeight="426.0" prefWidth="906.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0">
-               <columns>
+              <columns>
                   <TableColumn fx:id="requestedByTablecolumn" prefWidth="150.0" sortable="false" text="Requested By" />
                   <TableColumn fx:id="statusOfRequestTableColumn" prefWidth="150.0" sortable="false" text="Status" />
                   <TableColumn fx:id="startdateTableColumn" prefWidth="150.0" text="Start" />
                   <TableColumn fx:id="enddateTableColumn" minWidth="3.000030517578125" prefWidth="150.0" text="End" />
                   <TableColumn fx:id="typeOfLeaveTableColumn" prefWidth="150.0" text="Type" />
                   <TableColumn fx:id="manageTableColumn" prefWidth="150.0" text="Manage" />
-               </columns>
+              </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
