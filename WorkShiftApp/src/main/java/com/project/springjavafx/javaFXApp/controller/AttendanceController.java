@@ -1,5 +1,6 @@
 package com.project.springjavafx.javaFXApp.controller;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.project.springjavafx.javaFXApp.data.dao.LeaveRequestDAO;
 import com.project.springjavafx.javaFXApp.data.dao.WorkShiftDAO;
 import com.project.springjavafx.javaFXApp.data.models.LeaveRequest;
@@ -13,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,11 +23,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import java.awt.font.NumericShaper;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.YearMonth;
 import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoUnit;
@@ -83,10 +81,13 @@ public class AttendanceController extends MainController implements Initializabl
     Label takenSickness;
 
     @FXML
-    StackedBarChart<String, Number> stackedBarOfDays;
+    PieChart pieChartOfHours;
 
     @FXML
-    PieChart pieChartOfHours;
+    PieChart pieChartOfDays;
+
+    @FXML
+    AnchorPane claendarAnchorpane11;
     
     private YearMonth currentYearMonth;
 
@@ -352,7 +353,7 @@ public class AttendanceController extends MainController implements Initializabl
                     }
 
                     if(!currentDayTimeOffs.isEmpty()) {
-                        System.out.println(currentDayTimeOffs.get(0).getStartDate());
+
                             if (currentDayTimeOffs.get(0).getLeaveType().equalsIgnoreCase("holiday")) {
                                 isOnHoliday = true;
                             }
@@ -401,8 +402,6 @@ public class AttendanceController extends MainController implements Initializabl
                         vbox.getChildren().add(sicknessPensionLabel);
                     }
 
-                    System.out.println(currentYearMonth.getMonth().toString());
-                    System.out.println(dayCounter + " Work: " + isAttendedNormal + " Holiday: " + isOnHoliday + "Sick: " + isOnSickLeave);
 
                     dayPane.getChildren().add(vbox);
 
@@ -456,14 +455,14 @@ public class AttendanceController extends MainController implements Initializabl
 
         for (LeaveRequest request : leaveRequests)
         {
-            int length = request.getEndDate().getDay() - request.getStartDate().getDay();
+
 
             if (request.getLeaveType().equalsIgnoreCase("Holiday"))
             {
-                numberOfTakenHolidaysThisMonth += ChronoUnit.DAYS.between(request.getStartDate().toLocalDate(), request.getEndDate().toLocalDate().plusDays(1));
+                numberOfTakenHolidaysThisMonth += (int) ChronoUnit.DAYS.between(request.getStartDate().toLocalDate(), request.getEndDate().toLocalDate().plusDays(1));
             }
             else{
-                numberOfSickDaysThisMonth += ChronoUnit.DAYS.between(request.getStartDate().toLocalDate(), request.getEndDate().toLocalDate().plusDays(1));
+                numberOfSickDaysThisMonth += (int) ChronoUnit.DAYS.between(request.getStartDate().toLocalDate(), request.getEndDate().toLocalDate().plusDays(1));
             }
         }
 
@@ -497,40 +496,20 @@ public class AttendanceController extends MainController implements Initializabl
         pieChartOfHours.setLabelLineLength(5);
         pieChartOfHours.getStyleClass().add("pieChart");
 
-        //stackedbar
+        //piechart days
 
-        try {
+        pieChartData = FXCollections.observableList(List.of(
+                new PieChart.Data("Work", numberOfDaysWorkedThisMonth),
+                new PieChart.Data("Holiday", numberOfTakenHolidaysThisMonth),
+                new PieChart.Data("Sickness", numberOfTakenHolidaysThisMonth)
 
+        ));
 
-            CategoryAxis xAxis = new CategoryAxis();
+        pieChartOfDays.setData(pieChartData);
 
-            xAxis.setCategories(FXCollections.<String>observableList(List.of("Work", "Holiday", "Sickness")));
-
-            NumberAxis yAxis = new NumberAxis(1, 31, 5);
-            yAxis.setLabel("Days statistics this month");
-
-
-            stackedBarOfDays.getData().clear();
-            stackedBarOfDays.getXAxis().setTickLabelFont(Font.font("Eras Demi ITC"));
-            stackedBarOfDays.getYAxis().setTickLabelFont(Font.font("Eras Demi ITC"));
+        pieChartOfDays.setLabelLineLength(5);
+        pieChartOfDays.getStyleClass().add("pieChart");
 
 
-            XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-            XYChart.Series<String, Number> series2 = new XYChart.Series<>();
-            XYChart.Series<String, Number> series3 = new XYChart.Series<>();
-            series1.getData().add(new XYChart.Data<>("Work", numberOfDaysWorkedThisMonth));
-            series2.getData().add(new XYChart.Data<>("Holiday", numberOfTakenHolidaysThisMonth));
-            series3.getData().add(new XYChart.Data<>("Sickness", numberOfSickDaysThisMonth));
-
-
-            stackedBarOfDays.getData().addAll(series1, series2, series3);
-            stackedBarOfDays.setLegendVisible(false);
-            stackedBarOfDays.setTitle(LocalDate.now().getMonth().toString());
-            stackedBarOfDays.getStyleClass().add("stackedBarOfDays");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
     }
 }
