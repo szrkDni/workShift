@@ -260,56 +260,93 @@
             </Label>
             <Label layoutX="167.0" layoutY="172.0" text="First name" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="200.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label layoutX="165.0" layoutY="283.0" text="Last name" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="250.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label layoutX="43.0" layoutY="264.0" text="Password" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="350.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label layoutX="83.0" layoutY="407.0" text="Position" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="450.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label layoutX="57.0" layoutY="219.0" text="Email" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="300.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label layoutX="295.0" layoutY="312.0" text="Birth date" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="400.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label layoutX="122.0" layoutY="481.0" text="Hire date" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="500.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
             <Label alignment="BOTTOM_LEFT" layoutX="145.0" layoutY="533.0" text="Hourly wage" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="550.0">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="330.0" layoutY="202.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="200.0">
+            <TextField fx:id="first_name_textField" layoutX="330.0" layoutY="202.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="200.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="350.0" layoutY="259.0" minHeight="35.0" minWidth="200.0" prefHeight="25.0" prefWidth="199.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="250.0" />
-            <TextField layoutX="360.0" layoutY="309.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="300.0" />
-            <TextField layoutX="360.0" layoutY="409.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="400.0" />
-            <TextField editable="false" layoutX="367.0" layoutY="459.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="450.0" />
-            <TextField editable="false" layoutX="350.0" layoutY="503.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="500.0" />
-            <TextField editable="false" layoutX="350.0" layoutY="553.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="550.0" />
-            <PasswordField layoutX="350.0" layoutY="359.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="350.0" />
+            <TextField fx:id="last_name_textField" layoutX="350.0" layoutY="259.0" minHeight="35.0" minWidth="200.0" prefHeight="25.0" prefWidth="199.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="250.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="email_textField" layoutX="360.0" layoutY="309.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="birth_date_textField" layoutX="360.0" layoutY="409.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="400.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <PasswordField fx:id="password_textField" layoutX="350.0" layoutY="359.0" minHeight="35.0" minWidth="200.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="350.0">
+               <font>
+                  <Font size="16.0" />
+               </font></PasswordField>
+            <Button fx:id="profile_save_changes" layoutX="406.0" layoutY="658.0" mnemonicParsing="false" onMouseClicked="#onSaveMouseClicked" text="Save changes" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="black-text" />
+                  <String fx:value="profile-button" />
+                  <String fx:value="logout-button" />
+               </styleClass>
+            </Button>
+            <Label fx:id="position_label" layoutX="332.0" layoutY="448.0" minHeight="35.0" minWidth="200.0" textFill="#e6bcbc" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="450.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <Label fx:id="hire_date_label" layoutX="418.0" layoutY="494.0" minHeight="35.0" minWidth="200.0" textFill="#e6bcbc" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="500.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <Label fx:id="hourly_wage_label" layoutX="418.0" layoutY="557.0" minHeight="35.0" minWidth="200.0" textFill="#e6bcbc" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="550.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <Label layoutX="707.0" layoutY="202.0" prefHeight="100.0" prefWidth="330.0" text="If you work hard, you can earn..." AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="work_hard" layoutX="705.0" layoutY="288.0" onMouseEntered="#onWorkHardEntered" prefHeight="200.0" prefWidth="330.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="300.0" />
          </children>
       </AnchorPane>
    </children>
