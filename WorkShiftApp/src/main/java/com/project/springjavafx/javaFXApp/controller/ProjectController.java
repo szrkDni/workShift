@@ -2,6 +2,9 @@ package com.project.springjavafx.javaFXApp.controller;
 
 import com.project.springjavafx.javaFXApp.data.db.DatabaseConnector;
 import com.project.springjavafx.javaFXApp.data.models.Project;
+import com.project.springjavafx.javaFXApp.data.models.ProjectWorker;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ProjectController extends MainController  {
@@ -53,7 +58,28 @@ public class ProjectController extends MainController  {
     private AnchorPane projectControls;
 
     @FXML
+    private AnchorPane projectWorkersAncor;
+
+    @FXML
     private Button projectSearchButton;
+
+
+    //innentol lefele a project-worker adatai és kapcsoloi
+    @FXML
+    private TreeTableView<ProjectWorker> projectTreeTableView;
+    @FXML
+    private TreeTableColumn<ProjectWorker, Integer> projectIdColumn;
+    @FXML
+    private TreeTableColumn<ProjectWorker, String> projectNameColumn2;
+    @FXML
+    private TreeTableColumn<ProjectWorker, Integer> workerIdColumn;
+    @FXML
+    private TreeTableColumn<ProjectWorker, String> workerNameColumn;
+
+    @FXML
+    private ComboBox<Integer> projectIdComboBox;
+    @FXML
+    private ComboBox<String> workerNameComboBox;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -69,13 +95,201 @@ public class ProjectController extends MainController  {
 
         // Betöltjük az összes projektet a táblázatba
         loadProjects(null);
+        initializeTreeTable();
+        loadComboBoxData();
 
         projectsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> onRowSelected());
         super.initialize(url, resourceBundle);
         if (!employee.isManager()){
             projectControls.setVisible(false);
+            projectWorkersAncor.setVisible(false);
         }
     }
+
+    private void initializeTreeTable() {
+
+        projectIdColumn.setCellValueFactory(cellData -> {
+            Integer projectId = cellData.getValue().getValue().getProjectId();
+            return projectId != null ? new SimpleIntegerProperty(projectId).asObject() : null;
+        });
+        projectIdColumn.setCellFactory(column -> new TreeTableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.valueOf(item));
+                }
+            }
+        });
+
+
+        projectNameColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getProjectWorkerName()));
+        workerIdColumn.setCellValueFactory(cellData -> {
+            Integer workerId = cellData.getValue().getValue().getWorkerId();
+            return workerId != null ? new SimpleIntegerProperty(workerId).asObject() : null;
+        });
+        workerIdColumn.setCellFactory(column -> new TreeTableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.valueOf(item));
+                }
+            }
+        });
+
+
+        workerNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValue().getWorkerName()));
+
+        loadTreeTableData();
+    }
+
+    private void loadTreeTableData() {
+        // Gyökérelem létrehozása
+        TreeItem<ProjectWorker> root = new TreeItem<>(new ProjectWorker(null, "Projects", null, null));
+        root.setExpanded(true);
+
+        try (Connection connection = DatabaseConnector.connect();
+             Statement statement = connection.createStatement()) {
+
+            // Adatbázis lekérdezés
+            String query = "SELECT p.id AS projectId, p.project_name, e.id AS worker_Id, CONCAT(e.first_name, \" \", e.last_name) AS workerName " +
+                    "FROM Projects p " +
+                    "LEFT JOIN Project_Workers pw ON p.id = pw.project_id " +
+                    "LEFT JOIN Employees e ON pw.employee_id = e.id";
+            ResultSet rs = statement.executeQuery(query);
+
+            // Projekt gyökérelemek nyilvántartása, hogy ne hozzunk létre többször újakat
+            Map<Integer, TreeItem<ProjectWorker>> projectMap = new HashMap<>();
+
+            while (rs.next()) {
+                Integer projectId = rs.getInt("projectId");
+                String projectName = rs.getString("project_name");
+                Integer workerId = rs.getInt("worker_Id");
+                String workerName = rs.getString("workerName");
+
+                // Ellenőrizzük, hogy a projekt már szerepel-e
+                TreeItem<ProjectWorker> projectItem = projectMap.get(projectId);
+                if (projectItem == null) {
+                    // Ha a projekt még nem szerepel, létrehozzuk
+                    projectItem = new TreeItem<>(new ProjectWorker(projectId, projectName, null, null));
+                    projectMap.put(projectId, projectItem); // Tároljuk a projektet a map-ben
+                    root.getChildren().add(projectItem); // Hozzáadjuk a gyökérhez
+                }
+
+                // Ha van hozzá munkás, hozzáadjuk a projekt alá
+                if (workerId != null) {
+                    TreeItem<ProjectWorker> workerItem = new TreeItem<>(new ProjectWorker(null, null, workerId, workerName));
+                    projectItem.getChildren().add(workerItem);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error loading TreeTable data: " + e.getMessage());
+        }
+
+        // Beállítjuk a TreeTableView gyökerét
+        projectTreeTableView.setRoot(root);
+        projectTreeTableView.setShowRoot(false); // Gyökér ne jelenjen meg
+    }
+
+    private void loadComboBoxData() {
+        try (Connection connection = DatabaseConnector.connect();
+             Statement statement = connection.createStatement()) {
+
+            // Project IDs
+            ResultSet projectRs = statement.executeQuery("SELECT id FROM Projects");
+            while (projectRs.next()) {
+                projectIdComboBox.getItems().add(projectRs.getInt("id"));
+            }
+
+            // Worker Names
+            ResultSet workerRs = statement.executeQuery("SELECT CONCAT(e.first_name, \" \", e.last_name) AS workerName FROM Employees e");
+            while (workerRs.next()) {
+                workerNameComboBox.getItems().add(workerRs.getString("workerName"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error loading ComboBox data: " + e.getMessage());
+        }
+    }
+    @FXML
+    private void addWorkerToProject() {
+        Integer selectedProjectId = projectIdComboBox.getValue();
+        String selectedWorkerName = workerNameComboBox.getValue();
+
+        if (selectedProjectId == null || selectedWorkerName == null) {
+            System.out.println("Please select both Project ID and Worker Name.");
+            return;
+        }
+
+        String query = "INSERT INTO Project_Workers (project_id, employee_id) VALUES (?, (SELECT id FROM Employees WHERE CONCAT(Employees.first_name, \" \", Employees.last_name) = ?))";
+
+        try (Connection connection = DatabaseConnector.connect();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, selectedProjectId);
+            statement.setString(2, selectedWorkerName);
+            statement.executeUpdate();
+
+            System.out.println("Worker added to project successfully.");
+            loadTreeTableData();
+
+        } catch (SQLException e) {
+            System.out.println("Error adding worker to project: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void deleteWorkerFromProject() {
+        TreeItem<ProjectWorker> selectedItem = projectTreeTableView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null || selectedItem.getValue().getWorkerId() == null) {
+            System.out.println("Please select a worker to delete.");
+            return;
+        }
+
+        Integer selectedWorkerId = selectedItem.getValue().getWorkerId();
+        Integer selectedProjectId = selectedItem.getParent().getValue().getProjectId();
+
+        String query = "DELETE FROM Project_Workers WHERE project_id = ? AND employee_id = ?";
+
+        try (Connection connection = DatabaseConnector.connect();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, selectedProjectId);
+            statement.setInt(2, selectedWorkerId);
+            statement.executeUpdate();
+
+            System.out.println("Worker removed from project successfully.");
+            loadTreeTableData();
+
+        } catch (SQLException e) {
+            System.out.println("Error deleting worker from project: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @FXML
     private void onRowSelected() {
