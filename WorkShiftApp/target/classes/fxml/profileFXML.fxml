@@ -253,7 +253,7 @@
             <String fx:value="bg-by-option" />
          </styleClass>
          <children>
-            <Label layoutX="43.0" layoutY="34.0" minHeight="-Infinity" text="Your profile">
+            <Label layoutX="64.0" layoutY="54.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="305.0" text="Your profile" AnchorPane.bottomAnchor="662.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="771.0" AnchorPane.topAnchor="52.0">
                <font>
                   <Font name="System Bold" size="51.0" />
                </font>
@@ -340,6 +340,15 @@
             <Label fx:id="hourly_wage_label" layoutX="418.0" layoutY="557.0" minHeight="35.0" minWidth="200.0" textFill="#e6bcbc" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="550.0">
                <font>
                   <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <Label layoutX="707.0" layoutY="202.0" prefHeight="100.0" prefWidth="330.0" text="If you work hard, you can earn..." AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="work_hard_label" layoutX="656.0" layoutY="307.0" onMouseEntered="#onWorkHardEntered" prefHeight="126.0" prefWidth="430.0" text="8021210 - 20201210 Ft" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="307.0">
+               <font>
+                  <Font name="System Bold Italic" size="35.0" />
                </font></Label>
          </children>
       </AnchorPane>
