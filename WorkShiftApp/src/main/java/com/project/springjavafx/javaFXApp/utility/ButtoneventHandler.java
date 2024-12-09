@@ -75,6 +75,7 @@ public class ButtoneventHandler {
 
         }catch(IOException e){
             System.out.println(e.getCause());
+            System.out.println(e.getMessage());
         }
     }
 

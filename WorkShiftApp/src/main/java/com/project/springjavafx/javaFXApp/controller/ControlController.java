@@ -12,7 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -27,7 +30,16 @@ public class ControlController  extends MainController implements Initializable 
     private final EmployeeDAO employeeDAO = new EmployeeDAO();
 
     @FXML
-    private  TextField control_Password;
+    private ImageView lbl_close_eye;
+
+    @FXML
+    private ImageView lbl_open_eye;
+
+    @FXML
+    private  PasswordField control_Password;
+
+    @FXML
+    private TextField control_PasswordShow;
 
     @FXML
     private TextField control_BirthDate;
@@ -99,10 +111,14 @@ public class ControlController  extends MainController implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        super.initialize(location,resources);
         loadEmployeeData();  // Load the employee data initially
         setButtonActions();
         addEmployeePositionList();
+        control_PasswordShow.setVisible(false);
+        lbl_open_eye.setVisible(false);
     }
+
 
     // Load employee data from the database and populate the table
     private void loadEmployeeData() {
@@ -236,7 +252,11 @@ public class ControlController  extends MainController implements Initializable 
             selectedEmployee.setFirstName(control_FirstName.getText());
             selectedEmployee.setLastName(control_LastName.getText());
             selectedEmployee.setPosition(control_Position.getValue());
-            selectedEmployee.setPassword(control_Password.getText());
+
+            // Jelszó kezelése
+            String password = control_Password.isVisible() ? control_Password.getText() : control_PasswordShow.getText();
+            selectedEmployee.setPassword(password);
+
             selectedEmployee.setEmail(control_Email.getText());
             selectedEmployee.setBirthDate(Date.valueOf(control_BirthDate.getText()));
             selectedEmployee.setHireDate(Date.valueOf(control_HireDate.getText()));
@@ -268,6 +288,7 @@ public class ControlController  extends MainController implements Initializable 
         control_FirstName.setText(selectedEmployee.getFirstName());
         control_LastName.setText(selectedEmployee.getLastName());
         control_Password.setText(selectedEmployee.getPassword());
+        control_PasswordShow.setText(selectedEmployee.getPassword());
         control_Email.setText(selectedEmployee.getEmail());
         control_Position.setValue(selectedEmployee.getPosition());
         control_BirthDate.setText(selectedEmployee.getBirthDate().toString());
@@ -310,6 +331,7 @@ public class ControlController  extends MainController implements Initializable 
         control_BirthDate.clear();
         control_HireDate.clear();
         control_HourlyWage.clear();
+        control_PasswordShow.clear();
     }
 
     // Validates if all fields are filled out
@@ -322,6 +344,22 @@ public class ControlController  extends MainController implements Initializable 
                 control_BirthDate.getText().isEmpty() ||
                 control_HireDate.getText().isEmpty() ||
                 control_HourlyWage.getText().isEmpty();
+    }
+
+    public void Open_Eye_ClickOnAction(MouseEvent mouseEvent) {
+        control_PasswordShow.setText(control_Password.getText()); // Szinkronizálás
+        control_Password.setVisible(true);
+        lbl_open_eye.setVisible(false);
+        lbl_close_eye.setVisible(true);
+        control_PasswordShow.setVisible(false);
+    }
+
+    public void Close_Eye_ClickOnAction(MouseEvent mouseEvent) {
+        control_Password.setText(control_PasswordShow.getText()); // Szinkronizálás
+        control_PasswordShow.setVisible(true);
+        lbl_open_eye.setVisible(true);
+        lbl_close_eye.setVisible(false);
+        control_Password.setVisible(false);
     }
 
     // Displays a success alert

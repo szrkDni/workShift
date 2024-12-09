@@ -8,19 +8,27 @@ import com.project.springjavafx.javaFXApp.utility.Credentials;
 import com.project.springjavafx.javaFXApp.utility.SceneLoader;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class LoginController {
+
+public class LoginController{
 
     // TextField for the username input field in the login form
+
+    @FXML
+    public AnchorPane loginAncorPane;
     @FXML
     public TextField loginformusername;
 
@@ -46,6 +54,8 @@ public class LoginController {
             System.out.println(e.getMessage()); // Log error if the FXML file cannot be loaded
         }
     }
+
+
 
     /**
      * Handles the login logic by checking entered credentials against a hardcoded list.
@@ -110,6 +120,8 @@ public class LoginController {
 
         }
     }
+
+
 
     /**
      * Handles the "Forgot Password" button click event.

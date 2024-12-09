@@ -167,7 +167,8 @@ public class ProjectController extends MainController  {
     private void loadComboBoxData() {
         try (Connection connection = DatabaseConnector.connect();
              Statement statement = connection.createStatement()) {
-
+                projectIdComboBox.getItems().clear();
+                workerNameComboBox.getItems().clear();
             // Project IDs
             ResultSet projectRs = statement.executeQuery("SELECT id FROM Projects");
             while (projectRs.next()) {
@@ -205,6 +206,7 @@ public class ProjectController extends MainController  {
 
             System.out.println("Worker added to project successfully.");
             loadTreeTableData();
+            loadComboBoxData();
 
         } catch (SQLException e) {
             System.out.println("Error adding worker to project: " + e.getMessage());
@@ -233,6 +235,7 @@ public class ProjectController extends MainController  {
 
             System.out.println("Worker removed from project successfully.");
             loadTreeTableData();
+            loadComboBoxData();
 
         } catch (SQLException e) {
             System.out.println("Error deleting worker from project: " + e.getMessage());
@@ -330,6 +333,7 @@ public class ProjectController extends MainController  {
             }
             loadProjects(null);
             loadTreeTableData();
+            loadComboBoxData();
         } catch (SQLException e) {
             System.out.println("Error while deleting project: " + e.getMessage());
         }
@@ -356,6 +360,7 @@ public class ProjectController extends MainController  {
             }
             loadProjects(null);
             loadTreeTableData();
+            loadComboBoxData();
         } catch (SQLException e) {
             System.out.println("Error while updating project: " + e.getMessage());
         }
@@ -374,6 +379,7 @@ public class ProjectController extends MainController  {
             System.out.println("Project added successfully.");
             loadProjects(null);
             loadTreeTableData();
+            loadComboBoxData();
         } else {
             System.out.println("Error adding project.");
         }

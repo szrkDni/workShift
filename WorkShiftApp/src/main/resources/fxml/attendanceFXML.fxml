@@ -152,7 +152,7 @@
             </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
-                  <Insets bottom="230.0" />
+                  <Insets />
                </VBox.margin>
                <children>
                   <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
