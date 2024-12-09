@@ -92,7 +92,6 @@
                   </ImageView>
                </children>
             </AnchorPane>
-
             <AnchorPane>
                <children>
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#ontimeoffButtonClick" prefHeight="45.0" prefWidth="240.0" text="Time off" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -120,7 +119,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane>
                <children>
                   <Button fx:id="projectlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onprojectButtonClick" prefHeight="45.0" prefWidth="240.0" text="Project" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <cursor>
@@ -149,7 +148,7 @@
             </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                <VBox.margin>
-                  <Insets bottom="230.0" />
+                  <Insets />
                </VBox.margin>
                <children>
                   <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -178,7 +177,11 @@
                         <Image url="@../img/administrator.png" />
                      </image>
                   </ImageView>
-                  <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="LogOut" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="LogOut" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -196,12 +199,15 @@
                         <String fx:value="black-text" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/logout.png" />
                      </image>
                   </ImageView>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </AnchorPane>
             <AnchorPane>
                <VBox.margin>
@@ -209,7 +215,8 @@
                </VBox.margin>
             </AnchorPane>
          </children>
-      </VBox> <AnchorPane layoutX="293.0" layoutY="10.0" prefHeight="83.0" prefWidth="1137.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="807.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      </VBox>
+      <AnchorPane layoutX="293.0" layoutY="10.0" prefHeight="83.0" prefWidth="1137.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="807.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <Label fx:id="welcomeLabel" layoutX="13.0" layoutY="16.0" prefHeight="51.0" prefWidth="1100.0" text="WELCOME BACK MR.!" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="16.0">
                <font>
