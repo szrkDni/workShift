@@ -18,7 +18,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.LeaveRequestController">
 <children>
-    <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="10.0" prefHeight="900.0" prefWidth="285.0" style="-fx-background-color: #E0E0E0; -fx-spacing: 10; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="1151.0" AnchorPane.topAnchor="10.0">
+    <VBox alignment="TOP_CENTER" layoutX="-8.666666666666666" layoutY="-7.0" prefHeight="900.0" prefWidth="285.0" style="-fx-background-color: #E0E0E0; -fx-spacing: 10; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1155.0" AnchorPane.topAnchor="10.0">
         <children>
             <ImageView fitHeight="150.0" fitWidth="263.0" pickOnBounds="true" preserveRatio="true" styleClass="picture">
                 <image>
@@ -30,7 +30,7 @@
             </ImageView>
             <Label fx:id="nameLabel" text="Max Verstappen">
                 <font>
-                    <Font size="24.0" />
+                    <Font name="Franklin Gothic Heavy" size="24.0" />
                 </font>
             </Label>
             <Label fx:id="positionLabel" text="Formula One Driver">
@@ -95,33 +95,7 @@
                     </ImageView>
                 </children>
             </AnchorPane>
-            <AnchorPane>
-                <children>
-                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onpaymentButtonClick" prefHeight="45.0" prefWidth="240.0" text="Payment" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                        <opaqueInsets>
-                            <Insets />
-                        </opaqueInsets>
-                        <padding>
-                            <Insets left="70.0" />
-                        </padding>
-                        <font>
-                            <Font name="System Bold Italic" size="20.0" />
-                        </font>
-                        <cursor>
-                            <Cursor fx:constant="HAND" />
-                        </cursor>
-                        <styleClass>
-                            <String fx:value="payment-button" />
-                            <String fx:value="black-text" />
-                        </styleClass>
-                    </Button>
-                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../img/coins.png" />
-                        </image>
-                    </ImageView>
-                </children>
-            </AnchorPane>
+
             <AnchorPane>
                 <children>
                     <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#ontimeoffButtonClick" prefHeight="45.0" prefWidth="240.0" text="Time off" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -149,12 +123,39 @@
                     </ImageView>
                 </children>
             </AnchorPane>
+            <AnchorPane prefWidth="200.0">
+                <children>
+                    <Button fx:id="projectlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onprojectButtonClick" prefHeight="45.0" prefWidth="240.0" text="Project" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <font>
+                            <Font name="System Bold Italic" size="20.0" />
+                        </font>
+                        <padding>
+                            <Insets left="70.0" />
+                        </padding>
+                        <rotationAxis>
+                            <Point3D />
+                        </rotationAxis>
+                        <styleClass>
+                            <String fx:value="project-button" />
+                            <String fx:value="black-text" />
+                        </styleClass>
+                    </Button>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="51.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../img/project.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
             <AnchorPane fx:id="controlAnchorPane">
                 <VBox.margin>
                     <Insets />
                 </VBox.margin>
                 <children>
-                    <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="231.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                    <Button fx:id="controlbutton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#oncontrolButtonClick" prefHeight="45.0" prefWidth="240.0" text="Control" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                         <opaqueInsets>
                             <Insets />
                         </opaqueInsets>
@@ -180,18 +181,14 @@
                             <Image url="@../img/administrator.png" />
                         </image>
                     </ImageView>
-                  <AnchorPane layoutX="-64.0" layoutY="50.0" />
                 </children>
             </AnchorPane>
             <AnchorPane>
                <children>
-                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="Log Out" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#onlogoutButtonClick" prefHeight="45.0" prefWidth="240.0" text="LogOut" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                         <opaqueInsets>
                             <Insets />
                         </opaqueInsets>
-                        <padding>
-                            <Insets left="70.0" />
-                        </padding>
                         <font>
                             <Font name="System Bold Italic" size="20.0" />
                         </font>
@@ -202,6 +199,9 @@
                             <String fx:value="logout-button" />
                             <String fx:value="black-text" />
                         </styleClass>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
                     </Button>
                     <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -209,6 +209,9 @@
                         </image>
                     </ImageView>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </AnchorPane>
         </children>
     </VBox>
@@ -288,7 +291,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label fx:id="welcomeLabel111" layoutX="82.0" layoutY="142.0" prefHeight="43.0" prefWidth="300.0" text="Sick Leaves (70% paid):" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="141.0">
+                  <Label fx:id="sickleaveLabel" layoutX="82.0" layoutY="142.0" prefHeight="43.0" prefWidth="300.0" text="Sick Leaves (70% paid):" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="141.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
