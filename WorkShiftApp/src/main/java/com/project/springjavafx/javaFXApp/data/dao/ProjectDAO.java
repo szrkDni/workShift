@@ -144,5 +144,3 @@ public class ProjectDAO {
         return projectMap;
     }
 }
-
-

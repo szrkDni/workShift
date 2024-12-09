@@ -1,31 +1,31 @@
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\LeaveRequestController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\LoginController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\LeaveRequestDAO.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\Employee.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\PasswordHandler.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\db\DatabaseConnector.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\EmployeeDAO.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\ProjectWorker.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\ButtoneventHandler.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\MainController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\db\TestDatabase.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\WorkShift.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\Credentials.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\exceptions\LoginformException.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\WorkShiftDAO.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\Project.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\secondary\ManageLRController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\AttendanceController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\TimeoffController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\springApp\SpringJavaFxApplication.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\LoginData.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\LeaveRequest.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\DayStatus.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dto\AfterLoginDTO.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\springApp\SpringManager.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\javaFXMain.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\ProjectDAO.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\SceneLoader.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\ProjectController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\ProfileController.java
-C:\Users\Dani\IdeaProjects\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\ControlController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\db\TestDatabase.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\ControlController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\WorkShiftDAO.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\LeaveRequestDAO.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\AttendanceController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\LeaveRequestController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\ProjectController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\secondary\ManageLRController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\EmployeeDAO.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\Credentials.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\LoginController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\TimeoffController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\db\DatabaseConnector.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\javaFXMain.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\ButtoneventHandler.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\LeaveRequest.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\exceptions\LoginformException.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\DayStatus.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\Employee.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\WorkShift.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\MainController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\springApp\SpringJavaFxApplication.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\controller\ProfileController.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\ProjectWorker.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\LoginData.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\PasswordHandler.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\springApp\SpringManager.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\models\Project.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dto\AfterLoginDTO.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\data\dao\ProjectDAO.java
+C:\Users\Koncz Bálint\Documents\SZOFTVERFEJLESZTÉS\workShift\WorkShiftApp\src\main\java\com\project\springjavafx\javaFXApp\utility\SceneLoader.java

@@ -6,11 +6,14 @@
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -229,113 +232,147 @@
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="296.0" layoutY="93.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+        <AnchorPane layoutX="293.0" layoutY="100.0" prefHeight="788.0" prefWidth="1133.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="100.0">
             <styleClass>
                 <String fx:value="page" />
                 <String fx:value="bg-by-option" />
             </styleClass>
-         <children>
-            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="458.0" prefWidth="1125.0">
-               <children>
-                  <TableView fx:id="projectsTable" layoutY="82.0" prefHeight="361.0" prefWidth="1110.0" style="-fx-background-color: black; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/project.css">
+            <children>
+                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="458.0" prefWidth="1125.0">
+                    <children>
+                        <TableView fx:id="projectsTable" layoutY="56.0" prefHeight="361.0" prefWidth="1110.0" style="-fx-background-color: black; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/project.css">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+                                <TableColumn fx:id="projectNameColumn" prefWidth="225.0" text="Project Name" />
+                                <TableColumn fx:id="projectManagerColumn" minWidth="0.0" prefWidth="115.0" text="Project Managger" />
+                                <TableColumn fx:id="descriptionColumn" prefWidth="520.0" text="Discription" />
+                                <TableColumn fx:id="startDateColumn" prefWidth="100.0" text="Start Date" />
+                                <TableColumn fx:id="endDateColumn" prefWidth="100.0" text="End Date" />
+                            </columns>
+                        </TableView>
+                        <TextField fx:id="projectSearchField" layoutX="14.0" layoutY="6.0" prefHeight="35.0" prefWidth="282.0" promptText="Search" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <Button fx:id="projectSearchButton" layoutX="319.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClicked" prefHeight="41.0" prefWidth="81.0" text="Search">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="projectControls" layoutX="472.0" layoutY="492.0" prefHeight="277.0" prefWidth="662.0">
+                    <children>
+                        <TextField fx:id="project_id" layoutX="143.0" layoutY="14.0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="project_name" layoutX="143.0" layoutY="78.0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="project_manager" layoutX="143.0" layoutY="142.0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="project_description" layoutX="457.0" layoutY="14.0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="35.0" layoutY="83.0" text="Project Name">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="62.0" layoutY="19.0" text="Project ID">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="354.0" layoutY="19.0" text="Description">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="147.0" text="Project Manager">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="364.0" layoutY="83.0" text="Start Date">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="370.0" layoutY="147.0" text="End Date">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <DatePicker fx:id="project_start_date" layoutX="457.0" layoutY="77.0" prefHeight="37.0" prefWidth="198.0" />
+                        <DatePicker fx:id="project_end_date" layoutX="457.0" layoutY="141.0" prefHeight="37.0" prefWidth="198.0" />
+                        <Button fx:id="project_clear" layoutX="253.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#clearProjectFields" prefHeight="46.0" prefWidth="69.0" text="Clear">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="project_delete" layoutX="348.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#deleteProject" prefHeight="46.0" prefWidth="90.0" text="Delete">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="project_update" layoutX="456.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#updateProject" prefHeight="46.0" prefWidth="96.0" text="Update">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="project_add" layoutX="571.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#addProject" prefHeight="46.0" prefWidth="69.0" text="Add">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <TreeTableView fx:id="projectTreeTableView" layoutX="14.0" layoutY="472.0" prefHeight="227.0" prefWidth="446.0">
                     <columns>
-                      <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
-                      <TableColumn fx:id="projectNameColumn" prefWidth="225.0" text="Project Name" />
-                        <TableColumn fx:id="projectManagerColumn" minWidth="0.0" prefWidth="225.0" text="Project Managger" />
-                        <TableColumn fx:id="descriptionColumn" prefWidth="410.0" text="Discription" />
-                        <TableColumn fx:id="startDateColumn" prefWidth="100.0" text="Start Date" />
-                        <TableColumn fx:id="endDateColumn" prefWidth="100.0" text="End Date" />
+                        <TreeTableColumn fx:id="projectIdColumn" prefWidth="71.0" text="Project ID" />
+                        <TreeTableColumn fx:id="projectNameColumn2" prefWidth="164.0" text="Project Name" />
+                        <TreeTableColumn fx:id="workerIdColumn" prefWidth="69.0" text="Worker ID" />
+                        <TreeTableColumn fx:id="workerNameColumn" prefWidth="141.0" text="Worker Name" />
                     </columns>
-                  </TableView>
-                  <TextField fx:id="projectSearchField" layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="282.0" promptText="Search" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="projectSearchButton" layoutX="319.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClicked" prefHeight="35.0" prefWidth="69.0" text="Search">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="projectControls" layoutX="65.0" layoutY="491.0">
-               <children>
-                  <TextField fx:id="project_id" layoutX="129.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="project_name" layoutX="129.0" layoutY="64.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="project_manager" layoutX="129.0" layoutY="128.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="project_description" layoutX="682.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="21.0" layoutY="69.0" text="Project Name">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="48.0" layoutY="5.0" text="Project ID">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="579.0" layoutY="5.0" text="Description">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutY="133.0" text="Project Manager">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="589.0" layoutY="69.0" text="Start Date">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="595.0" layoutY="133.0" text="End Date">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="project_start_date" layoutX="682.0" layoutY="63.0" prefHeight="37.0" prefWidth="198.0" />
-                  <DatePicker fx:id="project_end_date" layoutX="682.0" layoutY="127.0" prefHeight="37.0" prefWidth="198.0" />
-                  <Button fx:id="project_clear" layoutX="660.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#clearProjectFields" prefHeight="46.0" prefWidth="69.0" text="Clear">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="project_delete" layoutX="755.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#deleteProject" prefHeight="46.0" prefWidth="90.0" text="Delete">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="project_update" layoutX="863.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#updateProject" prefHeight="46.0" prefWidth="96.0" text="Update">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="project_add" layoutX="978.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#addProject" prefHeight="46.0" prefWidth="69.0" text="Add">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
+                </TreeTableView>
+                <AnchorPane fx:id="projectWorkersAncor" layoutX="15.0" layoutY="715.0">
+                    <children>
+                        <Button fx:id="worker_delete" layoutX="374.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#deleteWorkerFromProject" prefHeight="46.0" prefWidth="71.0" text="Delete">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                        <ComboBox fx:id="projectIdComboBox" layoutY="25.0" prefHeight="25.0" prefWidth="96.0" />
+                        <ComboBox fx:id="workerNameComboBox" layoutX="124.0" layoutY="25.0" prefHeight="25.0" prefWidth="173.0" />
+                        <Label layoutX="14.0" text="Project ID">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="161.0" layoutY="2.0" text="Worker Name">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="worker_add1" layoutX="308.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addWorkerToProject" prefHeight="46.0" prefWidth="59.0" text="Add">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </children>
         </AnchorPane>
     </children>
     <stylesheets>
