@@ -95,6 +95,6 @@ public class ProfileController extends MainController implements Initializable
                 int x = employee.getHourlyWage();
                 int poor_year = 245 * 8 * x;
                 int rich_year = 260 * 8 * x;
-                work_hard_label.setText(String.valueOf(poor_year) + " - " + String.valueOf(rich_year) + "Ft");
+                work_hard_label.setText(String.valueOf(poor_year)+ "Ft" + " - " + String.valueOf(rich_year) + "Ft");
         }
 }

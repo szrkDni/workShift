@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #e0e7ef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.springjavafx.javaFXApp.controller.ProfileController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="-8.666666666666666" layoutY="-7.0" prefHeight="900.0" prefWidth="285.0" style="-fx-background-color: #E0E0E0; -fx-spacing: 10; -fx-background-radius: 10; -fx-border-color: navy; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1155.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -321,15 +321,25 @@
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="707.0" layoutY="202.0" prefHeight="100.0" prefWidth="330.0" text="If you work hard, you can earn..." AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+            <Label layoutX="707.0" layoutY="208.0" prefHeight="100.0" prefWidth="557.0" text="If you work hard, you can earn..." AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="206.0">
                <font>
-                  <Font name="System Bold Italic" size="20.0" />
+                  <Font name="System Bold Italic" size="35.0" />
                </font>
             </Label>
-            <Label fx:id="work_hard_label" layoutX="656.0" layoutY="307.0" onMouseEntered="#onWorkHardEntered" prefHeight="126.0" prefWidth="430.0" text="8021210 - 20201210 Ft" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="307.0">
+            <Label fx:id="work_hard_label" layoutX="652.0" layoutY="302.0" onMouseEntered="#onWorkHardEntered" prefHeight="126.0" prefWidth="502.0" text="8021210 - 20201210 Ft" AnchorPane.rightAnchor="-16.0" AnchorPane.topAnchor="302.0">
                <font>
                   <Font name="System Bold Italic" size="35.0" />
                </font></Label>
+            <Label layoutX="774.0" layoutY="417.0" prefHeight="100.0" prefWidth="113.0" text="Yearly">
+               <font>
+                  <Font name="System Bold Italic" size="35.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="798.0" fitWidth="455.0" layoutX="667.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/droid.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
