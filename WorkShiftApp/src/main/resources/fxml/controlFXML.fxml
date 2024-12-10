@@ -242,17 +242,25 @@
                   <String fx:value="bg-by-option" />
                </styleClass>
                <children>
-                  <TableView fx:id="control_tableView" layoutX="41.0" layoutY="89.0" onMouseClicked="#selectEmployee" prefHeight="318.0" prefWidth="1054.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 0; -fx-padding: 0.5; -fx-background-radius: 0;" stylesheets="@../css/control.css">
+                  <TableView fx:id="control_tableView" layoutX="41.0" layoutY="89.0" onMouseClicked="#selectEmployee" prefHeight="318.0" prefWidth="1054.0" style="-fx-border-color: white;">
                      <columns>
-                        <TableColumn fx:id="control_employeeId" prefWidth="96.0" style="-fx-border-radius: 10; -fx-border-color: transparent;" text="Employee ID" />
+                        <TableColumn fx:id="control_employeeId" prefWidth="96.0" text="Employee ID" />
                         <TableColumn fx:id="control_firstName" prefWidth="125.60000610351562" text="First Name" />
                         <TableColumn fx:id="control_lastName" prefWidth="105.5999755859375" text="Last Name" />
                         <TableColumn fx:id="control_position" prefWidth="103.2000732421875" text="Position" />
-                        <TableColumn fx:id="control_email" prefWidth="238.39990234375" text="Email" />
+                        <TableColumn fx:id="control_email" prefWidth="228.0" text="Email" />
                         <TableColumn fx:id="control_birthDate" prefWidth="138.4000244140625" text="Birth Date" />
                         <TableColumn fx:id="control_hireDate" prefWidth="141.5999755859375" text="Hire Date" />
                         <TableColumn fx:id="control_hourlywage" prefWidth="108.0001220703125" text="Hourly Wage" />
                      </columns>
+                     <stylesheets>
+                        <URL value="@../css/control.css" />
+                        <URL value="@../css/timeoff.css" />
+                     </stylesheets>
+                     <styleClass>
+                        <String fx:value="table-style" />
+                        <String fx:value="column-header" />
+                     </styleClass>
                   </TableView>
                   <TextField fx:id="control_search" layoutX="41.0" layoutY="28.0" prefHeight="40.0" prefWidth="263.0" promptText="Search" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;">
                      <font>
@@ -261,9 +269,9 @@
                   </TextField>
                </children>
             </AnchorPane>
-            <Label layoutX="64.0" layoutY="488.0" prefHeight="27.0" prefWidth="109.0" text="Employee ID:">
+            <Label layoutX="23.0" layoutY="488.0" prefHeight="27.0" prefWidth="150.0" text="Employee ID:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_EmployeeId" layoutX="171.0" layoutY="482.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
@@ -271,9 +279,9 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="78.0" layoutY="548.0" prefHeight="27.0" prefWidth="96.0" text="First Name:">
+            <Label layoutX="24.0" layoutY="548.0" prefHeight="27.0" prefWidth="150.0" text="First Name:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_FirstName" layoutX="171.0" layoutY="542.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;">
@@ -281,9 +289,9 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="78.0" layoutY="606.0" prefHeight="27.0" prefWidth="96.0" text="Last Name:">
+            <Label layoutX="24.0" layoutY="606.0" prefHeight="27.0" prefWidth="150.0" text="Last Name:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_LastName" layoutX="171.0" layoutY="600.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;">
@@ -291,14 +299,14 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="100.0" layoutY="666.0" prefHeight="27.0" prefWidth="96.0" text="Position:">
+            <Label layoutX="23.0" layoutY="666.0" prefHeight="27.0" prefWidth="173.0" text="Position:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="468.0" layoutY="488.0" prefHeight="27.0" prefWidth="54.0" text="Email:">
+            <Label layoutX="412.0" layoutY="488.0" prefHeight="27.0" prefWidth="110.0" text="Email:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_Email" layoutX="519.0" layoutY="482.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
@@ -306,9 +314,9 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="433.0" layoutY="548.0" prefHeight="27.0" prefWidth="89.0" text="Birth Date:">
+            <Label layoutX="412.0" layoutY="548.0" prefHeight="27.0" prefWidth="110.0" text="Birth Date:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_BirthDate" layoutX="519.0" layoutY="542.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
@@ -316,9 +324,9 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="435.0" layoutY="606.0" prefHeight="27.0" prefWidth="90.0" text="Hire Date:">
+            <Label layoutX="415.0" layoutY="606.0" prefHeight="27.0" prefWidth="110.0" text="Hire Date:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_HireDate" layoutX="519.0" layoutY="600.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;">
@@ -326,9 +334,9 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="410.0" layoutY="666.0" prefHeight="27.0" prefWidth="110.0" text="Hourly Wage:">
+            <Label layoutX="381.0" layoutY="666.0" prefHeight="27.0" prefWidth="139.0" text="Hourly Wage:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_HourlyWage" layoutX="519.0" layoutY="660.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
@@ -339,27 +347,39 @@
             <ComboBox fx:id="control_Position" layoutX="171.0" layoutY="667.0" prefHeight="30.0" prefWidth="173.0" promptText="Choose" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
             <Button fx:id="control_update" layoutX="935.0" layoutY="729.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="96.0" text="Update">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Semibold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="control_clear" layoutX="719.0" layoutY="729.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="69.0" text="Clear">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Semibold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="control_delete" layoutX="809.0" layoutY="729.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" text="Delete">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Semibold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="control_add" layoutX="1054.0" layoutY="729.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="69.0" text="Add">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Semibold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Label layoutX="769.0" layoutY="488.0" prefHeight="27.0" prefWidth="82.0" text="Password:">
+            <Label layoutX="748.0" layoutY="488.0" prefHeight="27.0" prefWidth="103.0" text="Password:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="control_PasswordShow" layoutX="848.0" layoutY="483.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
@@ -376,6 +396,9 @@
                <image>
                   <Image url="@../img/closeeye.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <PasswordField fx:id="control_Password" layoutX="848.0" layoutY="483.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;">
                <font>
