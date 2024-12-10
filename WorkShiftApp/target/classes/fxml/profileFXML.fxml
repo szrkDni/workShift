@@ -308,6 +308,9 @@
                   <String fx:value="profile-button" />
                   <String fx:value="logout-button" />
                </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="position_label" layoutX="332.0" layoutY="448.0" minHeight="35.0" minWidth="200.0" textFill="#e6bcbc" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="450.0">
                <font>
@@ -335,9 +338,14 @@
                   <Font name="System Bold Italic" size="35.0" />
                </font>
             </Label>
-            <ImageView fitHeight="798.0" fitWidth="455.0" layoutX="667.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="298.0" fitWidth="370.0" layoutX="682.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="160.0">
                <image>
-                  <Image url="@../img/droid.png" />
+                  <Image url="@../img/droidika.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="212.0" fitWidth="370.0" layoutX="620.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../img/moneymanjpg.png" />
                </image>
             </ImageView>
          </children>

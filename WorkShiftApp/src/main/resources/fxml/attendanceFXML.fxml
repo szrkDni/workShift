@@ -274,6 +274,9 @@
                      <image>
                         <Image url="@../img/check.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </children>
                <cursor>
@@ -291,6 +294,9 @@
                      <image>
                         <Image url="@../img/check.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </children>
                <cursor>
