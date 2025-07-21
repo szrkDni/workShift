@@ -18,14 +18,18 @@
 
 ##  Overview
 
-<code>❯ workShift is a simple desktop application designed to help small teams manage and organize work shifts more easily. It allows users to plan, add, and view shifts in a clean and user-friendly interface. The project focuses on providing a straightforward solution for shift scheduling without unnecessary complexity, making it suitable for small teams or individual use.</code>
+<p> <b>workShift</b> is a simple desktop application designed to help small teams manage and organize work shifts more easily. It allows users to plan, add, and view shifts in a clean and user-friendly interface. The project focuses on providing a straightforward solution for shift scheduling without unnecessary complexity, making it suitable for small teams or individual use.</p>
 
 ---
 
 ##  Features
 
-<code>❯📅 Create and manage shifts: Easily add, edit, and remove work shifts.
+<code>📅 Create and manage shifts: Easily add, edit, and remove work shifts.</code>
 
-👥 Assign employees: Allocate shifts to employees and view who’s scheduled.
+<code>👥 Assign employees: Allocate shifts to employees and view who’s scheduled.</code>
 
-🕒 Shift overview: Display shifts in a clear format for better planning.</code>
+<code>🕒 Shift overview: Display shifts in a clear format for better planning.</code>
+
+
+
+<img width="1256" height="842" alt="workshift" src="https://github.com/user-attachments/assets/4e59ec90-648a-4db2-bf27-a5e99a1198ff" />
